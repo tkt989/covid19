@@ -6,6 +6,8 @@
       :date="headerItem.date"
     />
     <whats-new class="mb-4" :items="newsItems" />
+
+<!--
     <static-info
       class="mb-4"
       :url="'/flow'"
@@ -13,6 +15,7 @@
       :btn-text="'相談の手順を見る'"
     />
     <v-row class="DataBlock">
+
       <v-col cols="12" md="6" class="DataCard">
         <svg-card
           title="検査陽性者の状況"
@@ -92,6 +95,7 @@
           :date="metroGraph.date"
         />
       </v-col>
+      -->
     </v-row>
   </div>
 </template>
@@ -180,7 +184,7 @@ export default {
       sumInfoOfPatients,
       headerItem: {
         icon: 'mdi-chart-timeline-variant',
-        title: '都内の最新感染動向',
+        title: '県内の最新感染動向',
         date: Data.lastUpdate
       },
       newsItems: News.newsItems,
@@ -242,7 +246,7 @@ export default {
   },
   head() {
     return {
-      title: '都内の最新感染動向'
+      title: '県内の最新感染動向'
     }
   }
 }
