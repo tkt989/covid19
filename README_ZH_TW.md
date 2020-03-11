@@ -1,8 +1,8 @@
-# 東京都 新型冠狀病毒疫情中心
+# Code for 長崎 新型冠狀病毒疫情中心
 
 ![](https://github.com/tokyo-metropolitan-gov/covid19/workflows/production%20deploy/badge.svg)
 
-[![東京都 新型冠狀病毒疫情中心](https://user-images.githubusercontent.com/1301149/75629392-1d19d900-5c25-11ea-843d-2d4376e3a560.png)](https://stopcovid19.metro.tokyo.lg.jp/)
+[![Code for 長崎 新型冠狀病毒疫情中心](https://user-images.githubusercontent.com/1301149/75629392-1d19d900-5c25-11ea-843d-2d4376e3a560.png)](https://dev-covid19-nagasaki.netlify.com/)
 
 ### [日本語](./README.md) | [English](./README_EN.md) | [Spanish](./README_ES.md) | [Korean](./README_KO.md) | Chinese (Taiwan) | [Chinese (Simplified)](./README_ZH_CN.md) | [Vietnamese](./README_VI.md)
 
@@ -41,7 +41,7 @@ $ docker-compose up --build
 
 ### Deploy 到 Staging 環境以及正式環境的方法
 
-當 `master` 分支被更新時，HTML 檔案將會在 `production` 分支中被組建 (build)起來。然後正式版網站 https://stopcovid19.metro.tokyo.lg.jp/ 會被更新。
+當 `master` 分支被更新時，HTML 檔案將會在 `production` 分支中被組建 (build)起來。然後正式版網站 https://dev-covid19-nagasaki.netlify.com/ 會被更新。
 
 當 `staging` 分支被更新時，HTML 檔案將會在 `gh-pages` 分支中被組建 (build)起來。然後 Staging 版網站 https://stg-covid19-tokyo.netlify.com/ 會被更新。
 
