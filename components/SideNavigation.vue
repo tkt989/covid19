@@ -1,9 +1,6 @@
 <template>
   <div class="SideNavigation">
-
     <div class="SideNavigation-HeadingContainer sp-flex">
-    Code for 長崎
-      <!--
       <v-icon
         class="SideNavigation-HeadingIcon pc-none"
         :aria-label="$t('Navi Open')"
@@ -13,16 +10,14 @@
       </v-icon>
       <nuxt-link to="/" class="SideNavigation-HeadingLink">
         <div class="SideNavigation-Logo">
-          <img src="/logo.png" :alt="$t('Tokyo')" />
+          <img src="/logo.svg" :alt="$t('Tokyo')" />
         </div>
         <h1 class="SideNavigation-Heading">
           {{ $t('COVID-19') }}<br />{{ $t('Measures site') }}
         </h1>
       </nuxt-link>
-      -->
     </div>
     <v-divider class="SideNavigation-HeadingDivider" />
-
 
     <div class="sp-none" :class="{ open: isNaviOpen }">
       <v-icon
@@ -44,7 +39,7 @@
         </v-container>
       </v-list>
 
-<!--
+      <!--
       <div class="SideNavigation-Footer">
         <div class="SideNavigation-SocialLinkContainer">
           <a
@@ -85,8 +80,6 @@
         </small>
       </div>
 -->
-
-      
     </div>
   </div>
 </template>
@@ -135,7 +128,7 @@ export default {
           icon: 'mdi-chart-timeline-variant',
           title: this.$t('The latest updates'),
           link: '/'
-        },
+        }
         /*
         {
           icon: 'covid',
