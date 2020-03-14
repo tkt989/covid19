@@ -19,7 +19,7 @@
   "ja": {
     "検査実施数": "本日の検査実施数",
     "長崎市": "長崎市",
-    "Label1": "長崎市の検査",
+    "Label1": "長崎県内の検査",
     "Label2": "長崎県内の検査（長崎市以外）",
     "件": {
       "tested": "件"
@@ -79,10 +79,11 @@ export default {
   data() {
     // 検査実施日別状況
     const inspectionsGraph = [
-      Data.inspections_summary.data['長崎市'],
       Data.inspections_summary.data['長崎県内']
+      // Data.inspections_summary.data['長崎県内']
     ]
-    const inspectionsItems = [this.$t('Label1'), this.$t('Label2')]
+    // const inspectionsItems = [this.$t('Label1'), this.$t('Label2')]
+    const inspectionsItems = [this.$t('Label1')]
     const inspectionsLabels = Data.inspections_summary.labels
 
     const data = {

@@ -143,9 +143,10 @@ export default {
           displayColors: false,
           callbacks: {
             label: tooltipItem => {
-              const labelTokyo = this.$t('長崎市内')
-              const labelOthers = this.$t('長崎県内の検査（長崎市以外）')
-              const labelArray = [labelTokyo, labelOthers]
+              const labelTokyo = this.$t('長崎県内')
+              // const labelOthers = this.$t('長崎県内の検査（長崎市以外）')
+              // const labelArray = [labelTokyo, labelOthers]
+              const labelArray = [labelTokyo, labelTokyo]
               let casesTotal, cases
               if (this.dataKind === 'transition') {
                 casesTotal = sumArray[tooltipItem.index].toLocaleString()
@@ -288,7 +289,8 @@ export default {
     eachArraySum(chartDataArray) {
       const sumArray = []
       for (let i = 0; i < chartDataArray[0].length; i++) {
-        sumArray.push(chartDataArray[0][i] + chartDataArray[1][i])
+        // sumArray.push(chartDataArray[0][i] + chartDataArray[1][i])
+        sumArray.push(chartDataArray[0][i])
       }
       return sumArray
     }
