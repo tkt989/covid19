@@ -1190,13 +1190,13 @@
       <g transform="translate(0 -19)">
         <g transform="translate(19 5)">
           <a
-            xlink:href="https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/kansensho/corona_nagasaki/corona_nagasaki_shousai/#sinpai"
+            xlink:href="https://www.pref.nagasaki.jp/section/fukushi/"
             target="_blank"
             rel="noopener"
           >
             <text class="c" transform="translate(803 311)" style="">
               <tspan x="0" y="0">各保健所の電話番号は</tspan>
-              <tspan x="0" y="22">福祉保健局HPへ</tspan>
+              <tspan x="0" y="22">福祉保健課HPへ</tspan>
             </text>
           </a>
           <g transform="translate(927 318)">

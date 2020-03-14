@@ -19,7 +19,7 @@
             target="_blank"
             rel="noopener"
           >
-            {{ $t('各保健所の電話番号は福祉保健局HPへ') }}
+            {{ $t('各保健所の電話番号は福祉保健課HPへ') }}
             <v-icon size="16">
               mdi-open-in-new
             </v-icon>
