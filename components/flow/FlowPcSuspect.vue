@@ -36,7 +36,7 @@
       <div :class="$style.TelLink">
         <a href="tel:0570550571">
           <img src="/flow/phone-24px.svg" alt="Phone" />
-          0570-550571
+          0120-565653（フリーダイヤル）
         </a>
       </div>
     </div>

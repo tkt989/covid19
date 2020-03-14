@@ -37,7 +37,7 @@
       <div :class="$style.PhoneItem">
         <PhoneIcon :class="$style.PhoneItemImg" alt="Phone" />
         <a href="tel:0570550571">
-          0570-550571
+          0120-565653（フリーダイヤル）
         </a>
       </div>
     </div>

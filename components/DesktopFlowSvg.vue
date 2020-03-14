@@ -1210,7 +1210,7 @@
         </g>
       </g>
       <text class="an" transform="translate(633 679)">
-        <tspan x="-79.555" y="0">0570-550571</tspan>
+        <tspan x="-79.555" y="0">0120-565653（フリーダイヤル）</tspan>
       </text>
       <g transform="translate(520 656)">
         <path class="d" d="M0,0H26V26H0Z" />
