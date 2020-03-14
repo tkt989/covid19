@@ -6,16 +6,23 @@
       :date="headerItem.date"
     />
     <whats-new class="mb-4" :items="newsItems" />
+
     <static-info
       class="mb-4"
       :url="localePath('/flow')"
       :text="$t('自分や家族の症状に不安や心配があればまずは電話相談をどうぞ')"
       :btn-text="$t('相談の手順を見る')"
     />
+
     <v-row class="DataBlock">
       <confirmed-cases-details-card />
       <confirmed-cases-number-card />
+      <confirmed-cases-attributes-card />
       <tested-number-card />
+    </v-row>
+
+    <v-row>
+      <health-center-card />
     </v-row>
   </div>
 </template>
@@ -32,7 +39,8 @@ import formatGraph from '@/utils/formatGraph'
 import News from '@/data/news.json'
 import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
 import ConfirmedCasesNumberCard from '@/components/cards/ConfirmedCasesNumberCard.vue'
-// import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttributesCard.vue'
+import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttributesCard.vue'
+import HealthCenterCard from '@/components/cards/HealthCenterCard.vue'
 import TestedNumberCard from '@/components/cards/TestedNumberCard.vue'
 // import TelephoneAdvisoryReportsNumberCard from '@/components/cards/TelephoneAdvisoryReportsNumberCard.vue'
 // import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDeskReportsNumberCard.vue'
@@ -46,8 +54,9 @@ export default {
     StaticInfo,
     ConfirmedCasesDetailsCard,
     ConfirmedCasesNumberCard,
-    // ConfirmedCasesAttributesCard,
-    TestedNumberCard
+    ConfirmedCasesAttributesCard,
+    TestedNumberCard,
+    HealthCenterCard
     // TelephoneAdvisoryReportsNumberCard,
     // ConsultationDeskReportsNumberCard,
     // MetroCard,
