@@ -2,13 +2,13 @@
   "newsItems": [
     {
       "date": "2020/03/10",
-      "url": "https://github.com/CodeForNagasaki/covid19",
-      "text": "地域版を作成開始しました"
+      "url": "https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/kansensho/corona_nagasaki/#kenmin",
+      "text": "相談窓口など"
     },
     {
       "date": "2020/03/10",
-      "url": "https://www.facebook.com/groups/code4kyushu/1145387262466761/?comment_id=1146131332392354&notif_id=1583799801674336&notif_t=group_comment_follow",
-      "text": "Code for 九州で議論を開始しました"
+      "url": "https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/kansensho/corona_nagasaki/",
+      "text": "長崎県HP 新型コロナウイルス感染症について"
     }
   ]
 }
