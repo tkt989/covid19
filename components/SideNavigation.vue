@@ -46,7 +46,7 @@
       <v-footer class="SideNavigation-Footer">
         <div class="SideNavigation-SocialLinkContainer">
           <a
-            href="https://twitter.com/i/lists/51505116"
+            href="https://twitter.com/ngs_ken_iryou"
             target="_blank"
             rel="noopener"
           >
