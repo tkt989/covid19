@@ -80,7 +80,7 @@ export default {
     // 検査実施日別状況
     const inspectionsGraph = [
       Data.inspections_summary.data['長崎市'],
-      Data.inspections_summary.data['長崎市外']
+      Data.inspections_summary.data['長崎県内']
     ]
     const inspectionsItems = [this.$t('Label1'), this.$t('Label2')]
     const inspectionsLabels = Data.inspections_summary.labels
