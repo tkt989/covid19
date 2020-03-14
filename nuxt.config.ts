@@ -222,7 +222,7 @@ const config: Configuration = {
   },
   manifest: {
     name: '作成中 新型コロナウイルス感染症対策サイト',
-    theme_color: '#00a040',
+    theme_color: '#006cBB',
     background_color: '#ffffff',
     display: 'standalone',
     Scope: '/',
