@@ -143,8 +143,8 @@ export default {
           displayColors: false,
           callbacks: {
             label: tooltipItem => {
-              const labelTokyo = this.$t('都内')
-              const labelOthers = this.$t('その他')
+              const labelTokyo = this.$t('長崎市内')
+              const labelOthers = this.$t('長崎県内の検査（長崎市以外）')
               const labelArray = [labelTokyo, labelOthers]
               let casesTotal, cases
               if (this.dataKind === 'transition') {
