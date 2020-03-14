@@ -62,7 +62,7 @@
         <!-- eslint-enable -->
       </span>
       <span :class="[$style.place, $style.line]">
-        {{ $t('東京都健康安全研究センター等') }}
+        {{ $t('環境保健研究センター等') }}
       </span>
       <small :class="[$style.note, $style.line]">
         {{
