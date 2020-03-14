@@ -83,8 +83,8 @@ export default {
       Data.inspections_summary.data['長崎市外']
     ]
     const inspectionsItems = [
-      this.$t('都内発生（疑い例・接触者調査）'),
-      this.$t('その他（チャーター便・クルーズ船）')
+      this.$t('長崎市の検査'),
+      this.$t('長崎市外の検査')
     ]
     const inspectionsLabels = Data.inspections_summary.labels
 
