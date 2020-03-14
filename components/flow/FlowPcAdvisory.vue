@@ -32,7 +32,7 @@
             ]"
           >
             <a
-              href="https://www.fukushihoken.metro.tokyo.lg.jp/iryo/kansen/coronasodan.html"
+              href="https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/kansensho/corona_nagasaki/corona_nagasaki_shousai/#sinpai"
               target="_blank"
               rel="noopener"
             >
@@ -65,7 +65,7 @@
           ]"
         >
           <img src="/flow/phone-24px.svg" />
-          <span :class="$style.AdvisoryTelephone">03-5320-4592</span>
+          <span :class="$style.AdvisoryTelephone">情報探し中</span>
         </div>
       </div>
     </div>

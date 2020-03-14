@@ -10,7 +10,7 @@
       </v-icon>
       <nuxt-link :to="localePath('/')" class="SideNavigation-HeadingLink">
         <div class="SideNavigation-Logo">
-          <img src="/logo.svg" :alt="$t('東京都')" />
+          <img src="/logo.svg" :alt="$t('長崎')" />
         </div>
         <h1 class="SideNavigation-Heading">
           {{ $t('新型コロナウイルス感染症') }}<br />{{ $t('対策サイト') }}
@@ -18,6 +18,7 @@
       </nuxt-link>
     </header>
     <v-divider class="SideNavigation-HeadingDivider" />
+
     <div class="sp-none" :class="{ open: isNaviOpen }">
       <v-icon
         class="SideNavigation-ListContainerIcon pc-none"
@@ -38,35 +39,28 @@
             <v-divider v-show="item.divider" class="SideNavigation-Divider" />
           </v-container>
         </v-list>
-        <div class="SideNavigation-LanguageMenu">
+        <!--<div class="SideNavigation-LanguageMenu">
           <LanguageSelector />
-        </div>
+        </div>-->
       </nav>
       <v-footer class="SideNavigation-Footer">
         <div class="SideNavigation-SocialLinkContainer">
           <a
-            href="https://line.me/R/ti/p/%40822sysfc"
-            target="_blank"
-            rel="noopener"
-          >
-            <img src="/line.png" alt="LINE" />
-          </a>
-          <a
-            href="https://twitter.com/tokyo_bousai"
+            href="https://twitter.com/ngs_ken_iryou"
             target="_blank"
             rel="noopener"
           >
             <img src="/twitter.png" alt="Twitter" />
           </a>
           <a
-            href="https://www.facebook.com/tochokoho"
+            href="https://www.facebook.com/ganbakun"
             target="_blank"
             rel="noopener"
           >
             <img src="/facebook.png" alt="Facebook" />
           </a>
           <a
-            href="https://github.com/tokyo-metropolitan-gov/covid19"
+            href="https://github.com/CodeForNagasaki/covid19"
             target="_blank"
             rel="noopener"
           >
@@ -84,7 +78,7 @@
           </a>
           {{ $t('の下に提供されています。') }}
           <br />
-          2020 Tokyo Metropolitan Government
+          2020 Code for Nagasaki
         </small>
       </v-footer>
     </div>
@@ -95,12 +89,12 @@
 
 <script>
 import ListItem from '@/components/ListItem'
-import LanguageSelector from '@/components/LanguageSelector.vue'
+// import LanguageSelector from '@/components/LanguageSelector.vue'
 
 export default {
   components: {
-    ListItem,
-    LanguageSelector
+    ListItem
+    // LanguageSelector
   },
   props: {
     isNaviOpen: {
@@ -113,7 +107,7 @@ export default {
       return [
         {
           icon: 'mdi-chart-timeline-variant',
-          title: this.$t('都内の最新感染動向'),
+          title: this.$t('県内の最新感染動向'),
           link: this.localePath('/')
         },
         {
@@ -129,8 +123,9 @@ export default {
         },
         {
           icon: 'mdi-account-multiple',
-          title: this.$t('都民の皆様へ'),
-          link: 'https://www.metro.tokyo.lg.jp/tosei/tosei/news/2019-ncov.html'
+          title: this.$t('県民の皆様へ'),
+          link:
+            'https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/kansensho/corona_nagasaki/'
         },
         {
           icon: 'mdi-domain',
@@ -139,27 +134,29 @@ export default {
           divider: true
         },
         {
-          title: this.$t('東京都新型コロナウイルス感染症対策本部報'),
-          link:
-            'https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1007261/index.html'
+          title: this.$t('長崎県公式ホームページ'),
+          link: 'https://www.pref.nagasaki.jp/'
         },
         {
-          title: this.$t('東京都主催等 中止又は延期するイベント等'),
-          link:
-            'https://www.seisakukikaku.metro.tokyo.lg.jp/information/event00.html'
+          title: this.$t(
+            '本県関係のイベント中止・延期、施設休園・休館などの情報'
+          ),
+          link: 'https://www.pref.nagasaki.jp/eventcancelled2020/'
         },
         {
-          title: this.$t('知事からのメッセージ'),
+          title: this.$t('新型コロナウイルス感染症について'),
           link:
-            'https://www.metro.tokyo.lg.jp/tosei/governor/governor/katsudo/2020/03/03_00.html'
+            'https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/kansensho/corona_nagasaki/',
+          divider: true
+        },
+        {
+          title: this.$t('長崎県知事からのメッセージ'),
+          link:
+            'https://www.pref.nagasaki.jp/koho/governor/kaiken/20200228.html'
         },
         {
           title: this.$t('当サイトについて'),
-          link: this.localePath('/about')
-        },
-        {
-          title: this.$t('東京都公式ホームページ'),
-          link: 'https://www.metro.tokyo.lg.jp/',
+          link: this.localePath('/about'),
           divider: true
         }
       ]

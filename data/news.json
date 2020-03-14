@@ -1,14 +1,14 @@
 {
-    "newsItems": [
-        {
-            "date": "3\/12\/2020",
-            "url": "https:\/\/www.bousai.metro.tokyo.lg.jp\/taisaku\/saigai\/1007261\/1007473.html",
-            "text": "東京都緊急対応策（第三弾）の発表"
-        },
-        {
-            "date": "3\/12\/2020",
-            "url": "https:\/\/www.bousai.metro.tokyo.lg.jp\/taisaku\/saigai\/1007261\/1007472.html",
-            "text": "都内医療機関、福祉施設等へのマスクの配布について"
-        }
-    ]
+  "newsItems": [
+    {
+      "date": "2020/03/10",
+      "url": "https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/kansensho/corona_nagasaki/#kenmin",
+      "text": "相談窓口など"
+    },
+    {
+      "date": "2020/03/10",
+      "url": "https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/kansensho/corona_nagasaki/",
+      "text": "長崎県HP 新型コロナウイルス感染症について"
+    }
+  ]
 }

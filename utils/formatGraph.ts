@@ -19,7 +19,7 @@ export default (data: DataType[]) => {
   const today = new Date()
   let patSum = 0
   data
-    .filter(d => new Date(d['日付']) < today)
+    .filter(d => new Date(d['日付']) <= today)
     .forEach(d => {
       const date = new Date(d['日付'])
       const subTotal = d['小計']
