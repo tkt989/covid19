@@ -91,7 +91,7 @@ export default {
 }
 .loader {
   height: 200px;
-  width: 150px;
+  çwidth: 150px;
   position: fixed;
   top: 50%;
   left: 50%;

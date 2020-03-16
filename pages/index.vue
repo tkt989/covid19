@@ -62,6 +62,20 @@ export default {
     // MetroCard,
     // AgencyCard
   },
+
+  async fetch({ store, app: { $axios } }) {
+    try {
+      const { data } = await $axios.get(
+        'https://data.bodik.jp/api/action/datastore_search?resource_id=71e83845-2648-4cb3-a69d-9f5f5412feb2'
+      )
+      store.commit('setBodicData1', data.result.records)
+
+      const { data2 } = await $axios.get(
+        'https://data.bodik.jp/api/action/datastore_search?resource_id=de7ce61e-1849-47a1-b758-bca3f809cdf8'
+      )
+      store.commit('setBodicData2', data2.result)
+    } catch (error) {}
+  },
   data() {
     // 退院者グラフ
     const dischargesGraph = formatGraph(Data.discharges_summary.data)

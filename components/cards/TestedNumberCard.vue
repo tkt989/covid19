@@ -5,8 +5,8 @@
       :title-id="'number-of-tested'"
       :chart-id="'time-stacked-bar-chart-inspections'"
       :chart-data="inspectionsGraph"
-      :date="Data.inspections_summary.date"
-      :items="inspectionsItems"
+      :date="lastUpdate"
+      :items="inspectionsItemLabels"
       :labels="inspectionsLabels"
       :unit="$t('件.tested')"
     />
@@ -17,7 +17,7 @@
 <i18n>
 {
   "ja": {
-    "検査実施数": "本日の検査実施数",
+    "検査実施数": "検査実施数",
     "長崎市": "長崎市",
     "Label1": "長崎県内の検査",
     "Label2": "長崎県内の検査（長崎市以外）",
@@ -69,28 +69,39 @@
 </i18n>
 
 <script>
-import Data from '@/data/data.json'
-import TimeStackedBarChart from '@/components/TimeStackedBarChart.vue'
+import TimeStackedBarChart from '@/components/TimeStackedBarChart2.vue'
 
 export default {
   components: {
     TimeStackedBarChart
   },
   data() {
+    const bodik = this.$store.state.bodik1
+
+    const inspectionsLabels = []
+    const items = []
+
+    if (bodik) {
+      bodik.forEach(d => {
+        inspectionsLabels.push(d.年月日)
+        items.push(d.件数 ? Number(d.件数) : 0)
+      })
+    }
+
     // 検査実施日別状況
-    const inspectionsGraph = [
-      Data.inspections_summary.data['長崎県内']
-      // Data.inspections_summary.data['長崎県内']
-    ]
-    // const inspectionsItems = [this.$t('Label1'), this.$t('Label2')]
-    const inspectionsItems = [this.$t('Label1')]
-    const inspectionsLabels = Data.inspections_summary.labels
+    const inspectionsGraph = [items]
+    const inspectionsItemLabels = [this.$t('Label1')]
+    const lastUpdate = inspectionsLabels[inspectionsLabels.length - 1]
+
+    // console.log(inspectionsLabels)
+    // console.log(items)
+    // console.log(bodik)
 
     const data = {
-      Data,
       inspectionsGraph,
-      inspectionsItems,
-      inspectionsLabels
+      inspectionsItemLabels,
+      inspectionsLabels,
+      lastUpdate
     }
     return data
   }
