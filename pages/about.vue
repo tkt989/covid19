@@ -144,7 +144,7 @@
         path="本サイトで公表しているデータは、{catalogWebsite}より誰でも自由にダウンロードが可能です。（データは順次追加予定です）"
       >
         <a
-          href="https://portal.data.metro.tokyo.lg.jp/"
+          href="https://odcs.bodik.jp/420000/"
           target="_blank"
           rel="noopener"
           place="catalogWebsite"
@@ -156,12 +156,30 @@
     <TextCard :title="$t('ソースコードについて')">
       {{
         $t(
-          '当サイトのソースコードはMITライセンスで公開されており、誰でも自由に利用することができます。'
+          '複製・改変が許されたオープンソースライセンスで公開されている、'
         )
       }}
-      <i18n path="詳しくは、{githubRepo}をご確認ください。">
+      <i18n
+        tag="p"
+        path="{tokyostopcovid19}が開発・公開したデーターを活用して作られています。"
+      >
         <a
           href="https://github.com/tokyo-metropolitan-gov/covid19"
+          target="_blank"
+          rel="noopener"
+          place="tokyostopcovid19"
+        >
+          {{ $t('東京都公式新型コロナウイルス対策サイト') }}
+        </a>
+      </i18n>
+      {{
+        $t(
+          '長崎新型コロナ対策の等サイト開発・運営に参加を希望される方は、誰でも自由に参加することができます。'
+        )
+      }}
+      <i18n path="詳しくは、長崎県 新型コロナウイルス感染症対策サイトの{githubRepo}をご確認ください。">
+        <a
+          href="https://github.com/CodeForNagasaki/covid19"
           target="_blank"
           rel="noopener"
           place="githubRepo"
