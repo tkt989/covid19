@@ -4,7 +4,6 @@
 
 ![長崎県 新型コロナウイルス感染症対策サイト](https://raw.githubusercontent.com/CodeForNagasaki/covid19/development/static/ogp.png)
 
-### 日本語 | [English](./README_EN.md) | [Spanish](./README_ES.md) | [Korean](./README_KO.md) | [Chinese (Taiwan)](./README_ZH_TW.md) | [Chinese (Simplified)](./README_ZH_CN.md) | [Vietnamese](./README_VI.md)
 
 ## 貢献の仕方
 Issues にあるいろいろな修正にご協力いただけると嬉しいです。
@@ -55,10 +54,26 @@ $ yarn install
 $ docker-compose run --rm app yarn install
 ```
 
-### ステージング・本番環境への反映
+## ステージング・本番環境への反映
+
+### 外部公開用URL (stopcovid19.jp)
+
+
+* 本番
+https://nagasaki.stopcovid19.jp/
+
+* 開発テスト用
+https://nagasaki-dev.stopcovid19.jp/
+
+実態は、https://nagasaki-dev.stopcovid19.jp/に割り当てられます。
+
+
+### 公開サーバー：netlify
 
 `master` ブランチがアップデートされると、自動的に `production` ブランチにHTML類がbuildされます。そして、本番サイト https://stopcovid19-nagasaki.netlify.com/ が更新されます。
 
 `staging` ブランチがアップデートされると、自動的に `gh-pages` ブランチにHTML類がbuildされます。そして、ステージングサイト https://stg-covid19-nagasaki.netlify.com/ が更新されます。
 
 `development` ブランチがアップデートされると、自動的に `dev-pages` ブランチにHTML類がbuildされます。そして、開発用サイト https://dev-covid19-nagasaki.netlify.com/ が更新されます。
+
+
