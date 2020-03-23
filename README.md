@@ -61,11 +61,11 @@ $ docker-compose run --rm app yarn install
 
 * 本番
 https://nagasaki.stopcovid19.jp/
+は、https://stopcovid19-nagasaki.netlify.com/ に割り当てられます。
 
 * 開発テスト用
 https://nagasaki-dev.stopcovid19.jp/
-
-実態は、https://nagasaki-dev.stopcovid19.jp/に割り当てられます。
+は、https://nagasaki-dev.stopcovid19.jp/ に割り当てられます。
 
 
 ### 公開サーバー：netlify
