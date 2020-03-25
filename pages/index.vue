@@ -68,12 +68,14 @@ export default {
       const { data } = await $axios.get(
         'https://data.bodik.jp/api/action/datastore_search?resource_id=71e83845-2648-4cb3-a69d-9f5f5412feb2'
       )
+      // console.log(data.result, 'data')
       store.commit('setBodicData1', data.result.records)
 
       const { data2 } = await $axios.get(
-        'https://data.bodik.jp/api/action/datastore_search?resource_id=de7ce61e-1849-47a1-b758-bca3f809cdf8'
+        'https://data2.bodik.jp/api/action/datastore_search?resource_id=de7ce61e-1849-47a1-b758-bca3f809cdf8'
       )
-      store.commit('setBodicData2', data2.result)
+      console.log(data2.result, 'data')
+      store.commit('setBodicData2', data2.result.records)
     } catch (error) {}
   },
   data() {
