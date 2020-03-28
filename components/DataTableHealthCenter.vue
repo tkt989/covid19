@@ -1,8 +1,11 @@
 <template>
   <data-view :title="title" :title-id="titleId" :date="date" :url="url">
     <template v-slot:button>
-      <span >
-      <p :class="[$style.alsert]">※ 相談センター開所時間以外の緊急対応は、最寄の保健所までお電話ください。</p>
+      <span>
+        <p :class="[$style.alsert]">
+          ※
+          相談センター開所時間以外の緊急対応は、最寄の保健所までお電話ください。
+        </p>
       </span>
     </template>
 
@@ -63,7 +66,7 @@
 .alsert {
   padding: 8px;
   font-size: 12px;
-  color: #FF0000;
+  color: #ff0000;
 }
 </style>
 
