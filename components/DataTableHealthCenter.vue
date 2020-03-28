@@ -1,7 +1,12 @@
 <template>
   <data-view :title="title" :title-id="titleId" :date="date" :url="url">
     <template v-slot:button>
-      <span />
+      <span>
+        <p :class="[$style.alsert]">
+          ※
+          相談センター開所時間以外の緊急対応は、最寄の保健所までお電話ください。
+        </p>
+      </span>
     </template>
 
     <v-data-table
@@ -19,7 +24,7 @@
 
 <i18n src="./DataTable.i18n.json"></i18n>
 
-<style lang="scss">
+<style module lang="scss">
 .cardTable {
   &.v-data-table {
     th {
@@ -58,10 +63,10 @@
     }
   }
 }
-.note {
+.alsert {
   padding: 8px;
   font-size: 12px;
-  color: #808080;
+  color: #ff0000;
 }
 </style>
 
