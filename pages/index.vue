@@ -31,16 +31,16 @@
 
 <script>
 import PageHeader from '@/components/PageHeader.vue'
-import WhatsNew from '@/components/WhatsNew.vue'
+import WhatsNew from '@/components/nagasaki/WhatsNew.vue'
 import StaticInfo from '@/components/StaticInfo.vue'
 import Data from '@/data/data.json'
 import formatGraph from '@/utils/formatGraph'
 // import formatTable from '@/utils/formatTable'
 import News from '@/data/news.json'
-import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
-import ConfirmedCasesNumberCard from '@/components/cards/ConfirmedCasesNumberCard.vue'
-import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttributesCard.vue'
-import HealthCenterCard from '@/components/cards/HealthCenterCard.vue'
+import ConfirmedCasesDetailsCard from '@/components/nagasaki/cards/ConfirmedCasesDetailsCard.vue'
+import ConfirmedCasesNumberCard from '@/components/nagasaki/cards/ConfirmedCasesNumberCard.vue'
+import ConfirmedCasesAttributesCard from '@/components/nagasaki/cards/ConfirmedCasesAttributesCard.vue'
+import HealthCenterCard from '@/components/nagasaki/cards/HealthCenterCard.vue'
 import TestedNumberCard from '@/components/cards/TestedNumberCard.vue'
 // import TelephoneAdvisoryReportsNumberCard from '@/components/cards/TelephoneAdvisoryReportsNumberCard.vue'
 // import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDeskReportsNumberCard.vue'
@@ -70,14 +70,18 @@ export default {
       )
       // console.log(data.result, 'data')
       store.commit('setBodicData1', data.result.records)
-
-      const { data2 } = await $axios.get(
-        'https://data2.bodik.jp/api/action/datastore_search?resource_id=de7ce61e-1849-47a1-b758-bca3f809cdf8'
-      )
-      console.log(data2.result, 'data')
-      store.commit('setBodicData2', data2.result.records)
     } catch (error) {}
   },
+  async asyncData({ store, app: { $axios } }) {
+    try {
+      const { data } = await $axios.get(
+        'https://data.bodik.jp/api/action/datastore_search?resource_id=de7ce61e-1849-47a1-b758-bca3f809cdf8'
+      )
+      console.log(data.result, 'data')
+      store.commit('setBodicData2', data.result.records)
+    } catch (error) {}
+  },
+
   data() {
     // 退院者グラフ
     const dischargesGraph = formatGraph(Data.discharges_summary.data)
