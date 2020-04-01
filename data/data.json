@@ -31,11 +31,11 @@
     "lastUpdate": "2020\/03\/31 11:00",
     "main_summary": {
         "attr": "検査実施人数",
-        "value": 384,
+        "value": 0,
         "children": [
             {
                 "attr": "陽性患者数",
-                "value": 4,
+                "value": 0,
                 "children": [
                     {
                         "attr": "入院中",

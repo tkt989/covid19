@@ -93,7 +93,7 @@ export default {
       patients.push(d)
     })
 
-    console.log(patients, 'patients')
+    // console.log(patients, 'patients')
 
     // 感染者数グラフ
     const patientsGraph = formatGraph(patients)

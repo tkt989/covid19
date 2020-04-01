@@ -42,6 +42,8 @@ import formatConfirmedCases from '@/utils/formatConfirmedCases'
 import SvgCard from '@/components/SvgCard.vue'
 import ConfirmedCasesTable from '@/components/ConfirmedCasesTable.vue'
 
+const reducer = (accumulator, currentValue) => accumulator + currentValue
+
 export default {
   components: {
     SvgCard,
@@ -49,7 +51,27 @@ export default {
   },
   data() {
     // 検査陽性者の状況
-    const confirmedCases = formatConfirmedCases(Data.main_summary)
+    const bodik = this.$store.state.bodik1
+    const bodik2 = this.$store.state.bodik2
+    console.log(bodik, 'bodik')
+
+    // 検査実施 人数
+    let count = 0
+    if (bodik) {
+      const map1 = bodik.map(x => Number(x.件数))
+      // console.log(map1, 'map1')
+      count = map1.reduce(reducer)
+      // console.log(count, 'count')
+    }
+    const summary = Data.main_summary
+    summary.value = count
+
+    // 陽性者数 (累積)
+    const number = bodik2.length
+    console.log(summary, 'summary')
+    summary.children[0].value = number
+
+    const confirmedCases = formatConfirmedCases(summary)
 
     const data = {
       Data,
