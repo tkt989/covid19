@@ -41,7 +41,7 @@ import ConfirmedCasesDetailsCard from '@/components/nagasaki/cards/ConfirmedCase
 import ConfirmedCasesNumberCard from '@/components/nagasaki/cards/ConfirmedCasesNumberCard.vue'
 import ConfirmedCasesAttributesCard from '@/components/nagasaki/cards/ConfirmedCasesAttributesCard.vue'
 import HealthCenterCard from '@/components/nagasaki/cards/HealthCenterCard.vue'
-import TestedNumberCard from '@/components/cards/TestedNumberCard.vue'
+import TestedNumberCard from '@/components/nagasaki/cards/TestedNumberCard.vue'
 // import TelephoneAdvisoryReportsNumberCard from '@/components/cards/TelephoneAdvisoryReportsNumberCard.vue'
 // import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDeskReportsNumberCard.vue'
 // import MetroCard from '@/components/cards/MetroCard.vue'
@@ -72,15 +72,15 @@ export default {
       store.commit('setBodicData1', data.result.records)
     } catch (error) {}
   },
-  async asyncData({ store, app: { $axios } }) {
-    try {
-      const { data } = await $axios.get(
-        'https://data.bodik.jp/api/action/datastore_search?resource_id=de7ce61e-1849-47a1-b758-bca3f809cdf8'
-      )
-      console.log(data.result, 'data')
-      store.commit('setBodicData2', data.result.records)
-    } catch (error) {}
-  },
+  // async asyncData({ store, app: { $axios } }) {
+  //   try {
+  //     const { data } = await $axios.get(
+  //       'https://data.bodik.jp/api/action/datastore_search?resource_id=de7ce61e-1849-47a1-b758-bca3f809cdf8'
+  //     )
+  //     console.log(data.result, 'data')
+  //     store.commit('setBodicData2', data.result.records)
+  //   } catch (error) {}
+  // },
 
   data() {
     // 退院者グラフ

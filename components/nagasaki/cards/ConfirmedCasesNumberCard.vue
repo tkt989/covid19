@@ -53,8 +53,30 @@ export default {
     TimeBarChart
   },
   data() {
+    const bodik = this.$store.state.bodik1
+    const bodik2 = this.$store.state.bodik2
+
+    console.log(bodik2, 'bodik2')
+
+    const patients = []
+    if (bodik) {
+      bodik.forEach(row => {
+        const d = []
+        d['日付'] = row.年月日
+        d['小計'] = 0
+        patients.push(d)
+      })
+    }
+
+    console.log(patients, 'patients')
+
+    // let a = Data.patients_summary.data
+    const a = patients
+
+    console.log(a, 'a')
+
     // 感染者数グラフ
-    const patientsGraph = formatGraph(Data.patients_summary.data)
+    const patientsGraph = formatGraph(a)
 
     const data = {
       Data,

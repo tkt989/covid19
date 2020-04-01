@@ -77,6 +77,7 @@ export default {
   },
   data() {
     const bodik = this.$store.state.bodik1
+    // console.log(bodik, 'bodik')
 
     const inspectionsLabels = []
     const items = []

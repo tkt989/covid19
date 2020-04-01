@@ -138,6 +138,8 @@ export default {
   data() {
     const bodik2 = this.$store.state.bodik2
 
+    const releaseDate = ''
+
     const patients = []
     if (bodik2) {
       bodik2.forEach(row => {
@@ -150,6 +152,7 @@ export default {
         d.date = row.公表_年月日 // 発症_年月日は現在(2020/4/1)NULL
         patients.push(d)
       })
+      // releaseDate = bodik2[bodik2.length - 1].公表_年月日
     }
     // console.log(bodik, 'bodik')
     // console.log(patients, 'patients')
@@ -161,11 +164,11 @@ export default {
     const sumInfoOfPatients = {
       lText: patients.length.toLocaleString(),
       sText: this.$t('{date}の累計', {
-        date: patients[patients.length - 1].リリース日
+        date: releaseDate
       }),
       unit: this.$t('人')
     }
-    console.log(sumInfoOfPatients, 'sumInfoOfPatients')
+    // console.log(sumInfoOfPatients, 'sumInfoOfPatients')
 
     // 陽性患者の属性 ヘッダー翻訳
     for (const header of patientsTable.headers) {
