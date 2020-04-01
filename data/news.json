@@ -1,6 +1,11 @@
 {
   "newsItems": [
     {
+      "date": "2020/04/01",
+      "url": "https://www.city.sasebo.lg.jp/hokenhukusi/kenkou/covid19-hasseijokyo.html",
+      "text": "4月1日、佐世保市内において初（県内3例目）の新型コロナウイルス患者が発生しました。"
+    },
+    {
       "date": "2020/03/28",
       "url": "https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/kansensho/corona_nagasaki/corona_nagasaki_tool/",
       "text": "長崎県LINE公式アカウント「新型コロナ対策パーソナルサポート」を始めました。下記のホームページをご覧いただき、ご利用ください。"
