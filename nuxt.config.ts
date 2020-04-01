@@ -46,7 +46,7 @@ const config: Configuration = {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: 'https://dev-covid19-nagasaki.netlify.com/ogp.png'
+        content: 'https://nagasaki.stopcovid19.jp/ogp.png'
       },
       {
         hid: 'twitter:card',
@@ -66,7 +66,7 @@ const config: Configuration = {
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: 'https://dev-covid19-nagasaki.netlify.com/ogp.png'
+        content: 'https://nagasaki.stopcovid19.jp/ogp.png'
       },
       {
         hid: 'fb:app_id',
