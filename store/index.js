@@ -16,7 +16,7 @@ export const mutations = {
 
   setBodicData2(state, data) {
     state.bodik2 = data
-    console.log(data, 'setBodicData2')
+    // console.log(data, 'setBodicData2')
   }
 }
 

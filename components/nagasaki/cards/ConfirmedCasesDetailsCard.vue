@@ -53,7 +53,7 @@ export default {
     // 検査陽性者の状況
     const bodik = this.$store.state.bodik1
     const bodik2 = this.$store.state.bodik2
-    console.log(bodik, 'bodik')
+    // console.log(bodik, 'bodik')
 
     // 検査実施 人数
     let count = 0
@@ -68,7 +68,7 @@ export default {
 
     // 陽性者数 (累積)
     const number = bodik2.length
-    console.log(summary, 'summary')
+    // console.log(summary, 'summary')
     summary.children[0].value = number
 
     const confirmedCases = formatConfirmedCases(summary)

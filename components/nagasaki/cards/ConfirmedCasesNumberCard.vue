@@ -63,7 +63,7 @@ export default {
     const bodik = this.$store.state.bodik1
     const bodik2 = this.$store.state.bodik2
     // console.log(bodik, 'bodik')
-    console.log(bodik2, 'bodik2')
+    // console.log(bodik2, 'bodik2')
     const groups = groupBy(bodik2, r => r.公表_年月日)
     // console.log(groups, 'groups')
 
@@ -87,7 +87,7 @@ export default {
 
       if (groups[row]) {
         const data = groups[row]
-        console.log(data.length, 'date.length')
+        // console.log(data.length, 'date.length')
         d['小計'] = data.length
       }
       patients.push(d)
