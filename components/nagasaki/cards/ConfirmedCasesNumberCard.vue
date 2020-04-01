@@ -69,9 +69,8 @@ export default {
     }
 
     console.log(patients, 'patients')
-
-    // let a = Data.patients_summary.data
-    const a = patients
+    const a = Data.patients_summary.data
+    // const a = patients
 
     console.log(a, 'a')
 

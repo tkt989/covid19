@@ -47,6 +47,11 @@ import TestedNumberCard from '@/components/nagasaki/cards/TestedNumberCard.vue'
 // import MetroCard from '@/components/cards/MetroCard.vue'
 // import AgencyCard from '@/components/cards/AgencyCard.vue'
 
+const url =
+  'https://data.bodik.jp/api/action/datastore_search?resource_id=71e83845-2648-4cb3-a69d-9f5f5412feb2'
+const url2 =
+  'https://data.bodik.jp/api/action/datastore_search?resource_id=de7ce61e-1849-47a1-b758-bca3f809cdf8'
+
 export default {
   components: {
     PageHeader,
@@ -62,26 +67,17 @@ export default {
     // MetroCard,
     // AgencyCard
   },
-
   async fetch({ store, app: { $axios } }) {
     try {
-      const { data } = await $axios.get(
-        'https://data.bodik.jp/api/action/datastore_search?resource_id=71e83845-2648-4cb3-a69d-9f5f5412feb2'
-      )
-      // console.log(data.result, 'data')
-      store.commit('setBodicData1', data.result.records)
+      const res = await $axios.get(url)
+      // console.log(res.data, 'url')
+      store.commit('setBodicData1', res.data.result.records)
+
+      const res2 = await $axios.get(url2)
+      // console.log(res2.data, 'url')
+      store.commit('setBodicData2', res2.data.result.records)
     } catch (error) {}
   },
-  // async asyncData({ store, app: { $axios } }) {
-  //   try {
-  //     const { data } = await $axios.get(
-  //       'https://data.bodik.jp/api/action/datastore_search?resource_id=de7ce61e-1849-47a1-b758-bca3f809cdf8'
-  //     )
-  //     console.log(data.result, 'data')
-  //     store.commit('setBodicData2', data.result.records)
-  //   } catch (error) {}
-  // },
-
   data() {
     // 退院者グラフ
     const dischargesGraph = formatGraph(Data.discharges_summary.data)
@@ -103,6 +99,8 @@ export default {
     }
     return data
   },
+  mounted() {},
+  methods: {},
   head() {
     return {
       title: this.$t('長崎県内の最新感染動向')
