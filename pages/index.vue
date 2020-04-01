@@ -31,21 +31,26 @@
 
 <script>
 import PageHeader from '@/components/PageHeader.vue'
-import WhatsNew from '@/components/WhatsNew.vue'
+import WhatsNew from '@/components/nagasaki/WhatsNew.vue'
 import StaticInfo from '@/components/StaticInfo.vue'
 import Data from '@/data/data.json'
 import formatGraph from '@/utils/formatGraph'
 // import formatTable from '@/utils/formatTable'
 import News from '@/data/news.json'
-import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
-import ConfirmedCasesNumberCard from '@/components/cards/ConfirmedCasesNumberCard.vue'
-import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttributesCard.vue'
-import HealthCenterCard from '@/components/cards/HealthCenterCard.vue'
-import TestedNumberCard from '@/components/cards/TestedNumberCard.vue'
+import ConfirmedCasesDetailsCard from '@/components/nagasaki/cards/ConfirmedCasesDetailsCard.vue'
+import ConfirmedCasesNumberCard from '@/components/nagasaki/cards/ConfirmedCasesNumberCard.vue'
+import ConfirmedCasesAttributesCard from '@/components/nagasaki/cards/ConfirmedCasesAttributesCard.vue'
+import HealthCenterCard from '@/components/nagasaki/cards/HealthCenterCard.vue'
+import TestedNumberCard from '@/components/nagasaki/cards/TestedNumberCard.vue'
 // import TelephoneAdvisoryReportsNumberCard from '@/components/cards/TelephoneAdvisoryReportsNumberCard.vue'
 // import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDeskReportsNumberCard.vue'
 // import MetroCard from '@/components/cards/MetroCard.vue'
 // import AgencyCard from '@/components/cards/AgencyCard.vue'
+
+const url =
+  'https://data.bodik.jp/api/action/datastore_search?resource_id=71e83845-2648-4cb3-a69d-9f5f5412feb2'
+const url2 =
+  'https://data.bodik.jp/api/action/datastore_search?resource_id=de7ce61e-1849-47a1-b758-bca3f809cdf8'
 
 export default {
   components: {
@@ -62,18 +67,15 @@ export default {
     // MetroCard,
     // AgencyCard
   },
-
   async fetch({ store, app: { $axios } }) {
     try {
-      const { data } = await $axios.get(
-        'https://data.bodik.jp/api/action/datastore_search?resource_id=71e83845-2648-4cb3-a69d-9f5f5412feb2'
-      )
-      store.commit('setBodicData1', data.result.records)
+      const res = await $axios.get(url)
+      // console.log(res.data, 'url')
+      store.commit('setBodicData1', res.data.result.records)
 
-      const { data2 } = await $axios.get(
-        'https://data.bodik.jp/api/action/datastore_search?resource_id=de7ce61e-1849-47a1-b758-bca3f809cdf8'
-      )
-      store.commit('setBodicData2', data2.result)
+      const res2 = await $axios.get(url2)
+      // console.log(res2.data, 'url')
+      store.commit('setBodicData2', res2.data.result.records)
     } catch (error) {}
   },
   data() {
@@ -97,6 +99,8 @@ export default {
     }
     return data
   },
+  mounted() {},
+  methods: {},
   head() {
     return {
       title: this.$t('長崎県内の最新感染動向')
