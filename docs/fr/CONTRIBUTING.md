@@ -33,7 +33,7 @@ Cette page explique comment contribuer au developpement de ce site.
 ## Development information
 * Site web `Development` https://dev-covid19-tokyo.netlify.com/
 * Site web `Staging` https://stg-covid19-tokyo.netlify.com/
-* Site web `Production` https://stopcovid19.metro.tokyo.lg.jp/
+* Site web `Production` https://nagasaki.stopcovid19.jp/
 * [Design](https://www.figma.com/file/V7vt80p2gauhdgTZeVNbgj/UI%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3?node-id=121%3A156)
 * [Tableur des Traaductions](https://docs.google.com/spreadsheets/d/1avT6QGInyQseYjoc_TxL8RPZfutyvrv4BtJkXfk1Nko)
 
