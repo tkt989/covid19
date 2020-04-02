@@ -23,8 +23,12 @@
       :btn-text="$t('相談の手順を見る')"
     />
     <v-row class="DataBlock">
-      修正中です
+      <confirmed-cases-details-card />
+      <confirmed-cases-number-card />
+      <confirmed-cases-attributes-card />
+      <tested-number-card />
     </v-row>
+
     <v-divider />
   </div>
 </template>
@@ -38,13 +42,40 @@ import StaticInfo from '@/components/StaticInfo.vue'
 import Data from '@/data/data.json'
 import News from '@/data/news.json'
 
+import ConfirmedCasesDetailsCard from '@/brigade/nagasaki/components/cards/ConfirmedCasesDetailsCard.vue'
+import ConfirmedCasesNumberCard from '@/brigade/nagasaki/components/cards/ConfirmedCasesNumberCard.vue'
+import ConfirmedCasesAttributesCard from '@/brigade/nagasaki/components/cards/ConfirmedCasesAttributesCard.vue'
+// import HealthCenterCard from '@/brigade/nagasaki/components/cards/HealthCenterCard.vue'
+import TestedNumberCard from '@/brigade/nagasaki/components/cards/TestedNumberCard.vue'
+
 import { convertDatetimeToISO8601Format } from '@/utils/formatDate'
+
+const bodic = 'https://data.bodik.jp/api/action/datastore_search?resource_id='
 
 export default Vue.extend({
   components: {
     PageHeader,
     WhatsNew,
-    StaticInfo
+    StaticInfo,
+    ConfirmedCasesDetailsCard,
+    ConfirmedCasesNumberCard,
+    ConfirmedCasesAttributesCard,
+    TestedNumberCard
+  },
+  async fetch({ store, app: { $axios } }) {
+    try {
+      const res = await $axios.get(
+        bodic + '71e83845-2648-4cb3-a69d-9f5f5412feb2'
+      )
+      console.log(res.data, 'url')
+      store.commit('setBodicData1', res.data.result.records)
+
+      const res2 = await $axios.get(
+        bodic + 'de7ce61e-1849-47a1-b758-bca3f809cdf8'
+      )
+      // console.log(res2.data, 'url')
+      store.commit('setBodicData2', res2.data.result.records)
+    } catch (error) {}
   },
   data() {
     const data = {
