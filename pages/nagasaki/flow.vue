@@ -19,7 +19,7 @@
             {{ $t('かかりつけ医に相談することもできます。') }}<br />
             {{ $t('詳しくはこちらをご参照ください。') }}
           </span>
-          {{ $t('詳細を見る（東京都福祉保健局）') }}
+          {{ $t('詳細を見る（各保健所）') }}
           <v-icon class="Flow-Card-Button-ExternalLinkIcon" size="20">
             mdi-open-in-new
           </v-icon>
@@ -40,8 +40,8 @@ import Vue from 'vue'
 import { TranslateResult } from 'vue-i18n'
 import CovidIcon from '@/static/covid.svg'
 import PrinterButton from '@/components/PrinterButton.vue'
-import FlowPc from '@/components/flow/FlowPc.vue'
-import FlowSp from '@/components/flow/FlowSp.vue'
+import FlowPc from '@/brigade/nagasaki/components/flow/FlowPc.vue'
+import FlowSp from '@/brigade/nagasaki/components/flow/FlowSp.vue'
 import PageHeader from '@/components/PageHeader.vue'
 
 export default Vue.extend({
