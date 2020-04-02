@@ -51,9 +51,9 @@ export default {
     // ]
     const inspectionsGraph = [items, items2]
 
-    const inspectionsItems = [this.$t('都内発生（※1）'), this.$t('')]
+    const inspectionsItems = [this.$t('県内発生（※1）'), this.$t('')]
     // const inspectionsLabels = Data.inspections_summary.labels
-    const inspectionsDataLabels = [this.$t('都内'), this.$t('その他.graph')]
+    const inspectionsDataLabels = [this.$t('県内'), this.$t('その他.graph')]
 
     const data = {
       Data,
