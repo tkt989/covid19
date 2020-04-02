@@ -35,7 +35,7 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
-import SideNavigation from '@/components/SideNavigation.vue'
+import SideNavigation from '@/brigade/nagasaki/components/SideNavigation.vue'
 import NoScript from '@/components/NoScript.vue'
 import DevelopmentModeMark from '@/components/DevelopmentModeMark.vue'
 
