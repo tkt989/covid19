@@ -166,7 +166,7 @@ export default Vue.extend({
         {
           icon: 'mdi-domain',
           title: this.$t('企業の皆様・はたらく皆様へ'),
-          link: this.localePath('/worker'),
+          link: this.localePath('/nagasaki/worker'),
           divider: true
         },
         {
