@@ -28,7 +28,9 @@
       <confirmed-cases-attributes-card />
       <tested-number-card />
     </v-row>
-
+    <v-row>
+      <health-center-card />
+    </v-row>
     <v-divider />
   </div>
 </template>
@@ -45,8 +47,8 @@ import News from '@/data/news.json'
 import ConfirmedCasesDetailsCard from '@/brigade/nagasaki/components/cards/ConfirmedCasesDetailsCard.vue'
 import ConfirmedCasesNumberCard from '@/brigade/nagasaki/components/cards/ConfirmedCasesNumberCard.vue'
 import ConfirmedCasesAttributesCard from '@/brigade/nagasaki/components/cards/ConfirmedCasesAttributesCard.vue'
-// import HealthCenterCard from '@/brigade/nagasaki/components/cards/HealthCenterCard.vue'
 import TestedNumberCard from '@/brigade/nagasaki/components/cards/TestedNumberCard.vue'
+import HealthCenterCard from '@/brigade/nagasaki/components/cards/HealthCenterCard.vue'
 
 import { convertDatetimeToISO8601Format } from '@/utils/formatDate'
 
@@ -60,7 +62,8 @@ export default Vue.extend({
     ConfirmedCasesDetailsCard,
     ConfirmedCasesNumberCard,
     ConfirmedCasesAttributesCard,
-    TestedNumberCard
+    TestedNumberCard,
+    HealthCenterCard
   },
   async fetch({ store, app: { $axios } }) {
     try {
