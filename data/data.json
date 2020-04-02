@@ -7689,36 +7689,36 @@
             }
         ]
     },
-    "lastUpdate": "2020\/04\/02 20:00",
+    "lastUpdate": "2020\/04\/02 12:00",
     "main_summary": {
         "attr": "検査実施人数",
-        "value": 3336,
+        "value": 0,
         "children": [
             {
                 "attr": "陽性患者数",
-                "value": 684,
+                "value": 0,
                 "children": [
                     {
                         "attr": "入院中",
-                        "value": 628,
+                        "value": 4,
                         "children": [
                             {
                                 "attr": "軽症・中等症",
-                                "value": 610
+                                "value": 0
                             },
                             {
                                 "attr": "重症",
-                                "value": 18
+                                "value": 0
                             }
                         ]
                     },
                     {
                         "attr": "退院",
-                        "value": 40
+                        "value": 1
                     },
                     {
                         "attr": "死亡",
-                        "value": 16
+                        "value": 0
                     }
                 ]
             }
