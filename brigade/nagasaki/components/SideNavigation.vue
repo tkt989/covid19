@@ -171,12 +171,11 @@ export default Vue.extend({
         },
         {
           title: this.$t('知事からのメッセージ'),
-          link:
-            'https://www.pref.nagasaki.jp/koho/governor/kaiken/20200228.html'
+          link: 'https://www.pref.nagasaki.jp/koho/governor/kaiken/index.html'
         },
         {
           title: this.$t('当サイトについて'),
-          link: this.localePath('/about')
+          link: this.localePath('/nagasaki/about')
         }
       ]
     }
