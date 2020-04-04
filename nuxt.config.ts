@@ -1,6 +1,6 @@
 import { Configuration } from '@nuxt/types'
 import { Configuration as WebpackConfiguration } from 'webpack'
-import i18n from './nuxt-i18n.config'
+import i18n from './nuxt-i18n.nagasaki.config'
 const webpack = require('webpack')
 const purgecss = require('@fullhuman/postcss-purgecss')
 const autoprefixer = require('autoprefixer')
