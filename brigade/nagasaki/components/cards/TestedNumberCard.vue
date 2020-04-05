@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Data from '@/data/data.json'
+import dayjs from 'dayjs'
 import TimeStackedBarChart from '@/brigade/nagasaki/components/TimeStackedBarChart.vue'
 
 export default {
@@ -29,26 +29,13 @@ export default {
   },
   data() {
     const bodik = this.$store.state.bodik1
-    const inspectionsLabels = []
-    const items = []
-    const items2 = []
-
-    if (bodik) {
-      bodik.forEach(d => {
-        // inspectionsLabels.push(d.年月日)
-        inspectionsLabels.push(d.年月日.slice(-5))
-        items.push(d.件数 ? Number(d.件数) : 0)
-        items2.push(0)
-      })
-    }
-
-    // const inspectionsGraph = [items]
+    const inspectionsLabels = bodik.map(item =>
+      dayjs(item.年月日).format('MM/DD')
+    )
+    const items = bodik.map(item => (item.件数 ? Number(item.件数) : 0))
+    const items2 = bodik.map(item => item.件数 - item.件数)
 
     // 検査実施日別状況
-    // const inspectionsGraph = [
-    //   Data.inspections_summary.data['都内'],
-    //   Data.inspections_summary.data['その他']
-    // ]
     const inspectionsGraph = [items, items2]
 
     const inspectionsItems = [this.$t('県内発生（※1）'), this.$t('')]
@@ -56,15 +43,12 @@ export default {
     const inspectionsDataLabels = [this.$t('県内'), this.$t('その他.graph')]
 
     const data = {
-      Data,
       inspectionsGraph,
       inspectionsItems,
       inspectionsLabels,
       inspectionsDataLabels
     }
-
-    console.log(data, 'data')
-
+    // console.log(data, 'data')
     return data
   }
 }
