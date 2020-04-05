@@ -5,6 +5,12 @@
         mdi-information
       </v-icon>
       {{ $t('最新のお知らせ') }}
+      <span class="alert"
+        >※
+        <a href="https://twitter.com/ngs_ken_iryou"
+          >長崎県医療政策課のTwitter情報を表示しています。</a
+        ></span
+      >
     </h3>
     <ul class="WhatsNew-list">
       <li v-for="(item, i) in items" :key="i" class="WhatsNew-list-item">
@@ -59,6 +65,11 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
+.alert {
+  padding: 8px;
+  color: #f00;
+}
+
 .WhatsNew {
   @include card-container();
 
