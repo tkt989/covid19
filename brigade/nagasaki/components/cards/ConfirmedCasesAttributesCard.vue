@@ -5,17 +5,17 @@
       :title-id="'attributes-of-confirmed-cases'"
       :chart-data="patientsTable"
       :chart-option="{}"
-      :date="patients"
+      :date="attributes"
       :info="sumInfoOfPatients"
-      :url="'https://catalog.data.metro.tokyo.lg.jp/dataset/t000010d0000000068'"
+      :url="
+        'https://data.bodik.jp/dataset/420000_covidpatients/resource/de7ce61e-1849-47a1-b758-bca3f809cdf8'
+      "
       :source="$t('オープンデータを入手')"
     />
   </v-col>
 </template>
 
 <script>
-// import Data from '@/data/data.json'
-// import formatGraph from '@/utils/formatGraph'
 import formatTable from '@/utils/formatTable'
 import DataTable from '@/components/DataTable.vue'
 
@@ -24,33 +24,17 @@ export default {
     DataTable
   },
   data() {
-    const bodik2 = this.$store.state.bodik2
-
-    const releaseDate = ''
-
-    const patients = []
-    if (bodik2) {
-      bodik2.forEach(row => {
-        const d = []
-        d['リリース日'] = row.公表_年月日
-        d['居住地'] = row.居住地
-        d['年代'] = row.年代
-        d['性別'] = row.性別
-        d['退院'] = row.退院済フラグ === '1' ? '○' : null
-        d.date = row.公表_年月日 // 発症_年月日は現在(2020/4/1)NULL
-        patients.push(d)
-      })
-      // releaseDate = bodik2[bodik2.length - 1].公表_年月日
-    }
-    // console.log(bodik, 'bodik')
-    // console.log(patients, 'patients')
+    const releaseDate = this.$store.state.lastUpdate
+    const attributes = this.$store.state.attributes.map(x => x)
+    // console.log(attributes, 'attributes')
 
     // 感染者数
-    const patientsTable = formatTable(patients)
+    const patientsTable = formatTable(attributes)
+    // console.log(patientsTable, 'patientsTable')
 
     // 陽性患者の人数表示用
     const sumInfoOfPatients = {
-      lText: patients.length.toLocaleString(),
+      lText: attributes.length.toLocaleString(),
       sText: this.$t('{date}の累計', {
         date: releaseDate
       }),
@@ -80,7 +64,7 @@ export default {
     }
 
     const data = {
-      patients,
+      attributes,
       patientsTable,
       sumInfoOfPatients
     }

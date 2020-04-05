@@ -3,7 +3,7 @@
     <data-view
       :title="$t('検査陽性者の状況')"
       :title-id="'details-of-confirmed-cases'"
-      :date="Data.patients.date"
+      :date="lastUpdate"
     >
       <template v-slot:button>
         <p :class="$style.note">
@@ -28,7 +28,7 @@
 </style>
 
 <script>
-import Data from '@/data/data.json'
+import Data from '@/brigade/nagasaki/data/data.json'
 import formatConfirmedCases from '@/utils/formatConfirmedCases'
 import DataView from '@/components/DataView.vue'
 import ConfirmedCasesDetailsTable from '@/components/ConfirmedCasesDetailsTable.vue'
@@ -40,32 +40,45 @@ export default {
   },
   data() {
     // 検査陽性者の状況
-    const bodik = this.$store.state.bodik1
     const bodik2 = this.$store.state.bodik2
-    // console.log(bodik, 'bodik')
+    const allCount = this.$store.state.allCount
+    const lastUpdate = this.$store.state.lastUpdate
+
+    const number = bodik2.length
+    const taiin = this.$store.state.bodik2.filter(d => d.退院済フラグ === '1')
+      .length
+    const dead = this.$store.state.bodik2.filter(d => d.死亡フラグ === '1')
+      .length
+    console.log(taiin, 'taiin')
 
     // 検査実施 人数
-    let count = 0
-    if (bodik) {
-      const map1 = bodik.map(x => Number(x.件数))
-      // console.log(map1, 'map1')
-      const reducer = (accumulator, currentValue) => accumulator + currentValue
-      count = map1.reduce(reducer)
-      // console.log(count, 'count')
-    }
     const summary = Data.main_summary
-    summary.value = count
+    summary.value = allCount
 
     // 陽性者数 (累積)
-    const number = bodik2.length
-    // console.log(summary, 'summary')
     summary.children[0].value = number
 
+    console.log(summary, 'summary')
+
+    // 入院中
+    summary.children[0].children[0].children[0].value = 0
+
+    // 軽症
+    summary.children[0].children[0].children[1].value = 0
+
+    // 重症
+
+    // 退院
+    summary.children[0].children[1].value = taiin
+
+    // 死亡
+    summary.children[0].children[2].value = dead
+
     const confirmedCases = formatConfirmedCases(summary)
-    console.log(confirmedCases, 'confirmedCases')
+    // console.log(confirmedCases, 'confirmedCases')
 
     const data = {
-      Data,
+      lastUpdate,
       confirmedCases
     }
     return data
