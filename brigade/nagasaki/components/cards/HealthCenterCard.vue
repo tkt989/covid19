@@ -5,7 +5,6 @@
       :title-id="'health-center'"
       :chart-data="patientsTable"
       :chart-option="{}"
-      :info="sumInfoOfPatients"
     />
   </v-col>
 </template>
