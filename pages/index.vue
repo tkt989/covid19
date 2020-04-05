@@ -6,8 +6,12 @@
       </page-header>
       <div class="UpdatedAt">
         <span>{{ $t('最終更新') }} </span>
-        <time :datetime="updatedAt">{{ Data.lastUpdate }}</time>
+        <time :datetime="updatedAt">{{ lastUpdate }}</time>
+        <span :class="[$style.alert]"
+          >※ データの更新は平日（県庁稼働日）のお昼頃になります。</span
+        >
       </div>
+
       <div
         v-show="!['ja', 'ja-basic'].includes($i18n.locale)"
         class="Annotation"
@@ -15,6 +19,7 @@
         <span>{{ $t('注釈') }} </span>
       </div>
     </div>
+
     <whats-new class="mb-4" :items="newsItems" />
     <static-info
       class="mb-4"
@@ -84,8 +89,11 @@ export default Vue.extend({
     }
   },
   data() {
+    const lastUpdate = this.$store.state.lastUpdate
+
     const data = {
       Data,
+      lastUpdate,
       headerItem: {
         icon: 'mdi-chart-timeline-variant',
         title: this.$t('県内の最新感染動向')
@@ -127,7 +135,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss" scoped>
+<style module lang="scss" scoped>
 .MainPage {
   .Header {
     display: flex;
@@ -168,5 +176,10 @@ export default Vue.extend({
       }
     }
   }
+}
+
+.alert {
+  padding: 8px;
+  color: #f00;
 }
 </style>
