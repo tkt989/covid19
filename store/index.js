@@ -20,7 +20,7 @@ export const mutations = {
 
   setBodicData1(state, data) {
     state.bodik1 = data
-    // console.log(data, "setBodicData1")
+    console.log(data, 'setBodicData1')
 
     state.map1 = data.map(x => Number(x.件数))
     state.kensaDates = data.map(x => x.年月日)
@@ -33,7 +33,7 @@ export const mutations = {
   },
 
   setBodicData2(state, data) {
-    // console.log(data, 'setBodicData2')
+    console.log(data, 'setBodicData2')
     state.bodik2 = data
     state.lastUpdate2 = data[data.length - 1].公表_年月日 // "2020/4/1"
     state.groups = groupBy(data, r => r.公表_年月日)

@@ -38,50 +38,55 @@ export default {
     DataView,
     ConfirmedCasesDetailsTable
   },
-  data() {
-    // 検査陽性者の状況
-    const bodik2 = this.$store.state.bodik2
-    const allCount = this.$store.state.allCount
-    const lastUpdate = this.$store.state.lastUpdate
+  // data() {
+  //   return this.al()
+  // },
+  computed: {
+    lastUpdate() {
+      return this.$store.state.lastUpdate
+    },
 
-    const number = bodik2.length
-    const taiin = this.$store.state.bodik2.filter(d => d.退院済フラグ === '1')
-      .length
-    const dead = this.$store.state.bodik2.filter(d => d.死亡フラグ === '1')
-      .length
-    console.log(taiin, 'taiin')
+    confirmedCases() {
+      // 検査陽性者の状況
+      const bodik2 = this.$store.state.bodik2
+      const allCount = this.$store.state.allCount
 
-    // 検査実施 人数
-    const summary = Data.main_summary
-    summary.value = allCount
+      const number = bodik2.length
+      const taiin = this.$store.state.bodik2.filter(d => d.退院済フラグ === '1')
+        .length
+      const dead = this.$store.state.bodik2.filter(d => d.死亡フラグ === '1')
+        .length
+      console.log(taiin, 'taiin')
 
-    // 陽性者数 (累積)
-    summary.children[0].value = number
+      // 検査実施 人数
+      const summary = Data.main_summary
+      summary.value = allCount
 
-    console.log(summary, 'summary')
+      // 陽性者数 (累積)
+      summary.children[0].value = number
+      // console.log(summary, 'summary')
 
-    // 入院中
-    summary.children[0].children[0].children[0].value = 0
+      // 入院中
+      summary.children[0].children[0].value = number - taiin
 
-    // 軽症
-    summary.children[0].children[0].children[1].value = 0
+      // 軽症
+      summary.children[0].children[0].children[0].value = 0
 
-    // 重症
+      // 重症
+      summary.children[0].children[0].children[1].value = 0
 
-    // 退院
-    summary.children[0].children[1].value = taiin
+      // 退院
+      summary.children[0].children[1].value = taiin
 
-    // 死亡
-    summary.children[0].children[2].value = dead
+      // 死亡
+      summary.children[0].children[2].value = dead
 
-    const confirmedCases = formatConfirmedCases(summary)
-    // console.log(confirmedCases, 'confirmedCases')
+      const confirmedCases = formatConfirmedCases(summary)
+      // console.log(confirmedCases, 'confirmedCases')
 
-    const data = {
-      lastUpdate,
-      confirmedCases
+      return confirmedCases
     }
-    return data
-  }
+  },
+  methods: {}
 }
 </script>
