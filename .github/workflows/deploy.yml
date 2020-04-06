@@ -3,7 +3,7 @@ name: production deploy
 on:
   push:
     branches:
-      - master_copy
+      - master
 
 jobs:
   deploy:
