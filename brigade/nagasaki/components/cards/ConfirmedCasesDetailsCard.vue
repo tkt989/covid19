@@ -56,7 +56,7 @@ export default {
         .length
       const dead = this.$store.state.bodik2.filter(d => d.死亡フラグ === '1')
         .length
-      console.log(taiin, 'taiin')
+      // console.log(taiin, 'taiin')
 
       // 検査実施 人数
       const summary = Data.main_summary
