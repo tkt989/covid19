@@ -43,7 +43,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { bodik } from '../services'
+// import { bodik } from '../services'
 import PageHeader from '@/components/PageHeader.vue'
 import WhatsNew from '@/components/WhatsNew.vue'
 import StaticInfo from '@/components/StaticInfo.vue'
@@ -58,7 +58,7 @@ import HealthCenterCard from '@/brigade/nagasaki/components/cards/HealthCenterCa
 
 import { convertDatetimeToISO8601Format } from '@/utils/formatDate'
 
-// const bodic = 'https://data.bodik.jp/api/action/datastore_search?resource_id='
+const bodic = 'https://data.bodik.jp/api/action/datastore_search?resource_id='
 
 export default Vue.extend({
   components: {
@@ -71,23 +71,23 @@ export default Vue.extend({
     TestedNumberCard,
     HealthCenterCard
   },
-  // async fetch({ store, app: { $axios } }) {
-  //   try {
-  //     const res = await $axios.get(
-  //       bodic + '71e83845-2648-4cb3-a69d-9f5f5412feb2'
-  //     )
-  //     // console.log(res.data, 'url')
-  //     store.commit('setBodicData1', res.data.result.records)
+  async fetch({ store, app: { $axios } }) {
+    try {
+      const res = await $axios.get(
+        bodic + '71e83845-2648-4cb3-a69d-9f5f5412feb2'
+      )
+      // console.log(res.data, 'url')
+      store.commit('setBodicData1', res.data.result.records)
 
-  //     const res2 = await $axios.get(
-  //       bodic + 'de7ce61e-1849-47a1-b758-bca3f809cdf8'
-  //     )
-  //     // console.log(res2, 'de7ce61e')
-  //     store.commit('setBodicData2', res2.data.result.records)
-  //   } catch (error) {
-  //     console.log(error, 'error')
-  //   }
-  // },
+      const res2 = await $axios.get(
+        bodic + 'de7ce61e-1849-47a1-b758-bca3f809cdf8'
+      )
+      // console.log(res2, 'de7ce61e')
+      store.commit('setBodicData2', res2.data.result.records)
+    } catch (error) {
+      console.log(error, 'error')
+    }
+  },
   data() {
     const lastUpdate = this.$store.state.lastUpdate
 
@@ -108,24 +108,24 @@ export default Vue.extend({
     }
   },
   async mounted() {
-    await this.loadBodik()
-    await this.loadBodik2()
+    // await this.loadBodik()
+    // await this.loadBodik2()
   },
   methods: {
-    async loadBodik() {
-      console.log('***************************')
-      const result = await bodik.fetch1()
-      // console.log("result", result);
-      // console.log("result", result.records);
-      this.$store.commit('setBodicData1', result.records)
-    },
-    async loadBodik2() {
-      console.log('***************************')
-      const result = await bodik.fetch2()
-      // console.log("result", result);
-      // console.log("result", result.records);
-      this.$store.commit('setBodicData2', result.records)
-    }
+    // async loadBodik() {
+    //   console.log('***************************')
+    //   const result = await bodik.fetch1()
+    //   // console.log("result", result);
+    //   // console.log("result", result.records);
+    //   this.$store.commit('setBodicData1', result.records)
+    // },
+    // async loadBodik2() {
+    //   console.log('***************************')
+    //   const result = await bodik.fetch2()
+    //   // console.log("result", result);
+    //   // console.log("result", result.records);
+    //   this.$store.commit('setBodicData2', result.records)
+    // }
   },
   head(): MetaInfo {
     return {
