@@ -32,7 +32,7 @@
             ]"
           >
             <a
-              href="https://www.pref.nagasaki.jp/section/fukushi/"
+              href="https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/kansensho/corona_nagasaki/#madoguchi"
               target="_blank"
               rel="noopener noreferrer"
             >
