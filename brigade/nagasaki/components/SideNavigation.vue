@@ -107,7 +107,25 @@
           </a>
           {{ $t('の下に提供されています。') }}
           <br />
-          2020 Code for Nagasaki
+        </small>
+
+        <small class="SideNavigation-Copyright"
+          >2020
+          <a
+            href="https://c4nagasaki.org/covid-19"
+            target="_blank"
+            rel="noopener noreferrer"
+            class=""
+            >Code for Nagasaki</a
+          >
+          <br />
+          <a
+            href="https://github.com/CodeForNagasaki/covid19"
+            target="_blank"
+            rel="noopener noreferrer"
+            class=""
+            >開発者・協力者募集中！</a
+          >
         </small>
       </footer>
     </div>
