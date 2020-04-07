@@ -24,7 +24,7 @@
             class="WhatsNew-list-item-anchor-time px-2"
             :datetime="formattedDate(item.date)"
           >
-            {{ item.date }}
+            {{ formattedDateForDisplay(item.date) }}
           </time>
           <span class="WhatsNew-list-item-anchor-link">
             {{ item.text }}
@@ -44,7 +44,10 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { convertDateToISO8601Format } from '@/utils/formatDate'
+import {
+  convertDateByCountryPreferTimeFormat,
+  convertDateToISO8601Format
+} from '@/utils/formatDate'
 
 export default Vue.extend({
   props: {
@@ -59,6 +62,9 @@ export default Vue.extend({
     },
     formattedDate(dateString: string) {
       return convertDateToISO8601Format(dateString)
+    },
+    formattedDateForDisplay(dateString: string) {
+      return convertDateByCountryPreferTimeFormat(dateString, this.$i18n.locale)
     }
   }
 })
@@ -105,7 +111,6 @@ export default Vue.extend({
 
   &-item {
     &-anchor {
-      display: inline-block;
       text-decoration: none;
       margin: 5px;
       font-size: 14px;
