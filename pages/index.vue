@@ -109,25 +109,13 @@ export default Vue.extend({
     }
   },
   async mounted() {
-    await this.loadBodik()
-    await this.loadBodik2()
+    const result1 = await bodik.fetch1()
+    this.$store.commit('setBodicData1', result1.records)
+
+    const result2 = await bodik.fetch2()
+    this.$store.commit('setBodicData2', result2.records)
   },
-  methods: {
-    async loadBodik() {
-      console.log('***************************')
-      const result = await bodik.fetch1()
-      // console.log("result", result);
-      // console.log("result", result.records);
-      this.$store.commit('setBodicData1', result.records)
-    },
-    async loadBodik2() {
-      console.log('***************************')
-      const result = await bodik.fetch2()
-      // console.log("result", result);
-      // console.log("result", result.records);
-      this.$store.commit('setBodicData2', result.records)
-    }
-  },
+  methods: {},
   head(): MetaInfo {
     return {
       title: this.$t('県内の最新感染動向') as string
