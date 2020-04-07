@@ -3,10 +3,10 @@
     <data-table
       :title="$t('陽性患者の属性')"
       :title-id="'attributes-of-confirmed-cases'"
-      :chart-data="patientsTable"
+      :chart-data="data.patientsTable"
       :chart-option="{}"
-      :date="attributes"
-      :info="sumInfoOfPatients"
+      :date="data.attributes"
+      :info="data.sumInfoOfPatients"
       :url="
         'https://data.bodik.jp/dataset/420000_covidpatients/resource/de7ce61e-1849-47a1-b758-bca3f809cdf8'
       "
@@ -23,52 +23,54 @@ export default {
   components: {
     DataTable
   },
-  data() {
-    const releaseDate = this.$store.state.lastUpdate
-    const attributes = this.$store.state.attributes.map(x => x)
-    // console.log(attributes, 'attributes')
+  computed: {
+    data() {
+      const releaseDate = this.$store.state.lastUpdate
+      const attributes = this.$store.state.attributes.map(x => x)
+      // console.log(attributes, 'attributes')
 
-    // 感染者数
-    const patientsTable = formatTable(attributes)
-    // console.log(patientsTable, 'patientsTable')
+      // 感染者数
+      const patientsTable = formatTable(attributes)
+      // console.log(patientsTable, 'patientsTable')
 
-    // 陽性患者の人数表示用
-    const sumInfoOfPatients = {
-      lText: attributes.length.toLocaleString(),
-      sText: this.$t('{date}の累計', {
-        date: releaseDate
-      }),
-      unit: this.$t('人')
-    }
-    // console.log(sumInfoOfPatients, 'sumInfoOfPatients')
-
-    // 陽性患者の属性 ヘッダー翻訳
-    for (const header of patientsTable.headers) {
-      header.text =
-        header.value === '退院' ? this.$t('退院※') : this.$t(header.value)
-    }
-    // 陽性患者の属性 中身の翻訳
-    for (const row of patientsTable.datasets) {
-      row['居住地'] = this.getTranslatedWording(row['居住地'])
-      row['性別'] = this.getTranslatedWording(row['性別'])
-      row['退院'] = this.getTranslatedWording(row['退院'])
-
-      if (row['年代'] === '10歳未満') {
-        row['年代'] = this.$t('10歳未満')
-      } else if (row['年代'] === '不明') {
-        row['年代'] = this.$t('不明')
-      } else {
-        const age = row['年代'].substring(0, 2)
-        row['年代'] = this.$t('{age}代', { age })
+      // 陽性患者の人数表示用
+      const sumInfoOfPatients = {
+        lText: attributes.length.toLocaleString(),
+        sText: this.$t('{date}の累計', {
+          date: releaseDate
+        }),
+        unit: this.$t('人')
       }
-    }
+      // console.log(sumInfoOfPatients, 'sumInfoOfPatients')
 
-    const data = {
-      attributes,
-      patientsTable,
-      sumInfoOfPatients
+      // 陽性患者の属性 ヘッダー翻訳
+      for (const header of patientsTable.headers) {
+        header.text =
+          header.value === '退院' ? this.$t('退院※') : this.$t(header.value)
+      }
+      // 陽性患者の属性 中身の翻訳
+      for (const row of patientsTable.datasets) {
+        row['居住地'] = this.getTranslatedWording(row['居住地'])
+        row['性別'] = this.getTranslatedWording(row['性別'])
+        row['退院'] = this.getTranslatedWording(row['退院'])
+
+        if (row['年代'] === '10歳未満') {
+          row['年代'] = this.$t('10歳未満')
+        } else if (row['年代'] === '不明') {
+          row['年代'] = this.$t('不明')
+        } else {
+          const age = row['年代'].substring(0, 2)
+          row['年代'] = this.$t('{age}代', { age })
+        }
+      }
+
+      const data = {
+        attributes,
+        patientsTable,
+        sumInfoOfPatients
+      }
+      return data
     }
-    return data
   },
   methods: {
     getTranslatedWording(value) {

@@ -4,7 +4,7 @@
       :title="$t('陽性患者数')"
       :title-id="'number-of-confirmed-cases'"
       :chart-id="'time-bar-chart-patients'"
-      :chart-data="patientsGraph"
+      :chart-data="data.patientsGraph"
       :date="lastUpdate"
       :unit="$t('人')"
       :url="
@@ -22,35 +22,40 @@ export default {
   components: {
     TimeBarChart
   },
-  data() {
-    const lastUpdate = this.$store.state.lastUpdate2
-    const groups = this.$store.state.groups
-    // console.log(groups, 'groups')
-    // console.log(lastUpdate, 'lastUpdate')
+  computed: {
+    lastUpdate() {
+      return this.$store.state.lastUpdate
+    },
+    data() {
+      const lastUpdate = this.$store.state.lastUpdate2
+      const groups = this.$store.state.groups
+      // console.log(groups, 'groups')
+      // console.log(lastUpdate, 'lastUpdate')
 
-    // 陽性患者の属性が更新されていて、検査実施数が更新されていない場合の対処
-    const kensaDates = this.$store.state.kensaDates.map(x => x)
-    const found = kensaDates.find(element => element === lastUpdate)
-    if (found == null) kensaDates.push(lastUpdate)
-    // console.log(kensaDates, 'kensaDates2')
+      // 陽性患者の属性が更新されていて、検査実施数が更新されていない場合の対処
+      const kensaDates = this.$store.state.kensaDates.map(x => x)
+      const found = kensaDates.find(element => element === lastUpdate)
+      if (found == null) kensaDates.push(lastUpdate)
+      // console.log(kensaDates, 'kensaDates2')
 
-    // 検査数データを作成
-    const patients = kensaDates.map(item => {
-      return {
-        日付: item,
-        小計: groups[item] ? groups[item].length : 0
+      // 検査数データを作成
+      const patients = kensaDates.map(item => {
+        return {
+          日付: item,
+          小計: groups[item] ? groups[item].length : 0
+        }
+      })
+
+      // 感染者数グラフ
+      const patientsGraph = formatGraph(patients)
+      // console.log(patientsGraph, 'patientsGraph')
+
+      const data = {
+        lastUpdate,
+        patientsGraph
       }
-    })
-
-    // 感染者数グラフ
-    const patientsGraph = formatGraph(patients)
-    // console.log(patientsGraph, 'patientsGraph')
-
-    const data = {
-      lastUpdate,
-      patientsGraph
+      return data
     }
-    return data
   }
 }
 </script>

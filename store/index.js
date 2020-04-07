@@ -20,7 +20,7 @@ export const mutations = {
 
   setBodicData1(state, data) {
     state.bodik1 = data
-    // console.log(data, "setBodicData1")
+    // console.log(data, 'setBodicData1')
 
     state.map1 = data.map(x => Number(x.件数))
     state.kensaDates = data.map(x => x.年月日)

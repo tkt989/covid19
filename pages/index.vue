@@ -43,7 +43,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { bodik } from '../services'
+// import { bodik } from '../services'
 import PageHeader from '@/components/PageHeader.vue'
 import WhatsNew from '@/components/WhatsNew.vue'
 import StaticInfo from '@/components/StaticInfo.vue'
@@ -107,25 +107,25 @@ export default Vue.extend({
       return convertDatetimeToISO8601Format(this.$data.Data.lastUpdate)
     }
   },
-  mounted() {
-    // this.loadBodik()
-    // this.loadBodik2()
+  async mounted() {
+    // await this.loadBodik()
+    // await this.loadBodik2()
   },
   methods: {
-    async loadBodik() {
-      console.log('***************************')
-      const result = await bodik.fetch1()
-      // console.log("result", result);
-      // console.log("result", result.records);
-      this.$store.commit('setBodicData1', result)
-    },
-    async loadBodik2() {
-      console.log('***************************')
-      const result = await bodik.fetch2()
-      // console.log("result", result);
-      // console.log("result", result.records);
-      this.$store.commit('setBodicData2', result)
-    }
+    // async loadBodik() {
+    //   console.log('***************************')
+    //   const result = await bodik.fetch1()
+    //   // console.log("result", result);
+    //   // console.log("result", result.records);
+    //   this.$store.commit('setBodicData1', result.records)
+    // },
+    // async loadBodik2() {
+    //   console.log('***************************')
+    //   const result = await bodik.fetch2()
+    //   // console.log("result", result);
+    //   // console.log("result", result.records);
+    //   this.$store.commit('setBodicData2', result.records)
+    // }
   },
   head(): MetaInfo {
     return {
