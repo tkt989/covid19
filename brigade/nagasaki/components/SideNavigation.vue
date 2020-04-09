@@ -13,7 +13,7 @@
           <img
             class="SideNavigation-HeaderLogo"
             src="/logo.svg"
-            :alt="$t('東京都')"
+            :alt="$t('長崎県')"
           />
           <div class="SideNavigation-HeaderText">
             {{ $t('menu/新型コロナウイルス感染症') }}<br />{{
@@ -190,6 +190,11 @@ export default Vue.extend({
         {
           title: this.$t('知事からのメッセージ'),
           link: 'https://www.pref.nagasaki.jp/koho/governor/kaiken/index.html'
+        },
+        {
+          title: this.$t('長崎市地域センター窓口混雑情報'),
+          link:
+            'https://www.city.nagasaki.lg.jp/shimin/121000/121100/p034298.html'
         },
         {
           title: this.$t('当サイトについて'),
