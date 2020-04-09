@@ -5,7 +5,7 @@
       :title-id="'attributes-of-confirmed-cases'"
       :chart-data="data.patientsTable"
       :chart-option="{}"
-      :date="data.attributes"
+      :date="data.releaseDate"
       :info="data.sumInfoOfPatients"
       :url="
         'https://data.bodik.jp/dataset/420000_covidpatients/resource/de7ce61e-1849-47a1-b758-bca3f809cdf8'
@@ -67,7 +67,8 @@ export default {
       const data = {
         attributes,
         patientsTable,
-        sumInfoOfPatients
+        sumInfoOfPatients,
+        releaseDate
       }
       return data
     }
