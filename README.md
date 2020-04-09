@@ -2,7 +2,7 @@
 
 ![](https://github.com/nagasaki-metropolitan-gov/covid19/workflows/production%20deploy/badge.svg)
 
-![長崎県 新型コロナウイルス感染症対策サイト](https://raw.githubusercontent.com/CodeForNagasaki/covid19/development/static/ogp.png)
+![長崎県 新型コロナウイルス感染症対策サイト](https://github.com/kensukekanzaki/covid19/blob/feature/139-change-eye-catch/static/ogp.jpg)
 
 
 ## 貢献の仕方
