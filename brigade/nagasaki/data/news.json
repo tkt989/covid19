@@ -2,8 +2,13 @@
     "newsItems": [
       {
         "date": "2020/04/09",
+        "url": "https://www.city.nagasaki.lg.jp/shimin/121000/121100/p034298.html",
+        "text": "[リンク追加] サイトメニューへ長崎市地域センター窓口混雑情報へのリンクを追加しました"
+      },
+      {
+        "date": "2020/04/09",
         "url": "https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/kansensho/corona_nagasaki/corona_nagasaki_shousai/#utagai",
-        "text": "新型コロナウイルスに関する「緊急事態宣言」対象地域に滞在されていた皆様へ。・不要不急の外出については自粛いただきますようお願いします。・体調に少しでも心配なことがありましたら、お住まいの市町を管轄する帰国者・接触者相談センターへご相談ください。"
+        "text": "体調に少しでも心配なことがありましたら、お住まいの市町を管轄する帰国者・接触者相談センターへご相談ください。"
       },
       {
         "date": "2020/04/09",
