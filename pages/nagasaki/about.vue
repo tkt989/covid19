@@ -210,12 +210,9 @@
     </StaticCard>
     <StaticCard>
       <img src="/ogp2.png" />
-      <i18n path="Illustration by {MATUMOTO} {TWITTER} under {ccBy}">
-        <template #MATUMOTO>
-          <a href="http://pinografi.com">{{ $t('MATSUMOTO RYOTA') }}</a>
-        </template>
+      <i18n path="Illustration by {TWITTER} under {ccBy}">
         <template #TWITTER>
-        <a href="https://twitter.com/pinografico"><i class="fab fa-twitter-square"></i>Twitter</a>
+        <a href="https://twitter.com/pinografico">＠pinografico</a>
         </template>
         <template #ccBy>
           <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">{{
@@ -223,6 +220,13 @@
           }}</a>
         </template>
       </i18n>
+      <p>目に見えないコロナを相手に、『しっかり正しい情報を得て（望遠鏡）、常に冷静な防護の姿勢で（仮面、布）、消毒（ひょうたん）を行おう』というメッセージをイラストのアイテムに込めました。そして戦って日常を勝ち取るぞという希望を込めて一人の若者で表現。「多くの世代に届くといいな」と念じながら長崎らしい歴史的なモチーフでカッコいいヒーローのような象徴になればという想いです。</p>
+      <p>MATSUMOTO RYOTA</p>
+      <i18n path="{WEBSITE}">
+        <template #WEBSITE>
+          <a href="https://pinografi.com">{{ $t('https://pinografi.com') }}</a>
+        </template>
+        </i18n>
     </StaticCard>
   </div>
 </template>
