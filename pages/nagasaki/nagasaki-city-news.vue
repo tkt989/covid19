@@ -5,7 +5,11 @@
     </page-header>
     <StaticCard>
       <ul class="NagasakiCityNews-list">
-        <li v-for="(item, i) in items" :key="i" class="NagasakiCityNews-list-item">
+        <li
+          v-for="(item, i) in items"
+          :key="i"
+          class="NagasakiCityNews-list-item"
+        >
           <a
             class="NagasakiCityNews-list-item-anchor px-2"
             :href="item.url"
@@ -14,7 +18,8 @@
           >
             <time
               class="NagasakiCityNews-list-item-anchor-time"
-              :datetime="formattedDate(item.date)">
+              :datetime="formattedDate(item.date)"
+            >
               {{ formattedDateForDisplay(item.date) }}
             </time>
 
@@ -33,7 +38,10 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import StaticCard from '@/components/StaticCard.vue'
 import PageHeader from '@/components/PageHeader.vue'
-import { convertDateToISO8601Format, convertDateByCountryPreferTimeFormat } from '@/utils/formatDate'
+import {
+  convertDateToISO8601Format,
+  convertDateByCountryPreferTimeFormat
+} from '@/utils/formatDate'
 import { bodik } from '@/services'
 
 export default Vue.extend({
@@ -41,33 +49,26 @@ export default Vue.extend({
     PageHeader,
     StaticCard
   },
-  head(): MetaInfo {
-    return {
-      title: this.$t('長崎市からのお知らせ') as string
-    }
-  },
   async fetch({ store, app: { $axios } }) {
     try {
-      const res = await $axios.get(
-        bodik.API_ROOT + bodik.nagasakiCityNewsId
-      )
+      const res = await $axios.get(bodik.API_ROOT + bodik.nagasakiCityNewsId)
       store.commit('setNagasakiCityNews', res.data.result.records)
-      } catch (error) {
-        console.log(error, "error")
+    } catch (error) {
+      console.log(error, 'error')
     }
-  },
-  async mounted() {
-    const result = await bodik.fetchNagasakiCityNews()
-    this.$store.commit('setNagasakiCityNews', result.records)
   },
   computed: {
     items() {
-      const info = this.$store.state.nagasakiCityNews;
+      const info = this.$store.state.nagasakiCityNews
       const result = info.slice().sort((a: any, b: any) => {
         return b.date.getTime() - a.date.getTime()
       })
       return result
     }
+  },
+  async mounted() {
+    const result = await bodik.fetchNagasakiCityNews()
+    this.$store.commit('setNagasakiCityNews', result.records)
   },
   methods: {
     formattedDate(dateString: string) {
@@ -75,6 +76,11 @@ export default Vue.extend({
     },
     formattedDateForDisplay(dateString: string) {
       return convertDateByCountryPreferTimeFormat(dateString, this.$i18n.locale)
+    }
+  },
+  head(): MetaInfo {
+    return {
+      title: this.$t('長崎市からのお知らせ') as string
     }
   }
 })

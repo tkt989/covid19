@@ -195,7 +195,7 @@ export default Vue.extend({
           title: this.$t('長崎市地域センター窓口混雑情報'),
           link:
             'https://www.city.nagasaki.lg.jp/shimin/121000/121100/p034298.html'
-        }, 
+        },
         {
           title: this.$t('長崎市からのお知らせ'),
           link: this.localePath('/nagasaki/nagasaki-city-news')

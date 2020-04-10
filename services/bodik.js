@@ -9,7 +9,8 @@ export const nagasakiCityNewsId = 'eb0ba50a-7a97-4029-9b75-9c6bab0568f6'
 
 export const fetch1 = data => callFetchJsonp(resourceId1, data)
 export const fetch2 = data => callFetchJsonp(resourceId2, data)
-export const fetchNagasakiCityNews = data => callFetchJsonp(nagasakiCityNewsId, data)
+export const fetchNagasakiCityNews = data =>
+  callFetchJsonp(nagasakiCityNewsId, data)
 
 function callFetchJsonp(endpoint) {
   const fullUrl = !endpoint.includes(API_ROOT) ? API_ROOT + endpoint : endpoint
