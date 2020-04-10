@@ -53,9 +53,7 @@ export default Vue.extend({
     try {
       const res = await $axios.get(bodik.API_ROOT + bodik.nagasakiCityNewsId)
       store.commit('setNagasakiCityNews', res.data.result.records)
-    } catch (error) {
-      console.log(error, 'error')
-    }
+    } catch (error) {}
   },
   computed: {
     items() {
