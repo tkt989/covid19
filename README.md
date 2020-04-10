@@ -3,7 +3,7 @@
 ![](https://github.com/nagasaki-metropolitan-gov/covid19/workflows/production%20deploy/badge.svg)
 
 ![長崎県 新型コロナウイルス感染症対策サイト](https://github.com/kensukekanzaki/covid19/blob/feature/139-change-eye-catch/static/ogp.jpg)
-Illustration by [まつもとりょうた](http://pinografi.com) [Twitter](https://twitter.com/pinografico) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ja)
+Illustration by [MATSUMOTO RYOTA](http://pinografi.com) [@pinografico](https://twitter.com/pinografico) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ja)
 
 
 ## 貢献の仕方
