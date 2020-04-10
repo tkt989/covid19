@@ -208,6 +208,22 @@
         </i18n>
       </p>
     </StaticCard>
+    <StaticCard>
+      <img src="/ogp2.png" />
+      <i18n path="Illustration by {MATUMOTO} {TWITTER} under {ccBy}">
+        <template #MATUMOTO>
+          <a href="http://pinografi.com">{{ $t('MATSUMOTO RYOTA') }}</a>
+        </template>
+        <template #TWITTER>
+        <a href="https://twitter.com/pinografico"><i class="fab fa-twitter-square"></i>Twitter</a>
+        </template>
+        <template #ccBy>
+          <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">{{
+            $t('CC BY 4.0')
+          }}</a>
+        </template>
+      </i18n>
+    </StaticCard>
   </div>
 </template>
 
