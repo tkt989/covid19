@@ -208,23 +208,30 @@
         </i18n>
       </p>
     </StaticCard>
-    <StaticCard>
+       <StaticCard>
       <img src="/ogp2.png" />
       <i18n path="Illustration by {TWITTER} under {ccBy}">
         <template #TWITTER>
-        <a href="https://twitter.com/pinografico">＠pinografico</a>
+        <a href="https://twitter.com/pinografico" target=”_blank”>＠pinografico</a>
         </template>
         <template #ccBy>
-          <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">{{
+          <a href="https://creativecommons.org/licenses/by/4.0/deed.ja" target=”_blank”>{{
             $t('CC BY 4.0')
           }}</a>
         </template>
       </i18n>
-      <p>目に見えないコロナを相手に、『しっかり正しい情報を得て（望遠鏡）、常に冷静な防護の姿勢で（仮面、布）、消毒（ひょうたん）を行おう』というメッセージをイラストのアイテムに込めました。そして戦って日常を勝ち取るぞという希望を込めて一人の若者で表現。「多くの世代に届くといいな」と念じながら長崎らしい歴史的なモチーフでカッコいいヒーローのような象徴になればという想いです。</p>
+      <h4 class="AboutIllustration">Illustrator’s Voice</h4>
+      <p class="voice">目に見えないコロナを相手に、『しっかり正しい情報を得て（望遠鏡）、常に冷静な防護の姿勢で（仮面、布）、消毒（ひょうたん）を行おう』というメッセージをイラストのアイテムに込めました。そして戦って日常を勝ち取るぞという希望を込めて一人の若者で表現。「多くの世代に届くといいな」と念じながら長崎らしい歴史的なモチーフでカッコいいヒーローのような象徴になればという想いです。</p>
       <p>MATSUMOTO RYOTA</p>
-      <i18n path="{WEBSITE}">
+      <i18n path="HP:{WEBSITE}">
         <template #WEBSITE>
-          <a href="https://pinografi.com">{{ $t('https://pinografi.com') }}</a>
+          <a href="https://pinografi.com" target=”_blank”>{{ $t('https://pinografi.com') }}</a>
+        </template>
+        </i18n>
+        <br>
+        <i18n path="Twitter:{TWITTTER}">
+        <template #TWITTTER>
+          <a href="https://twitter.com/pinografico" target=”_blank”>{{ $t('https://pinografi.com') }}</a>
         </template>
         </i18n>
     </StaticCard>
@@ -249,3 +256,12 @@ export default Vue.extend({
   }
 })
 </script>
+
+<style scoped>
+.AboutIllustration {
+  padding-bottom: 8px;  
+}
+.voice{
+  margin-top: 1px;
+}
+</style>
