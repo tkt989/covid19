@@ -1,7 +1,7 @@
 import fetchJsonp from 'fetch-jsonp'
 // import { api } from "./api";
 
-export const API_ROOT =
+const API_ROOT =
   'https://data.bodik.jp/api/action/datastore_search?resource_id='
 const resourceId1 = '71e83845-2648-4cb3-a69d-9f5f5412feb2'
 const resourceId2 = 'de7ce61e-1849-47a1-b758-bca3f809cdf8'
