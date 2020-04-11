@@ -10,7 +10,8 @@ export const state = () => ({
   groups: [],
   lastUpdate: null,
   lastUpdate2: null,
-  attributes: []
+  attributes: [],
+  nagasakiCityNews: []
 })
 
 export const mutations = {
@@ -47,6 +48,17 @@ export const mutations = {
         性別: item.性別,
         退院: item.退院済フラグ === '1' ? '○' : null,
         date: item.公表_年月日
+      }
+    })
+  },
+
+  setNagasakiCityNews(state, data) {
+    state.nagasakiCityNews = data.map(item => {
+      return {
+        date: new Date(item.更新日),
+        url: item.URL,
+        no: item.No,
+        text: item.件名
       }
     })
   }
