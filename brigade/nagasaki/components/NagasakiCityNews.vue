@@ -1,7 +1,10 @@
 <template>
   <div class="NagasakiCityNews">
     <h3 class="heading">
-      {{ $t('長崎市からのお知らせ') }}
+      <v-icon class="icon" size="24">
+        mdi-information
+      </v-icon>
+      {{ $t('長崎市からのお知らせ（新型コロナウイルス感染症関連）') }}
     </h3>
     <ul class="list">
       <li v-for="(item, i) in items" :key="i" class="item">
@@ -35,14 +38,13 @@ import {
 } from '@/utils/formatDate'
 
 export default Vue.extend({
-  computed: {
-    items() {
-      const news = this.$store.state.nagasakiCityNews
-      const result = news.slice().sort((a: any, b: any) => {
-        return b.date.getTime() - a.date.getTime()
-      })
-      return result
-    }
+  data() {
+    const news = this.$store.state.nagasakiCityNews
+    const items = news.slice().sort((a: any, b: any) => {
+      return b.date.getTime() - a.date.getTime()
+    })
+
+    return { items }
   },
   methods: {
     formattedDate(dateString: string) {
@@ -71,6 +73,10 @@ export default Vue.extend({
     margin-bottom: 12px;
     color: $gray-2;
     margin-left: 12px;
+
+    .icon {
+      margin: 3px;
+    }
   }
 
   .list {
