@@ -21,9 +21,10 @@
     </div>
 
     <whats-new class="mb-4" :items="newsItems" />
+    <nagasaki-city-news class="mb-4" />
     <static-info
       class="mb-4"
-      :url="localePath('/flow')"
+      :url="localePath('/nagasaki/flow')"
       :text="$t('自分や家族の症状に不安や心配があればまずは電話相談をどうぞ')"
       :btn-text="$t('相談の手順を見る')"
     />
@@ -46,6 +47,7 @@ import { MetaInfo } from 'vue-meta'
 import { bodik } from '../services'
 import PageHeader from '@/components/PageHeader.vue'
 import WhatsNew from '@/components/WhatsNew.vue'
+import NagasakiCityNews from '@/brigade/nagasaki/components/NagasakiCityNews.vue'
 import StaticInfo from '@/components/StaticInfo.vue'
 import Data from '@/data/data.json'
 import News from '@/brigade/nagasaki/data/news.json'
@@ -65,6 +67,7 @@ export default Vue.extend({
   components: {
     PageHeader,
     WhatsNew,
+    NagasakiCityNews,
     StaticInfo,
     ConfirmedCasesDetailsCard,
     ConfirmedCasesNumberCard,
@@ -85,6 +88,10 @@ export default Vue.extend({
       )
       // console.log(res2, 'de7ce61e')
       store.commit('setBodicData2', res2.data.result.records)
+
+      const newsRes = await $axios.get(bodicUrl + bodik.nagasakiCityNewsId)
+
+      store.commit('setNagasakiCityNews', newsRes.data.result.records)
     } catch (error) {
       console.log(error, 'error')
     }
@@ -114,6 +121,9 @@ export default Vue.extend({
 
     const result2 = await bodik.fetch2()
     this.$store.commit('setBodicData2', result2.records)
+
+    const news = await bodik.fetchNagasakiCityNews()
+    this.$store.commit('setNagasakiCityNews', news.records)
   },
   methods: {},
   head(): MetaInfo {
