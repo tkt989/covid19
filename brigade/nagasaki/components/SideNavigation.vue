@@ -13,7 +13,7 @@
           <img
             class="SideNavigation-HeaderLogo"
             src="/logo.svg"
-            :alt="$t('東京都')"
+            :alt="$t('長崎県')"
           />
           <div class="SideNavigation-HeaderText">
             {{ $t('menu/新型コロナウイルス感染症') }}<br />{{
@@ -107,7 +107,25 @@
           </a>
           {{ $t('の下に提供されています。') }}
           <br />
-          2020 Code for Nagasaki
+        </small>
+
+        <small class="SideNavigation-Copyright"
+          >2020
+          <a
+            href="https://c4nagasaki.org/covid-19"
+            target="_blank"
+            rel="noopener noreferrer"
+            class=""
+            >Code for Nagasaki</a
+          >
+          <br />
+          <a
+            href="https://github.com/CodeForNagasaki/covid19"
+            target="_blank"
+            rel="noopener noreferrer"
+            class=""
+            >開発者・協力者募集中！</a
+          >
         </small>
       </footer>
     </div>
@@ -172,6 +190,11 @@ export default Vue.extend({
         {
           title: this.$t('知事からのメッセージ'),
           link: 'https://www.pref.nagasaki.jp/koho/governor/kaiken/index.html'
+        },
+        {
+          title: this.$t('長崎市地域センター窓口混雑情報'),
+          link:
+            'https://www.city.nagasaki.lg.jp/shimin/121000/121100/p034298.html'
         },
         {
           title: this.$t('当サイトについて'),
@@ -298,7 +321,7 @@ export default Vue.extend({
 }
 
 .SideNavigation-HeaderLogo {
-  @include lessThan($tiny) {
+  @include lessThan($small) {
     width: 100px;
   }
 }
