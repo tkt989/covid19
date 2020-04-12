@@ -7,7 +7,13 @@
         </v-icon>
         {{ $t('最新のお知らせ') }}
       </h3>
-      <span class="WhatsNew-link-to-emergency-page">
+      <span class="alert"
+        >※
+        <a href="https://twitter.com/ngs_ken_iryou" target="_blank"
+          >長崎県医療政策課のTwitter情報を表示しています。</a
+        ></span
+      >
+      <!-- <span class="WhatsNew-link-to-emergency-page">
         <v-icon size="20" class="WhatsNew-link-to-emergency-page-icon">
           mdi-bullhorn
         </v-icon>
@@ -15,7 +21,7 @@
           url="https://www.bousai.metro.tokyo.lg.jp/1007617/index.html"
           :label="$t('東京都緊急事態措置について')"
         />
-      </span>
+      </span> -->
     </div>
     <ul class="WhatsNew-list">
       <li v-for="(item, i) in items" :key="i" class="WhatsNew-list-item">
