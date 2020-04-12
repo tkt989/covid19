@@ -57,8 +57,8 @@ jobs:
       - name: Commit files
         run: |
           cp -rp ogp static/
-          git config --local user.email "sugasaki@gmail.com"
-          git config --local user.name "sugasaki"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add static
           git commit -m "Add changes"
       - name: Push changes
