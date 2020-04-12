@@ -231,7 +231,7 @@
         <br>
         <i18n path="Twitter:{TWITTTER}">
         <template #TWITTTER>
-          <a href="https://twitter.com/pinografico" target=”_blank”>{{ $t('https://pinografi.com') }}</a>
+          <a href="https://twitter.com/pinografico" target=”_blank”>{{ $t('＠pinografico') }}</a>
         </template>
         </i18n>
     </StaticCard>
