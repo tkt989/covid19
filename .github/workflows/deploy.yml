@@ -38,12 +38,12 @@ jobs:
         env:
           GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
 
-      # - name: Temporarily disable "include administrators" branch protection
-      #   uses: benjefferies/branch-protection-bot@master
-      #   if: always()
-      #   with:
-      #     access-token: ${{ secrets.ACCESS_TOKEN }}
-      #     branch: production
+      - name: Temporarily disable "include administrators" branch protection
+        uses: benjefferies/branch-protection-bot@master
+        if: always()
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+          branch: production
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
@@ -52,15 +52,23 @@ jobs:
           publish_dir: ./dist
           publish_branch: production
           
-      # - name: Enable "include administrators" branch protection
-      #   uses: benjefferies/branch-protection-bot@master
-      #   if: always()  # Force to always run this step to ensure "include administrators" is always turned back on
-      #   with:
-      #     access-token: ${{ secrets.ACCESS_TOKEN }}
-      #     owner: CodeForNagasaki
-      #     repo: covid19
-      #     branch: production
-      # - name: Create GitHub release
-      #   uses: rymndhng/release-on-push-action@master
-      #   with:
-      #     bump_version_scheme: patch
+      - name: Enable "include administrators" branch protection
+        uses: benjefferies/branch-protection-bot@master
+        if: always()  # Force to always run this step to ensure "include administrators" is always turned back on
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+          owner: CodeForNagasaki
+          repo: covid19
+          branch: production
+      - name: Create GitHub release
+        uses: rymndhng/release-on-push-action@master
+        with:
+          bump_version_scheme: patch
+
+      - name: run delete_fbcache.sh
+        run: |
+          echo "FB_ACCESS_TOKEN=${FACEBOOK_ACCESS_TOKEN}" > .env
+          cd ui-test
+          ./delete_fbcache.sh
+        env:
+          FACEBOOK_ACCESS_TOKEN: ${{ secrets.FACEBOOK_ACCESS_TOKEN }}

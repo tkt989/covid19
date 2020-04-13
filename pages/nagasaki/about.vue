@@ -93,17 +93,23 @@
           $t(
             '当サイトでは、サービス向上やサイトの改善のためにGoogle LLCの提供するアクセス分析のツールであるGoogle Analyticsを利用した計測を行っております。'
           )
-        }}<br />
+        }}
+      </p>
+      <p>
         {{
           $t(
-            'Google Analyticsは、当サイトが発行するクッキー (Cookie) を利用して、個人を特定する情報を含まずにWebサイトの利用データ（アクセス状況、トラフィック、閲覧環境など）を収集しております。クッキー (Cookie) の利用に関してはGoogleのプライバシーポリシーと規約に基づいております。'
+            'Google Analyticsでは、当サイトが発行するクッキー (Cookie) 等を利用して、Webサイトの利用データ（アクセス状況、トラフィック、閲覧環境、IPアドレスなど）を収集しております。クッキーの利用に関してはGoogleのプライバシーポリシーと規約に基づいております。'
           )
-        }}<br />
+        }}
+      </p>
+      <p>
         {{
           $t(
-            '取得したデータは Webサイト利用状況の分析、サイト運営者へのレポートの作成、その他のサービスの提供に関わる目的に限り、これを使用します。'
+            '取得したデータはWebサイト利用状況を分析しサービスの改善につなげるため、またはサイト運営者へのレポートを作成するため、その他のサービスの提供に関わる目的に限り、これを使用します。（サイト運営者へのレポートでは、クッキーはブラウザ単位で本サイトのユーザー数をカウントするため、IPアドレスはGoogle Analyticsの分析機能を通じてアクセス元の地域分布（国、州・都道府県、都市）を把握するために利用されています。）'
           )
-        }}<br />
+        }}
+      </p>
+      <p>
         {{
           $t(
             'Google Analyticsの利用規約及びプライバシーポリシーに関する説明については、Google Analyticsのサイトをご覧ください。'
@@ -145,6 +151,20 @@
           </a>
         </li>
       </ul>
+      <i18n
+        tag="p"
+        path="Google Analyticsによる情報送信を回避する場合は、Google がサポートする{addon}をご利用ください。"
+      >
+        <template v-slot:addon>
+          <a
+            :href="$t('https://tools.google.com/dlpage/gaoptout?hl=ja')"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ $t('測定を無効にするブラウザ アドオン') }}
+          </a>
+        </template>
+      </i18n>
     </StaticCard>
     <StaticCard>
       <h3>{{ $t('免責事項') }}</h3>
@@ -208,32 +228,42 @@
         </i18n>
       </p>
     </StaticCard>
-       <StaticCard>
+    <StaticCard>
       <img src="/ogp2.png" />
       <i18n path="Illustration by {TWITTER} under {ccBy}">
         <template #TWITTER>
-        <a href="https://twitter.com/pinografico" target=”_blank”>＠pinografico</a>
+          <a href="https://twitter.com/pinografico" target="”_blank”"
+            >＠pinografico</a
+          >
         </template>
         <template #ccBy>
-          <a href="https://creativecommons.org/licenses/by/4.0/deed.ja" target=”_blank”>{{
-            $t('CC BY 4.0')
-          }}</a>
+          <a
+            href="https://creativecommons.org/licenses/by/4.0/deed.ja"
+            target="”_blank”"
+            >{{ $t('CC BY 4.0') }}</a
+          >
         </template>
       </i18n>
       <h4 class="AboutIllustration">Illustrator’s Voice</h4>
-      <p class="voice">目に見えないコロナを相手に、『しっかり正しい情報を得て（望遠鏡）、常に冷静な防護の姿勢で（仮面、布）、消毒（ひょうたん）を行おう』というメッセージをイラストのアイテムに込めました。そして戦って日常を勝ち取るぞという希望を込めて一人の若者で表現。「多くの世代に届くといいな」と念じながら長崎らしい歴史的なモチーフでカッコいいヒーローのような象徴になればという想いです。</p>
+      <p class="voice">
+        目に見えないコロナを相手に、『しっかり正しい情報を得て（望遠鏡）、常に冷静な防護の姿勢で（仮面、布）、消毒（ひょうたん）を行おう』というメッセージをイラストのアイテムに込めました。そして戦って日常を勝ち取るぞという希望を込めて一人の若者で表現。「多くの世代に届くといいな」と念じながら長崎らしい歴史的なモチーフでカッコいいヒーローのような象徴になればという想いです。
+      </p>
       <p>MATSUMOTO RYOTA</p>
       <i18n path="HP:{WEBSITE}">
         <template #WEBSITE>
-          <a href="https://pinografi.com" target=”_blank”>{{ $t('https://pinografi.com') }}</a>
+          <a href="https://pinografi.com" target="”_blank”">{{
+            $t('https://pinografi.com')
+          }}</a>
         </template>
-        </i18n>
-        <br>
-        <i18n path="Twitter:{TWITTTER}">
+      </i18n>
+      <br />
+      <i18n path="Twitter:{TWITTTER}">
         <template #TWITTTER>
-          <a href="https://twitter.com/pinografico" target=”_blank”>{{ $t('＠pinografico') }}</a>
+          <a href="https://twitter.com/pinografico" target="”_blank”">{{
+            $t('＠pinografico')
+          }}</a>
         </template>
-        </i18n>
+      </i18n>
     </StaticCard>
   </div>
 </template>
@@ -259,9 +289,9 @@ export default Vue.extend({
 
 <style scoped>
 .AboutIllustration {
-  padding-bottom: 8px;  
+  padding-bottom: 8px;
 }
-.voice{
+.voice {
   margin-top: 1px;
 }
 </style>
