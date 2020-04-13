@@ -11,10 +11,10 @@
         'https://data.bodik.jp/dataset/420000_covidpatients/resource/de7ce61e-1849-47a1-b758-bca3f809cdf8'
       "
       :source="$t('オープンデータを入手')"
+      :custom-sort="customSort"
     />
   </v-col>
 </template>
-
 <script>
 import formatTable from '@/utils/formatTable'
 import DataTable from '@/components/DataTable.vue'
@@ -75,15 +75,40 @@ export default {
   },
   methods: {
     getTranslatedWording(value) {
-      if (value === '-' || value === '‐' || value == null) {
+      if (value === '-' || value === '‐' || value === '―' || value == null) {
         // 翻訳しようとしている文字列が以下のいずれかだった場合、翻訳しない
         // - 全角のハイフン
         // - 半角のハイフン
+        // - 全角のダッシュ
         // - null
         return value
       }
 
       return this.$t(value)
+    },
+    // '10歳未満' < '10代' となるようにソートする
+    customSort(items, index, isDesc) {
+      const lt10 = this.$t('10歳未満').toString()
+      items.sort((a, b) => {
+        // 両者が等しい場合は 0 を返す
+        if (a[index[0]] === b[index[0]]) {
+          return 0
+        }
+
+        // 「10歳未満」同士を比較する場合、そうでない場合に場合分け
+        let comparison = 0
+        if (
+          index[0] === '年代' &&
+          (a[index[0]] === lt10 || b[index[0]] === lt10)
+        ) {
+          comparison = a[index[0]] === lt10 ? -1 : 1
+        } else {
+          comparison = String(a[index[0]]) < String(b[index[0]]) ? -1 : 1
+        }
+
+        return isDesc[0] ? comparison * -1 : comparison
+      })
+      return items
     }
   }
 }
