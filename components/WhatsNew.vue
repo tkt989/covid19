@@ -63,7 +63,9 @@ import {
 } from '@/utils/formatDate'
 
 export default Vue.extend({
-  components: {},
+  components: {
+    // ExternalLink
+  },
   props: {
     items: {
       type: Array,
