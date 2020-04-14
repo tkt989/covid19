@@ -229,41 +229,51 @@
       </p>
     </StaticCard>
     <StaticCard>
+      <h3>{{ $t('アイキャッチイラスト') }}</h3>
       <img src="/ogp.png" />
-      <i18n path="Illustration by {TWITTER} under {ccBy}">
-        <template #TWITTER>
-          <a href="https://twitter.com/pinografico" target="”_blank”"
-            >＠pinografico</a
-          >
+      <i18n :class="$style.illustrator" path="Illustration by {illustrator} {hp} {twitter} under {ccBy}">
+        <template #illustrator>
+          <span :class="$style.illustratorInfo">
+            <a href="https://pinografi.com" target="'_blank'">MATSUMOTO RYOTA</a>
+          </span>
+        </template>        
+        <template #hp>
+          <a href="https://pinografi.com" target="'_blank'">
+          <img
+            :class="$style.illustratorIcon"
+            src="/flow/house-24px.svg"
+            aria-hidden="true"
+            alt=" "
+          />
+          </a>
+        </template>
+        <template #twitter>
+          <a href="https://twitter.com/pinografico" target="”_blank”" >
+          <img
+            :class="$style.illustratorIcon"
+            src="/twitter.png"
+            aria-hidden="true"
+            alt=" "
+          />
+          </a>
         </template>
         <template #ccBy>
-          <a
-            href="https://creativecommons.org/licenses/by/4.0/deed.ja"
-            target="”_blank”"
-            >{{ $t('CC BY 4.0') }}</a
-          >
+          <span :class="$style.illustratorInfo">
+            <a
+              href="https://creativecommons.org/licenses/by/4.0/deed.ja"
+              target="”_blank”"
+              >{{ $t('CC BY 4.0') }}</a
+            >
+          </span>
         </template>
       </i18n>
-      <h4 class="AboutIllustration">Illustrator’s Voice</h4>
-      <p class="voice">
-        目に見えないコロナを相手に、『しっかり正しい情報を得て（望遠鏡）、常に冷静な防護の姿勢で（仮面、布）、消毒（ひょうたん）を行おう』というメッセージをイラストのアイテムに込めました。そして戦って日常を勝ち取るぞという希望を込めて一人の若者で表現。「多くの世代に届くといいな」と念じながら長崎らしい歴史的なモチーフでカッコいいヒーローのような象徴になればという想いです。
-      </p>
-      <p>MATSUMOTO RYOTA</p>
-      <i18n path="HP:{WEBSITE}">
-        <template #WEBSITE>
-          <a href="https://pinografi.com" target="”_blank”">{{
-            $t('https://pinografi.com')
-          }}</a>
-        </template>
-      </i18n>
-      <br />
-      <i18n path="Twitter:{TWITTTER}">
-        <template #TWITTTER>
-          <a href="https://twitter.com/pinografico" target="”_blank”">{{
-            $t('＠pinografico')
-          }}</a>
-        </template>
-      </i18n>
+      <div class="AboutIllustration">
+        <span class="title"> Illustrator’s Voice</span><br />
+        <span class="voice">
+          {{ $t('目に見えないコロナを相手に') }}<br />
+          {{ $t('そして戦って日常') }}
+        </span>
+      </div>
     </StaticCard>
   </div>
 </template>
@@ -287,11 +297,37 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
+<style module lang="scss">
 .AboutIllustration {
-  padding-bottom: 8px;
+  .title {
+    display: block;
+    font-weight: bold;
+  }
+
+  .voice {
+    display: block;
+    font-weight: bold;
+  }
 }
-.voice {
-  margin-top: 1px;
+
+.illustratorInfo {
+  margin-left: 5px;
+  display: block;
+}
+
+.illustrator {
+  list-style-type: none;
+  text-align: start;
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+
+  &Icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
 }
 </style>
