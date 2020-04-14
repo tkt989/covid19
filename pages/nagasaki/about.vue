@@ -229,7 +229,7 @@
       </p>
     </StaticCard>
     <StaticCard>
-      <img src="/ogp2.png" />
+      <img src="/ogp.png" />
       <i18n path="Illustration by {TWITTER} under {ccBy}">
         <template #TWITTER>
           <a href="https://twitter.com/pinografico" target="”_blank”"
