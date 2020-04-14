@@ -231,9 +231,11 @@
     <StaticCard>
       <h3>{{ $t('アイキャッチイラスト') }}</h3>
       <img src="/ogp.png" />
-      <i18n :class="$style.illustrator" path="Illustration  by {illustrator} {hp} {twitter} under  {ccBy}">
+      <i18n :class="$style.illustrator" path="Illustration by {illustrator} {hp} {twitter} under {ccBy}">
         <template #illustrator>
-          <a href="https://pinografi.com" target="'_blank'">MATSUMOTO RYOTA</a>
+          <span :class="$style.illustratorInfo">
+            <a href="https://pinografi.com" target="'_blank'">MATSUMOTO RYOTA</a>
+          </span>
         </template>        
         <template #hp>
           <a href="https://pinografi.com" target="'_blank'">
@@ -256,20 +258,22 @@
           </a>
         </template>
         <template #ccBy>
-          <a
-            href="https://creativecommons.org/licenses/by/4.0/deed.ja"
-            target="”_blank”"
-            >{{ $t('CC BY 4.0') }}</a
-          >
+          <span :class="$style.illustratorInfo">
+            <a
+              href="https://creativecommons.org/licenses/by/4.0/deed.ja"
+              target="”_blank”"
+              >{{ $t('CC BY 4.0') }}</a
+            >
+          </span>
         </template>
       </i18n>
-      <p class="AboutIllustration ">
+      <div class="AboutIllustration">
         <span class="title"> Illustrator’s Voice</span><br />
         <span class="voice">
           {{ $t('目に見えないコロナを相手に') }}<br />
           {{ $t('そして戦って日常') }}
         </span>
-      </p>
+      </div>
     </StaticCard>
   </div>
 </template>
@@ -299,25 +303,31 @@ export default Vue.extend({
     display: block;
     font-weight: bold;
   }
+
   .voice {
-    margin-left: 25px;
+    display: block;
+    font-weight: bold;
   }
 }
 
+.illustratorInfo {
+  margin-left: 5px;
+  display: block;
+}
 
 .illustrator {
   list-style-type: none;
   text-align: start;
-  margin-bottom: 1rem;
   display: flex;
   align-items: center;
+  margin-left: 5px;
 
   &Icon {
     width: 20px;
     height: 20px;
     display: flex;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 3px;
+    margin-right: 3px;
   }
 }
 </style>
