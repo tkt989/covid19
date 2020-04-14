@@ -7,16 +7,16 @@
       :chart-data="inspectionsGraph"
       :date="lastUpdate"
       :unit="$t('件.tested')"
-      :url="'https://data.bodik.jp/dataset/420000_covidexam/resource/71e83845-2648-4cb3-a69d-9f5f5412feb2'"
-    >
-    </time-bar-chart>
+      :url="
+        'https://data.bodik.jp/dataset/420000_covidexam/resource/71e83845-2648-4cb3-a69d-9f5f5412feb2'
+      "
+    />
   </v-col>
 </template>
 
 <script>
-import dayjs from 'dayjs'
+import formatGraph from '@/utils/formatGraph'
 import TimeBarChart from '@/components/TimeBarChart'
-import formatGraph from '../../../../utils/formatGraph'
 
 export default {
   components: {
