@@ -1,9 +1,12 @@
 # 長崎県 新型コロナウイルス感染症対策サイト
 
-![](https://github.com/nagasaki-metropolitan-gov/covid19/workflows/production%20deploy/badge.svg)
+![](https://github.com/tokyo-metropolitan-gov/covid19/workflows/production%20deploy/badge.svg)
 
-![長崎県 新型コロナウイルス感染症対策サイト](https://github.com/CodeForNagasaki/covid19/blob/feature/eyecatch/static/ogp.png)
-Illustration by [MATSUMOTO RYOTA](http://pinografi.com) [@pinografico](https://twitter.com/pinografico) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ja)
+
+<img src="resources/illust-large_2020_0411.jpg" />
+
+Illustration by [MATSUMOTO RYOTA](https://pinografi.com) 
+ <img src='https://raw.githubusercontent.com/CodeForNagasaki/covid19/production/twitter.png' height='15' />[@pinografico](https://twitter.com/pinografico) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ja) 
 
 
 ## 貢献の仕方
