@@ -230,31 +230,36 @@
     </StaticCard>
     <StaticCard>
       <h3>{{ $t('アイキャッチイラスト') }}</h3>
-      <img src="/ogp.png" />
-      <i18n :class="$style.illustrator" path="Illustration by {illustrator} {hp} {twitter} under {ccBy}">
+      <img src="/ogp/ogp.png" />
+      <i18n
+        :class="$style.illustrator"
+        path="Illustration by {illustrator} {hp} {twitter} under {ccBy}"
+      >
         <template #illustrator>
           <span :class="$style.illustratorInfo">
-            <a href="https://pinografi.com" target="'_blank'">MATSUMOTO RYOTA</a>
+            <a href="https://pinografi.com" target="'_blank'"
+              >MATSUMOTO RYOTA</a
+            >
           </span>
-        </template>        
+        </template>
         <template #hp>
           <a href="https://pinografi.com" target="'_blank'">
-          <img
-            :class="$style.illustratorIcon"
-            src="/flow/house-24px.svg"
-            aria-hidden="true"
-            alt=" "
-          />
+            <img
+              :class="$style.illustratorIcon"
+              src="/flow/house-24px.svg"
+              aria-hidden="true"
+              alt=" "
+            />
           </a>
         </template>
         <template #twitter>
-          <a href="https://twitter.com/pinografico" target="”_blank”" >
-          <img
-            :class="$style.illustratorIcon"
-            src="/twitter.png"
-            aria-hidden="true"
-            alt=" "
-          />
+          <a href="https://twitter.com/pinografico" target="”_blank”">
+            <img
+              :class="$style.illustratorIcon"
+              src="/twitter.png"
+              aria-hidden="true"
+              alt=" "
+            />
           </a>
         </template>
         <template #ccBy>
