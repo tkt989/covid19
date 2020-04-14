@@ -192,6 +192,11 @@ export default Vue.extend({
           hid: 'og:image:height',
           name: 'og:image:height',
           content: this.$tc('ogp.og:height')
+        },
+        {
+          hid: 'og:image:secure_url',
+          property: 'og:image:secure_url',
+          content: this.$tc('ogp.og:image')
         }
       ]
     }
