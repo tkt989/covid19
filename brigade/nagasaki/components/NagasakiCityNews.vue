@@ -38,13 +38,15 @@ import {
 } from '@/utils/formatDate'
 
 export default Vue.extend({
-  data() {
-    const news = this.$store.state.nagasakiCityNews
-    const items = news.slice().sort((a: any, b: any) => {
-      return b.date.getTime() - a.date.getTime()
-    })
+  computed: {
+    items() {
+      const news = this.$store.state.nagasakiCityNews
+      const items = news.slice().sort((a: any, b: any) => {
+        return b.date.getTime() - a.date.getTime()
+      })
 
-    return { items }
+      return items
+    }
   },
   methods: {
     formattedDate(dateString: string) {
