@@ -23,7 +23,7 @@ const config: Configuration = {
       {
         hid: 'og:url',
         property: 'og:url',
-        content: 'https://nagasaki.stopcovid19.jp/'
+        content: 'https://sugasaki-dev-covid19.netlify.com/'
       },
       {
         hid: 'twitter:card',
