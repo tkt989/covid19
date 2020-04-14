@@ -267,7 +267,7 @@
   "※最新の情報はWebページをご覧ください": "* Please check the latest information from the web site.",
   "〇": "✔",
   "ogp": {
-    "og:image": "https://nagasaki.stopcovid19.jp/ogp/en/ogp-image.png"
+    "og:image": "https://nagasaki.stopcovid19.jp/ogp.png"
   },
   "https://marketingplatform.google.com/about/analytics/terms/jp/": "https://marketingplatform.google.com/about/analytics/terms/us/",
   "https://policies.google.com/privacy?hl=ja": "https://policies.google.com/privacy?hl=en",
@@ -342,5 +342,9 @@
   "学びの支援サイト": "Learning Support Links (Japanese)",
   "鉄道利用者数の推移（新宿、東京、渋谷、各駅エリア）[PDF]": "Transition of train passengers (Areas of Shinjuku, Nagasaki, Shibuya, etc.) [PDF}",
   "電話のおかけ間違いが多くなっております。発信の際は今一度電話番号をお確かめの上、お間違えのないようお願いいたします。": "Wrong tel is increasing. Please check call number when you call tell.",
-  "東京都緊急事態措置について": "About Nagasaki Emergency Measures"
+  "東京都緊急事態措置について": "About Nagasaki Emergency Measures",
+  "アイキャッチイラスト": "Thits site's Eyechatch",
+  "目に見えないコロナを相手に" : "For the invisible corona, put the message 'Get accurate information (telescope), always keep a calm protective posture (mask, cloth), ",
+  "そして戦って日常" : "and disinfect (gourd)' in the illustration item. It was And expressed with one young man with the hope of fighting to win everyday life. We hope that it will be a symbol like a cool hero with a historical motif that seems to be Nagasaki, with the hope that it will reach many generations."
+
 }

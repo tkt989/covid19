@@ -228,6 +228,53 @@
         </i18n>
       </p>
     </StaticCard>
+    <StaticCard>
+      <h3>{{ $t('アイキャッチイラスト') }}</h3>
+      <img src="/ogp.png" />
+      <i18n :class="$style.illustrator" path="Illustration by {illustrator} {hp} {twitter} under {ccBy}">
+        <template #illustrator>
+          <span :class="$style.illustratorInfo">
+            <a href="https://pinografi.com" target="'_blank'">MATSUMOTO RYOTA</a>
+          </span>
+        </template>        
+        <template #hp>
+          <a href="https://pinografi.com" target="'_blank'">
+          <img
+            :class="$style.illustratorIcon"
+            src="/flow/house-24px.svg"
+            aria-hidden="true"
+            alt=" "
+          />
+          </a>
+        </template>
+        <template #twitter>
+          <a href="https://twitter.com/pinografico" target="”_blank”" >
+          <img
+            :class="$style.illustratorIcon"
+            src="/twitter.png"
+            aria-hidden="true"
+            alt=" "
+          />
+          </a>
+        </template>
+        <template #ccBy>
+          <span :class="$style.illustratorInfo">
+            <a
+              href="https://creativecommons.org/licenses/by/4.0/deed.ja"
+              target="”_blank”"
+              >{{ $t('CC BY 4.0') }}</a
+            >
+          </span>
+        </template>
+      </i18n>
+      <div class="AboutIllustration">
+        <span class="title"> Illustrator’s Voice</span><br />
+        <span class="voice">
+          {{ $t('目に見えないコロナを相手に') }}<br />
+          {{ $t('そして戦って日常') }}
+        </span>
+      </div>
+    </StaticCard>
   </div>
 </template>
 
@@ -249,3 +296,38 @@ export default Vue.extend({
   }
 })
 </script>
+
+<style module lang="scss">
+.AboutIllustration {
+  .title {
+    display: block;
+    font-weight: bold;
+  }
+
+  .voice {
+    display: block;
+    font-weight: bold;
+  }
+}
+
+.illustratorInfo {
+  margin-left: 5px;
+  display: block;
+}
+
+.illustrator {
+  list-style-type: none;
+  text-align: start;
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+
+  &Icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+}
+</style>
