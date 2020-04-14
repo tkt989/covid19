@@ -182,6 +182,16 @@ export default Vue.extend({
           hid: 'twitter:image',
           name: 'twitter:image',
           content: this.$tc('ogp.og:image')
+        },
+        {
+          hid: 'og:image:width',
+          name: 'og:image:width',
+          content: this.$tc('ogp.og:width')
+        },
+        {
+          hid: 'og:image:height',
+          name: 'og:image:height',
+          content: this.$tc('ogp.og:height')
         }
       ]
     }
