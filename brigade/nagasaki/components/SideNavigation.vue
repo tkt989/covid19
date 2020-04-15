@@ -192,11 +192,6 @@ export default Vue.extend({
           link: 'https://www.pref.nagasaki.jp/koho/governor/kaiken/index.html'
         },
         {
-          title: this.$t('長崎市地域センター窓口混雑情報'),
-          link:
-            'https://www.city.nagasaki.lg.jp/shimin/121000/121100/p034298.html'
-        },
-        {
           title: this.$t('当サイトについて'),
           link: this.localePath('/nagasaki/about')
         }
