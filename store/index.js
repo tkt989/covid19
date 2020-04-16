@@ -20,9 +20,7 @@ export const mutations = {
   },
 
   setBodicData1(state, data) {
-    if (!data) {
-      return
-    }
+    if (!data) return
 
     state.bodik1 = data
     // console.log(data, 'setBodicData1')
@@ -38,9 +36,7 @@ export const mutations = {
   },
 
   setBodicData2(state, data) {
-    if (!data) {
-      return
-    }
+    if (!data) return
 
     // console.log(data, 'setBodicData2')
     state.bodik2 = data
@@ -61,9 +57,7 @@ export const mutations = {
   },
 
   setNagasakiCityNews(state, data) {
-    if (!data) {
-      return
-    }
+    if (!data) return
 
     state.nagasakiCityNews = data.map(item => {
       return {
