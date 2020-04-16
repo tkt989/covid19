@@ -20,6 +20,8 @@ export const mutations = {
   },
 
   setBodicData1(state, data) {
+    if (!data) return
+
     state.bodik1 = data
     // console.log(data, 'setBodicData1')
 
@@ -34,6 +36,8 @@ export const mutations = {
   },
 
   setBodicData2(state, data) {
+    if (!data) return
+
     // console.log(data, 'setBodicData2')
     state.bodik2 = data
     state.lastUpdate2 = data[data.length - 1].公表_年月日 // "2020/4/1"
@@ -53,6 +57,8 @@ export const mutations = {
   },
 
   setNagasakiCityNews(state, data) {
+    if (!data) return
+
     state.nagasakiCityNews = data.map(item => {
       return {
         date: new Date(item.更新日),
