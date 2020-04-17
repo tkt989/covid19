@@ -28,14 +28,15 @@ export default {
     },
 
     inspectionsGraph() {
+      const dumy = [{ 日付: '2020/3/1', 小計: 0 }]
       const bodik = this.$store.state.bodik1
+      if (!bodik || bodik.length === 0) return formatGraph(dumy)
 
       // 検査実施日別状況
       const graph = bodik.map(item => {
-        return { 日付: item.年月日, 小計: Number(item.件数) }
+        return { 日付: item.年月日, 小計: item.件数 ? Number(item.件数) : 0 }
       })
-      const inspectionsGraph = formatGraph(graph)
-      return inspectionsGraph
+      return formatGraph(graph)
     }
   }
 }
