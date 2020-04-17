@@ -17,14 +17,14 @@ export default {
       code: 'ja',
       name: '日本語',
       iso: 'ja-JP',
-      file: 'ja.json',
+      file: '_ja.json',
       description: 'Japanese'
     },
     {
       code: 'en',
       name: 'English',
       iso: 'en-US',
-      file: 'en.json',
+      file: '_en.json',
       description: 'English'
     }
     // {
