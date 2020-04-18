@@ -59,21 +59,15 @@
         </div>
         <div
           :class="[
-            $style.AdvisoryTelephoneArea,
+            $style.AdvisoryLink,
             $style.AdvisoryBlockCentering,
             'mt-1'
           ]"
         >
-          <a :class="$style.AdvisoryTelephone" href="">
-            <img
-              :class="$style.AdvisoryTelephoneIcon"
-              src="/flow/phone-24px.svg"
-              aria-hidden="true"
-              :alt="$t('電話番号')"
-            />
-            情報探し中
-          </a>
-        </div>
+          <nuxt-link :to="localePath('/cards/health-center')">
+            緊急の場合は、各保健所の電話番号におかけください。担当者につながります。
+          </nuxt-link>
+       </div>
         <div v-if="!['ja', 'ja-basic'].includes($i18n.locale)" class="pt-8">
           <span>{{ $t('ひまわり') }}</span>
         </div>
@@ -132,6 +126,7 @@
   &Link {
     line-height: 22px;
     text-align: left;
+    text-decoration: underline;
 
     a {
       color: rgba(0, 0, 0, 0.87);
@@ -140,34 +135,6 @@
       &:hover {
         text-decoration: underline;
       }
-    }
-  }
-
-  &TelephoneArea {
-    display: inline-flex;
-  }
-
-  &Telephone {
-    display: flex;
-    align-items: center;
-    font-size: 27px;
-    font-weight: bold;
-
-    &:link,
-    &:visited,
-    &:hover,
-    &:active,
-    &:focus {
-      color: inherit;
-      text-decoration: none;
-      outline: 1px dotted $gray-3;
-    }
-
-    &Icon {
-      display: inline-block;
-      margin-right: 5px;
-      width: 26px;
-      height: 26px;
     }
   }
 
