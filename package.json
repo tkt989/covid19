@@ -25,7 +25,7 @@
     "generate-locales": "node ./brigade/nagasaki/tools/generate_locales.js",
     "predev": "npm run generate-locales",
     "predev-no-axe": "npm run generate-locales",
-    "prebuild": "npm run generate-locales"
+    "pregenerate": "npm run generate-locales"
   },
   "lint-staged": {
     "*.{js,ts,css,vue}": [
