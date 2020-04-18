@@ -173,7 +173,6 @@
   "東京都主催等 中止又は延期するイベント等": "Cancellation or postponement of events held by the Nagasaki Government (Japanese)",
   "東京都公式ホームページ": "Official website of the Nagasaki Prefecture Government",
   "知事からのメッセージ": "Message from Governor Nakamura on COVID-19",
-  "長崎市地域センター窓口混雑情報": "The congestion situation of community center (Japanese)",
   "多言語対応選択メニュー": "Select language",
   "このサイトの内容物は": " Content on This Site is Licensed Under a",
   "クリエイティブ・コモンズ 表示 4.0 ライセンス": " Creative Commons Attribution 4.0 International License",
@@ -267,7 +266,9 @@
   "※最新の情報はWebページをご覧ください": "* Please check the latest information from the web site.",
   "〇": "✔",
   "ogp": {
-    "og:image": "https://nagasaki.stopcovid19.jp/ogp.png"
+    "og:image": "https://nagasaki.stopcovid19.jp/ogp/ogp.png",
+    "og:width": "1200",
+    "og:height": "630"
   },
   "https://marketingplatform.google.com/about/analytics/terms/jp/": "https://marketingplatform.google.com/about/analytics/terms/us/",
   "https://policies.google.com/privacy?hl=ja": "https://policies.google.com/privacy?hl=en",

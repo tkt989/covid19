@@ -35,11 +35,11 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
-import Data from '@/data/data.json'
+// import Data from '@/data/data.json'
 import SideNavigation from '@/brigade/nagasaki/components/SideNavigation.vue'
 import NoScript from '@/components/NoScript.vue'
 import DevelopmentModeMark from '@/components/DevelopmentModeMark.vue'
-import { convertDateToSimpleFormat } from '@/utils/formatDate'
+// import { convertDateToSimpleFormat } from '@/utils/formatDate'
 
 type LocalData = {
   hasNavigation: boolean
@@ -121,8 +121,8 @@ export default Vue.extend({
           hid: 'description',
           name: 'description',
           content:
-            convertDateToSimpleFormat(Data.lastUpdate) +
-            ' 更新：　' +
+            // convertDateToSimpleFormat(Data.lastUpdate) +
+            // ' 更新：' +
             this.$tc(
               '当サイトは新型コロナウイルス感染症 (COVID-19) に関する最新情報を提供するために、東京都が開設したものです。'
             )
@@ -157,8 +157,8 @@ export default Vue.extend({
           hid: 'og:description',
           property: 'og:description',
           content:
-            convertDateToSimpleFormat(Data.lastUpdate) +
-            ' 更新：　' +
+            // convertDateToSimpleFormat(Data.lastUpdate) +
+            // ' 更新：' +
             this.$tc(
               '当サイトは新型コロナウイルス感染症 (COVID-19) に関する最新情報を提供するために、東京都が開設したものです。'
             )
@@ -181,6 +181,21 @@ export default Vue.extend({
         {
           hid: 'twitter:image',
           name: 'twitter:image',
+          content: this.$tc('ogp.og:image')
+        },
+        {
+          hid: 'og:image:width',
+          name: 'og:image:width',
+          content: this.$tc('ogp.og:width')
+        },
+        {
+          hid: 'og:image:height',
+          name: 'og:image:height',
+          content: this.$tc('ogp.og:height')
+        },
+        {
+          hid: 'og:image:secure_url',
+          property: 'og:image:secure_url',
           content: this.$tc('ogp.og:image')
         }
       ]
