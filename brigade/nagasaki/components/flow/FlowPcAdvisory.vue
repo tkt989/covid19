@@ -58,16 +58,12 @@
           </span>
         </div>
         <div
-          :class="[
-            $style.AdvisoryLink,
-            $style.AdvisoryBlockCentering,
-            'mt-1'
-          ]"
+          :class="[$style.AdvisoryLink, $style.AdvisoryBlockCentering, 'mt-1']"
         >
           <nuxt-link :to="localePath('/cards/health-center')">
             緊急の場合は、各保健所の電話番号におかけください。担当者につながります。
           </nuxt-link>
-       </div>
+        </div>
         <div v-if="!['ja', 'ja-basic'].includes($i18n.locale)" class="pt-8">
           <span>{{ $t('ひまわり') }}</span>
         </div>
