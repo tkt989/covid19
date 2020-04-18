@@ -1,6 +1,11 @@
 {
     "newsItems": [
       {
+        "date": "2020/04/18",
+        "url": "https://www.pref.nagasaki.jp/shared/uploads/2020/04/1587108846.pdf",
+        "text": "「緊急事態宣言を受けた本県の対応について」お知らせします。"
+      },
+      {
         "date": "2020/04/17",
         "url": "https://www.pref.nagasaki.jp/shared/uploads/2020/04/1587127987.pdf",
         "text": "本県17例目の感染者の詳細については、県のホームページをご覧ください。"
@@ -11,19 +16,9 @@
         "text": "県立学校は、4月22日から5月6日まで休校することとします。市町立学校や私立学校でもご検討をお願いします。"
       },
       {
-        "date": "2020/04/16",
-        "url": "https://www.city.sasebo.lg.jp/hokenhukusi/kenkou/documents/houdouhaihusisyou-5reime-1.pdf",
-        "text": "本県16例目（佐世保市）の感染者が確認されました。県民の皆さまには、感染予防の取組をお願いするとともに、感染者、その家族のプライバシーには十分ご配慮をお願いします。"
-      },
-      {
         "date": "2020/04/15",
         "url": "https://www.pref.nagasaki.jp/shared/uploads/2020/04/1586955718.pdf",
         "text": "現時点における本県15例目の感染者の情報は県のホームページをご覧ください。"
-      },
-      {
-        "date": "2020/04/15",
-        "url": "https://twitter.com/ngs_ken_iryou/status/1250389775997005824",
-        "text": "本県15例目（長崎市）の感染者が確認されました。県民の皆さまには、感染予防の取組をお願いするとともに、感染者、その家族のプライバシーには十分ご配慮をお願いします。"
       },
       {
         "date": "2020/04/14",
