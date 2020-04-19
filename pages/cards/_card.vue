@@ -72,9 +72,9 @@ export default {
     MetroCard,
     AgencyCard
   },
-  async fetch({ store }) {
+  async fetch({ store, app: { $axios } }) {
     // ビルド時のデータを取得してJSに埋め込む
-    await store.dispatch('GET_BODIK_AXIOS')
+    await store.dispatch('GET_BODIK_AXIOS', $axios)
   },
   data() {
     let title, updatedAt
