@@ -17,8 +17,8 @@ export const fetchNagasakiCityNews = () =>
   callFetchJsonp(baseUrl, nagasakiCityNewsId)
 
 export const axiosNagasakiPrefectureTestedCases = axios =>
-  axios.get(baseUrl + nagasakiPrefectureTestedCasesId)
+  axios.$get(baseUrl + nagasakiPrefectureTestedCasesId)
 export const axiosNagasakiPrefectureConfirmedCases = axios =>
-  axios.get(baseUrl + nagasakiPrefectureConfirmedCasesId)
+  axios.$get(baseUrl + nagasakiPrefectureConfirmedCasesId)
 export const axiosNagasakiCityNews = axios =>
-  axios.get(baseUrl + nagasakiCityNewsId)
+  axios.$get(baseUrl + nagasakiCityNewsId)

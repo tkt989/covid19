@@ -1,4 +1,4 @@
-import axios from 'axios'
+// import axios from 'axios'
 import { bodikApi } from '../services'
 import { groupBy, reducer } from './util.js'
 
@@ -34,9 +34,8 @@ export const mutations = {
   },
 
   setBodicData2(state, data) {
-    if (!data) return
-
     // console.log(data, 'setBodicData2')
+    if (!data) return
     state.bodik2 = data
     state.lastUpdate2 = data[data.length - 1].公表_年月日 // "2020/4/1"
     state.groups = groupBy(data, r => r.公表_年月日)
@@ -70,28 +69,32 @@ export const mutations = {
 
 export const actions = {
   // NuxtのFetchでビルド時にデータ取得するときはこっちを使う
-  async GET_BODIK_AXIOS({ commit }) {
-    const res = await bodikApi.axiosNagasakiPrefectureTestedCases(axios)
-    // console.log(res, 'res')
-    commit('setBodicData1', res.data.result.records)
+  async GET_BODIK_AXIOS({ commit }, $axios) {
+    try {
+      const res = await bodikApi.axiosNagasakiPrefectureTestedCases($axios)
+      // console.log(res, 'res')
+      commit('setBodicData1', res.result.records)
 
-    const res2 = await bodikApi.axiosNagasakiPrefectureConfirmedCases(axios)
-    commit('setBodicData2', res2.data.result.records)
+      const res2 = await bodikApi.axiosNagasakiPrefectureConfirmedCases($axios)
+      commit('setBodicData2', res2.result.records)
 
-    const newsRes = await bodikApi.axiosNagasakiCityNews(axios)
-    commit('setNagasakiCityNews', newsRes.data.result.records)
+      const newsRes = await bodikApi.axiosNagasakiCityNews($axios)
+      commit('setNagasakiCityNews', newsRes.result.records)
+    } catch (e) {}
   },
 
   // ブラウザから非同期でBODIKからデータ取得するさいにはこちらを使う
   async GET_BODIK_JSONP({ commit }) {
-    const result1 = await bodikApi.fetchNagasakiPrefectureTestedCases()
-    // console.log(result1, 'fetchNagasakiPrefectureTestedCases')
-    commit('setBodicData1', result1.records)
+    try {
+      const result1 = await bodikApi.fetchNagasakiPrefectureTestedCases()
+      // console.log(result1, 'fetchNagasakiPrefectureTestedCases')
+      commit('setBodicData1', result1.records)
 
-    const result2 = await bodikApi.fetchNagasakiPrefectureConfirmedCases()
-    commit('setBodicData2', result2.records)
+      const result2 = await bodikApi.fetchNagasakiPrefectureConfirmedCases()
+      commit('setBodicData2', result2.records)
 
-    const news = await bodikApi.fetchNagasakiCityNews()
-    commit('setNagasakiCityNews', news.records)
+      const news = await bodikApi.fetchNagasakiCityNews()
+      commit('setNagasakiCityNews', news.records)
+    } catch (e) {}
   }
 }
