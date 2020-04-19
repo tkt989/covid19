@@ -9,6 +9,11 @@
     <confirmed-cases-number-card
       v-else-if="this.$route.params.card == 'number-of-confirmed-cases'"
     />
+    <confirmed-cases-by-municipalities-card
+      v-else-if="
+        this.$route.params.card == 'number-of-confirmed-cases-by-municipalities'
+      "
+    />
     <confirmed-cases-attributes-card
       v-else-if="this.$route.params.card == 'attributes-of-confirmed-cases'"
     />
@@ -90,6 +95,10 @@ export default {
       case 'number-of-confirmed-cases':
         title = this.$t('陽性患者数')
         updatedAt = Data.patients.date
+        break
+      case 'number-of-confirmed-cases-by-municipalities':
+        title = this.$t('陽性患者数（区市町村別）')
+        updatedAt = Data.patientData.date
         break
       case 'attributes-of-confirmed-cases':
         title = this.$t('陽性患者の属性')
