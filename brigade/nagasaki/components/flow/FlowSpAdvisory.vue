@@ -10,11 +10,11 @@
       <span>{{ $t('24時間対応') }}</span>
     </p>
     <dl>
-      <div :class="$style.daytime">
+      <div :class="[$style.night]">
         <dt :class="[$style.title, $style.fzMedium]">
           {{ $t('平日（日中）') }}
         </dt>
-        <dd :class="$style.link">
+        <dd :class="[$style.night]">
           <a
             href="https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/kansensho/corona_nagasaki/#madoguchi"
             target="_blank"
@@ -28,48 +28,48 @@
         </dd>
       </div>
       <div>
-        <dt>
-          <ul :class="[$style.night]">
-            <li>
-              <span :class="[$style.fzMedium, $style.break, $style.mb10]">
-                {{ $t('平日（夜間）') }}
-              </span>
-              {{ $t('午後5時から翌朝午前9時') }}
-            </li>
-            <li>
-              <span :class="$style.fzMedium">
-                {{ $t('土日祝 終日') }}
-              </span>
-            </li>
-          </ul>
+        <dt :class="[$style.night]">
+          <span :class="[$style.fzMedium, $style.break, $style.mb10]">
+            {{ $t('平日（夜間）') }}
+          </span>
         </dt>
-        <dd>
-          <div :class="[$style.phone, $style.fzNumeric]">
-            <span :class="$style.icon">
-              <PhoneIcon alt="Phone" />
-            </span>
-            <a href="tel:" />
-          </div>
-          <div
-            v-if="!['ja', 'ja-basic'].includes($i18n.locale)"
-            :class="[$style.phone, $style.fzNumeric]"
-          >
-            <span :class="[$style.fzMedium, $style.break, $style.mb10]">
-              {{ $t('ひまわり') }}
-            </span>
-          </div>
+        <dd :class="[$style.night]">
+          {{ $t('午後5時から翌朝午前9時') }}
         </dd>
+      </div>
+      <div>
+        <dt :class="[$style.night]">
+          <span :class="[$style.fzMedium, $style.break, $style.mb10]">
+            {{ $t('土日祝 終日') }}
+          </span>
+        </dt>
+        <dd :class="[$style.night]">
+          <nuxt-link
+            :to="localePath('/cards/health-center')"
+            :class="$style.link"
+          >
+            {{
+              $t(
+                '緊急の場合は、各保健所の電話番号におかけください。担当者につながります。'
+              )
+            }}
+          </nuxt-link>
+        </dd>
+      </div>
+      <div
+        v-if="!['ja', 'ja-basic'].includes($i18n.locale)"
+        :class="[$style.phone, $style.fzNumeric]"
+      >
+        <span :class="[$style.fzMedium, $style.break, $style.mb10]">
+          {{ $t('ひまわり') }}
+        </span>
       </div>
     </dl>
   </div>
 </template>
 
 <script lang="ts">
-import PhoneIcon from '@/static/flow/responsive/phone.svg'
-
-export default {
-  components: { PhoneIcon }
-}
+export default {}
 </script>
 
 <style module lang="scss">
