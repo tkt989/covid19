@@ -13,7 +13,7 @@
           <img
             class="SideNavigation-HeaderLogo"
             src="/logo.svg"
-            :alt="$t('長崎県')"
+            :alt="$t('東京都')"
           />
           <div class="SideNavigation-HeaderText">
             {{ $t('menu/新型コロナウイルス感染症') }}<br />{{
@@ -316,7 +316,7 @@ export default Vue.extend({
 }
 
 .SideNavigation-HeaderLogo {
-  @include lessThan($small) {
+  @include lessThan($tiny) {
     width: 100px;
   }
 }
