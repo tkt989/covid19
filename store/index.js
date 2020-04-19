@@ -84,18 +84,14 @@ export const actions = {
 
   // ブラウザから非同期でBODIKからデータ取得するさいにはこちらを使う
   async GET_BODIK_JSONP({ commit }) {
-    try {
-      const result1 = await bodikApi.fetchNagasakiPrefectureTestedCases()
-      // console.log(result1, 'fetchNagasakiPrefectureTestedCases')
-      commit('setBodicData1', result1.records)
+    const result1 = await bodikApi.fetchNagasakiPrefectureTestedCases()
+    // console.log(result1, 'fetchNagasakiPrefectureTestedCases')
+    commit('setBodicData1', result1.records)
 
-      const result2 = await bodikApi.fetchNagasakiPrefectureConfirmedCases()
-      commit('setBodicData2', result2.records)
+    const result2 = await bodikApi.fetchNagasakiPrefectureConfirmedCases()
+    commit('setBodicData2', result2.records)
 
-      const news = await bodikApi.fetchNagasakiCityNews()
-      commit('setNagasakiCityNews', news.records)
-    } catch (error) {
-      console.log(error, 'error')
-    }
+    const news = await bodikApi.fetchNagasakiCityNews()
+    commit('setNagasakiCityNews', news.records)
   }
 }
