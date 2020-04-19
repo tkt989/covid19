@@ -43,7 +43,6 @@
 </template>
 
 <script>
-import { bodik } from '../../services'
 import Data from '@/brigade/nagasaki/data/data.json'
 import MetroData from '@/data/metro.json'
 import agencyData from '@/data/agency.json'
@@ -59,9 +58,6 @@ import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDe
 import MetroCard from '@/components/cards/MetroCard.vue'
 import AgencyCard from '@/components/cards/AgencyCard.vue'
 
-const bodicUrl =
-  'https://data.bodik.jp/api/action/datastore_search?resource_id='
-
 export default {
   components: {
     ConfirmedCasesDetailsCard,
@@ -76,22 +72,9 @@ export default {
     MetroCard,
     AgencyCard
   },
-  async fetch({ store, app: { $axios } }) {
-    try {
-      const res = await $axios.get(
-        bodicUrl + '71e83845-2648-4cb3-a69d-9f5f5412feb2'
-      )
-      // console.log(res.data, 'url')
-      store.commit('setBodicData1', res.data.result.records)
-
-      const res2 = await $axios.get(
-        bodicUrl + 'de7ce61e-1849-47a1-b758-bca3f809cdf8'
-      )
-      // console.log(res2, 'de7ce61e')
-      store.commit('setBodicData2', res2.data.result.records)
-    } catch (error) {
-      console.log(error, 'error')
-    }
+  async fetch({ store }) {
+    // ビルド時のデータを取得してJSに埋め込む
+    await store.dispatch('GET_BODIK_AXIOS')
   },
   data() {
     let title, updatedAt
@@ -145,11 +128,8 @@ export default {
     return data
   },
   async mounted() {
-    const result1 = await bodik.fetch1()
-    this.$store.commit('setBodicData1', result1.records)
-
-    const result2 = await bodik.fetch2()
-    this.$store.commit('setBodicData2', result2.records)
+    // 動的に最新情報を取得する
+    await this.$store.dispatch('GET_BODIK_JSONP')
   },
   head() {
     const url = 'https://nagasaki.stopcovid19.jp'
