@@ -44,7 +44,6 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { bodik } from '../services'
 import PageHeader from '@/components/PageHeader.vue'
 import WhatsNew from '@/components/WhatsNew.vue'
 import NagasakiCityNews from '@/brigade/nagasaki/components/NagasakiCityNews.vue'
@@ -60,9 +59,6 @@ import HealthCenterCard from '@/brigade/nagasaki/components/cards/HealthCenterCa
 
 import { convertDatetimeToISO8601Format } from '@/utils/formatDate'
 
-const bodicUrl =
-  'https://data.bodik.jp/api/action/datastore_search?resource_id='
-
 export default Vue.extend({
   components: {
     PageHeader,
@@ -76,25 +72,8 @@ export default Vue.extend({
     HealthCenterCard
   },
   async fetch({ store, app: { $axios } }) {
-    try {
-      const res = await $axios.get(
-        bodicUrl + '71e83845-2648-4cb3-a69d-9f5f5412feb2'
-      )
-      // console.log(res.data, 'url')
-      store.commit('setBodicData1', res.data.result.records)
-
-      const res2 = await $axios.get(
-        bodicUrl + 'de7ce61e-1849-47a1-b758-bca3f809cdf8'
-      )
-      // console.log(res2, 'de7ce61e')
-      store.commit('setBodicData2', res2.data.result.records)
-
-      const newsRes = await $axios.get(bodicUrl + bodik.nagasakiCityNewsId)
-
-      store.commit('setNagasakiCityNews', newsRes.data.result.records)
-    } catch (error) {
-      console.log(error, 'error')
-    }
+    // ビルド時のデータを取得してJSに埋め込む
+    await store.dispatch('GET_BODIK_AXIOS', $axios)
   },
   data() {
     const lastUpdate = this.$store.state.lastUpdate
@@ -116,16 +95,9 @@ export default Vue.extend({
     }
   },
   async mounted() {
-    const result1 = await bodik.fetch1()
-    this.$store.commit('setBodicData1', result1.records)
-
-    const result2 = await bodik.fetch2()
-    this.$store.commit('setBodicData2', result2.records)
-
-    const news = await bodik.fetchNagasakiCityNews()
-    this.$store.commit('setNagasakiCityNews', news.records)
+    // 動的に最新情報を取得する
+    await this.$store.dispatch('GET_BODIK_JSONP')
   },
-  methods: {},
   head(): MetaInfo {
     return {
       title: this.$t('県内の最新感染動向') as string
