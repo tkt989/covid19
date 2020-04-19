@@ -1,4 +1,6 @@
-// import dayjs from 'dayjs'
+import axios from 'axios'
+import { bodikApi } from '../services'
+import { groupBy, reducer } from './util.js'
 
 export const state = () => ({
   counter: 0,
@@ -15,15 +17,11 @@ export const state = () => ({
 })
 
 export const mutations = {
-  increment(state) {
-    state.counter++
-  },
-
   setBodicData1(state, data) {
+    // console.log(data, 'setBodicData1')
     if (!data) return
 
     state.bodik1 = data
-    // console.log(data, 'setBodicData1')
 
     state.map1 = data.map(x => Number(x.件数))
     state.kensaDates = data.map(x => x.年月日)
@@ -71,19 +69,33 @@ export const mutations = {
 }
 
 export const actions = {
-  async GET_BODIK1({ commit, app: { $axios } }) {
-    const { data } = await $axios.get(
-      'https://data.bodik.jp/api/action/datastore_search?resource_id=71e83845-2648-4cb3-a69d-9f5f5412feb2'
-    )
-    commit('setBodicData1', data)
+  // NuxtのFetchでビルド時にデータ取得するときはこっちを使う
+  async GET_BODIK_AXIOS({ commit }) {
+    const res = await bodikApi.axiosNagasakiPrefectureTestedCases(axios)
+    // console.log(res, 'res')
+    commit('setBodicData1', res.data.result.records)
+
+    const res2 = await bodikApi.axiosNagasakiPrefectureConfirmedCases(axios)
+    commit('setBodicData2', res2.data.result.records)
+
+    const newsRes = await bodikApi.axiosNagasakiCityNews(axios)
+    commit('setNagasakiCityNews', newsRes.data.result.records)
+  },
+
+  // ブラウザから非同期でBODIKからデータ取得するさいにはこちらを使う
+  async GET_BODIK_JSONP({ commit }) {
+    try {
+      const result1 = await bodikApi.fetchNagasakiPrefectureTestedCases()
+      // console.log(result1, 'fetchNagasakiPrefectureTestedCases')
+      commit('setBodicData1', result1.records)
+
+      const result2 = await bodikApi.fetchNagasakiPrefectureConfirmedCases()
+      commit('setBodicData2', result2.records)
+
+      const news = await bodikApi.fetchNagasakiCityNews()
+      commit('setNagasakiCityNews', news.records)
+    } catch (error) {
+      console.log(error, 'error')
+    }
   }
 }
-
-const groupBy = (array, getKey) =>
-  array.reduce((obj, cur, idx, src) => {
-    const key = getKey(cur, idx, src)
-    ;(obj[key] || (obj[key] = [])).push(cur)
-    return obj
-  }, {})
-
-const reducer = (accumulator, currentValue) => accumulator + currentValue
