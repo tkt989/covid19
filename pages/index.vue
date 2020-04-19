@@ -1,9 +1,7 @@
 <template>
   <div class="MainPage">
     <div class="Header mb-3">
-      <page-header :icon="headerItem.icon">
-        {{ headerItem.title }}
-      </page-header>
+      <page-header :icon="headerItem.icon">{{ headerItem.title }}</page-header>
       <div class="UpdatedAt">
         <span>{{ $t('最終更新') }} </span>
         <time :datetime="updatedAt">{{ lastUpdate }}</time>
@@ -16,7 +14,7 @@
         v-show="!['ja', 'ja-basic'].includes($i18n.locale)"
         class="Annotation"
       >
-        <span>{{ $t('注釈') }} </span>
+        <span>{{ $t('注釈') }}</span>
       </div>
     </div>
 
@@ -28,12 +26,13 @@
       :text="$t('自分や家族の症状に不安や心配があればまずは電話相談をどうぞ')"
       :btn-text="$t('相談の手順を見る')"
     />
-    <v-row class="DataBlock">
+    <card-row class="DataBlock">
+      <!-- 検査陽性者の状況 -->
       <confirmed-cases-details-card />
       <confirmed-cases-number-card />
       <confirmed-cases-attributes-card />
       <tested-number-card />
-    </v-row>
+    </card-row>
     <v-row>
       <health-center-card />
     </v-row>
@@ -48,6 +47,7 @@ import PageHeader from '@/components/PageHeader.vue'
 import WhatsNew from '@/components/WhatsNew.vue'
 import NagasakiCityNews from '@/brigade/nagasaki/components/NagasakiCityNews.vue'
 import StaticInfo from '@/components/StaticInfo.vue'
+import CardRow from '@/components/cards/CardRow.vue'
 import Data from '@/data/data.json'
 import News from '@/brigade/nagasaki/data/news.json'
 
@@ -65,6 +65,7 @@ export default Vue.extend({
     WhatsNew,
     NagasakiCityNews,
     StaticInfo,
+    CardRow,
     ConfirmedCasesDetailsCard,
     ConfirmedCasesNumberCard,
     ConfirmedCasesAttributesCard,

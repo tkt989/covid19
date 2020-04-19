@@ -89,10 +89,10 @@ Cuando se actualiza la rama `master`, los archivos HTML se construirán automát
 y luego el sitio de producción (https://nagasaki.stopcovid19.jp/) también se actualizará.
 
 Cuando se actualiza la rama `staging`, los archivos HTML se construirán automáticamente en la rama `gh-pages`,
-  y luego el sitio de preparación (https://stg-covid19-tokyo.netlify.com/) también se actualizará.
+  y luego el sitio de preparación (https://stg-covid19-tokyo.netlify.app/) también se actualizará.
 
 Cuando se actualiza la rama `development`, los archivos HTML se construirán automáticamente en la rama` dev-pages`,
-y luego el sitio de desarrollo (https://dev-covid19-tokyo.netlify.com/) también se actualizará.
+y luego el sitio de desarrollo (https://dev-covid19-tokyo.netlify.app/) también se actualizará.
 
 [PLEASE TRANSLATE ME]
 
@@ -107,16 +107,26 @@ Hotfix commit: hotfix/#{ISSUE_ID}-{branch_title_name}
 #### Basic branch
 | Purpose | Branch | Confirmation URL | Remarks |
 | ---- | -------- | ---- | ---- |
-| Development | development | https://dev-covid19-tokyo.netlify.com/ | base branch. Basically send a Pull Request here |
+| Development | development | https://dev-covid19-tokyo.netlify.app/ | base branch. Basically send a Pull Request here |
 | Hotfix branch | dev-hotfix | None | Fixes that should be applied to production in haste. Use this if requested by the administrator |
+<<<<<<< HEAD
 | Staging | staging | https://stg-covid19-tokyo.netlify.com/ | For final confirmation before production. Non-admin pull requests are prohibited |
 Production | master | https://nagasaki.stopcovid19.jp/ | Pull Requests other than Administrators are prohibited |
+=======
+| Staging | staging | https://stg-covid19-tokyo.netlify.app/ | For final confirmation before production. Non-admin pull requests are prohibited |
+Production | master | https://stopcovid19.metro.tokyo.lg.jp/ | Pull Requests other than Administrators are prohibited |
+>>>>>>> upstream/development
 
 #### Branch used by the system
 | Purpose | Branch | Confirmation URL | Remarks |
 | ---- | -------- | ---- | ---- |
+<<<<<<< HEAD
 | Production site HTML | production | https://nagasaki.stopcovid19.jp/ | Location where statically built HTML is located |
 | Staging site HTML | gh-pages | https://stg-covid19-tokyo.netlify.com/ | Where to find statically built HTML |
+=======
+| Production site HTML | production | https://stopcovid19.metro.tokyo.lg.jp/ | Location where statically built HTML is located |
+| Staging site HTML | gh-pages | https://stg-covid19-tokyo.netlify.app/ | Where to find statically built HTML |
+>>>>>>> upstream/development
 | For OGP working directory | deploy / new_ogp | None | For updating OGP |
 
 [/PLEASE TRANSLATE ME]

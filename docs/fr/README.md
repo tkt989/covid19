@@ -94,10 +94,10 @@ Quand la branche `master` est mise-à-jour, les fichiers HTML sont automatiqueme
 et le site production (https://nagasaki.stopcovid19.jp/) est aussi mis-à-jour.
 
 Quand la branche `staging` est mise-à-jour, les fichiers HTML sont automatiquement construits vers la branche `gh-pages`,
-et le site staging (https://stg-covid19-tokyo.netlify.com/) est aussi mis-à-jour.
+et le site staging (https://stg-covid19-tokyo.netlify.app/) est aussi mis-à-jour.
 
 Quand la branche `development` est mise-à-jour, les fichiers HTML sont automatiquement construits vers la branche `dev-page`,
-et le site development (https://dev-covid19-tokyo.netlify.com/) est aussi mis-à-jour.
+et le site development (https://dev-covid19-tokyo.netlify.app/) est aussi mis-à-jour.
 
 ### Regles sur les branches
 
@@ -111,15 +111,25 @@ Hotfix: hotfix/#{ISSUE_ID}-{nom_de_la_branche}
 
 | But | Branche | URL | Notes |
 | ---- | -------- | ---- | ---- |
-| Development | development | https://dev-covid19-tokyo.netlify.com/ | Branche de base. Faites votre Pull Request ici. |
+| Development | development | https://dev-covid19-tokyo.netlify.app/ | Branche de base. Faites votre Pull Request ici. |
 | Hotfix branch | dev-hotfix | None | Fixs qui devraient etre appliques a l'environnement de production rapidement. Utilisez cette branche si demande par l'administrateur. |
+<<<<<<< HEAD
 | Staging | staging | https://stg-covid19-tokyo.netlify.com/ | Pour confirmation avant production. Pull request d'utilisateurs non-admin sont defendues. |
 Production | master | https://nagasaki.stopcovid19.jp/ | Pull request d'utilisateurs non-admin sont defendues. |
+=======
+| Staging | staging | https://stg-covid19-tokyo.netlify.app/ | Pour confirmation avant production. Pull request d'utilisateurs non-admin sont defendues. |
+Production | master | https://stopcovid19.metro.tokyo.lg.jp/ | Pull request d'utilisateurs non-admin sont defendues. |
+>>>>>>> upstream/development
 
 #### Branches utilisees par le systeme
 
 | But | Branche | URL | Notes |
 | ---- | -------- | ---- | ---- |
+<<<<<<< HEAD
 | Production site HTML | production | https://nagasaki.stopcovid19.jp/ | Place ou les pages HTML statiques sont stockees. |
 | Staging site HTML | gh-pages | https://stg-covid19-tokyo.netlify.com/ | Ou trouver l'HTML statiquement construit. |
+=======
+| Production site HTML | production | https://stopcovid19.metro.tokyo.lg.jp/ | Place ou les pages HTML statiques sont stockees. |
+| Staging site HTML | gh-pages | https://stg-covid19-tokyo.netlify.app/ | Ou trouver l'HTML statiquement construit. |
+>>>>>>> upstream/development
 | Dossier de travail OGP | deploy / new_ogp | None | Pour mettre a jour OGP |
