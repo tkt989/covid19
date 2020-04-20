@@ -13,6 +13,7 @@ number-of-reports-to-covid19-telephone-advisory-center
 number-of-reports-to-covid19-consultation-desk
 predicted-number-of-toei-subway-passengers
 agency
+health-center
 EOT
 )
 
