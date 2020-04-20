@@ -1,6 +1,11 @@
 {
     "newsItems": [
       {
+        "date": "2020/04/20",
+        "url": "https://www.pref.nagasaki.jp/shared/uploads/2020/04/1587387809.pdf",
+        "text": "本県（長崎市）に停泊中の外国船籍の船舶において、新型コロナウイルス感染症の感染者が発生いたしました。"
+      },
+      {
         "date": "2020/04/18",
         "url": "https://www.pref.nagasaki.jp/shared/uploads/2020/04/1587108846.pdf",
         "text": "「緊急事態宣言を受けた本県の対応について」お知らせします。"
