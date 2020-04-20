@@ -30,7 +30,7 @@
         <span :class="$style.icon">
           <PhoneIcon alt="Phone" />
         </span>
-        <a href="tel:0570550571">0570-550571</a>
+        <a href="tel:0120-565653">0120-565653</a>
       </p>
     </div>
 
