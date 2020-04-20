@@ -44,6 +44,10 @@
       "
     />
     <agency-card v-else-if="this.$route.params.card == 'agency'" />
+
+    <health-center-card
+      v-else-if="this.$route.params.card == 'health-center'"
+    />
   </div>
 </template>
 
@@ -56,12 +60,12 @@ import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vu
 import ConfirmedCasesNumberCard from '@/brigade/nagasaki/components/cards/ConfirmedCasesNumberCard.vue'
 import ConfirmedCasesAttributesCard from '@/brigade/nagasaki/components/cards/ConfirmedCasesAttributesCard.vue'
 import TestedNumberCard from '@/brigade/nagasaki/components/cards/TestedNumberCard.vue'
-import HealthCenterCard from '@/brigade/nagasaki/components/cards/HealthCenterCard'
 import InspectionPersonsNumberCard from '@/components/cards/InspectionPersonsNumberCard.vue'
 import TelephoneAdvisoryReportsNumberCard from '@/components/cards/TelephoneAdvisoryReportsNumberCard.vue'
 import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDeskReportsNumberCard.vue'
 import MetroCard from '@/components/cards/MetroCard.vue'
 import AgencyCard from '@/components/cards/AgencyCard.vue'
+import HealthCenterCard from '@/brigade/nagasaki/components/cards/HealthCenterCard.vue'
 
 export default {
   components: {
@@ -70,12 +74,12 @@ export default {
     ConfirmedCasesNumberCard,
     ConfirmedCasesAttributesCard,
     TestedNumberCard,
-    HealthCenterCard,
     InspectionPersonsNumberCard,
     TelephoneAdvisoryReportsNumberCard,
     ConsultationDeskReportsNumberCard,
     MetroCard,
-    AgencyCard
+    AgencyCard,
+    HealthCenterCard
   },
   async fetch({ store, app: { $axios } }) {
     // ビルド時のデータを取得してJSに埋め込む
