@@ -58,7 +58,7 @@ export default {
   //   return this.al()
   // },
   computed: {
-    lastUpdate() {
+    updatedAt() {
       return this.$store.state.lastUpdate
     },
 

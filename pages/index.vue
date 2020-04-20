@@ -77,11 +77,8 @@ export default Vue.extend({
     await store.dispatch('GET_BODIK_AXIOS', $axios)
   },
   data() {
-    const lastUpdate = this.$store.state.lastUpdate
-
     const data = {
       Data,
-      lastUpdate,
       headerItem: {
         icon: 'mdi-chart-timeline-variant',
         title: this.$t('県内の最新感染動向')
@@ -91,6 +88,9 @@ export default Vue.extend({
     return data
   },
   computed: {
+    lastUpdate() {
+      return this.$store.state.lastUpdate
+    },
     updatedAt() {
       return convertDatetimeToISO8601Format(this.$data.Data.lastUpdate)
     }
