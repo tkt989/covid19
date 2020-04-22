@@ -28,8 +28,10 @@ export default {
   computed: {
     data() {
       const releaseDate = this.$store.state.lastUpdate
-      const attributes = this.$store.state.attributes.map(x => x)
-      // console.log(attributes, 'attributes')
+      const attributes = this.$store.state.attributes
+        .map(x => x)
+        .filter(date => date.クルーズ船 !== '1')
+      console.log(attributes, 'attributes')
 
       // 感染者数
       const patientsTable = formatTable(attributes)

@@ -48,7 +48,8 @@ export const mutations = {
         年代: item.年代,
         性別: item.性別,
         退院: item.退院済フラグ === '1' ? '○' : null,
-        date: item.公表_年月日
+        date: item.公表_年月日,
+        クルーズ船: item.クルーズ船
       }
     })
   },
