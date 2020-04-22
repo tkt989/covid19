@@ -1,26 +1,40 @@
 <template>
   <v-col cols="12" md="6" class="DataCard">
-    <time-bar-chart
+    <time-stacked-bar-chart
       :title="$t('検査実施件数')"
       :title-id="'number-of-tested'"
       :chart-id="'time-stacked-bar-chart-inspections'"
       :chart-data="inspectionsGraph"
       :date="lastUpdate"
+      :items="inspectionsItems"
+      :labels="inspectionsLabels"
       :unit="$t('件.tested')"
-      :url="
-        'https://data.bodik.jp/dataset/420000_covidexam/resource/71e83845-2648-4cb3-a69d-9f5f5412feb2'
-      "
-    />
+      :data-labels="inspectionsDataLabels"
+    >
+      <!-- 件.tested = 検査数 -->
+      <template v-if="$i18n.locale !== 'ja-basic'" v-slot:additionalNotes>
+        <ol :class="$style.GraphDesc">
+          <li>{{ $t('※1: 疑い例・接触者調査') }}</li>
+          <li>{{ $t('※2: クルーズ船') }}</li>
+        </ol>
+      </template>
+    </time-stacked-bar-chart>
   </v-col>
 </template>
 
 <script>
-import formatGraph from '@/utils/formatGraph'
-import TimeBarChart from '@/components/TimeBarChart'
+import dayjs from 'dayjs'
+import TimeStackedBarChart from '@/components/TimeStackedBarChart.vue'
 
 export default {
   components: {
-    TimeBarChart
+    TimeStackedBarChart
+  },
+  data() {
+    return {
+      inspectionsItems: [this.$t('県内発生（※1）'), this.$t('その他（※2）')],
+      inspectionsDataLabels: [this.$t('県内発生'), this.$t('その他.graph')]
+    }
   },
   computed: {
     lastUpdate() {
@@ -28,16 +42,36 @@ export default {
     },
 
     inspectionsGraph() {
-      const dumy = [{ 日付: '2020/3/1', 小計: 0 }]
+      const dummy = [[0], [0]]
       const bodik = this.$store.state.bodik1
-      if (!bodik || bodik.length === 0) return formatGraph(dumy)
+      if (!bodik || bodik.length === 0) return dummy
 
-      // 検査実施日別状況
-      const graph = bodik.map(item => {
-        return { 日付: item.年月日, 小計: item.件数 ? Number(item.件数) : 0 }
+      const items1 = bodik.map(item => {
+        return item.件数 ? Number(item.件数) : 0
       })
-      return formatGraph(graph)
+      const items2 = bodik.map(item => {
+        return item.件数_その他 ? Number(item.件数_その他) : 0
+      })
+      return [items1, items2]
+    },
+
+    inspectionsLabels() {
+      const bodik = this.$store.state.bodik1
+      const ret = bodik.map(item => dayjs(item.年月日).format('M-DD'))
+      return ret
     }
   }
 }
 </script>
+
+<style module lang="scss">
+.Graph {
+  &Desc {
+    margin: 0;
+    margin-top: 1rem;
+    padding-left: 0 !important;
+    font-size: 12px;
+    list-style: none;
+  }
+}
+</style>
