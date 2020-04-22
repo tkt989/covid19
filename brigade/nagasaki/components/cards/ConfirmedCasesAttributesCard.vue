@@ -28,10 +28,18 @@ export default {
   computed: {
     data() {
       const releaseDate = this.$store.state.lastUpdate
-      const attributes = this.$store.state.attributes
-        .map(x => x)
-        .filter(date => date.クルーズ船 !== '1')
-      console.log(attributes, 'attributes')
+      const attributes = this.$store.state.patientsNotCruise.map(item => {
+        return {
+          リリース日: item.公表_年月日,
+          居住地: item.居住地,
+          年代: item.年代,
+          性別: item.性別,
+          退院: item.退院済フラグ === '1' ? '○' : null,
+          date: item.公表_年月日
+        }
+      })
+
+      // console.log(attributes, 'attributes')
 
       // 感染者数
       const patientsTable = formatTable(attributes)

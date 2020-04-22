@@ -64,14 +64,16 @@ export default {
 
     confirmedCases() {
       // 検査陽性者の状況
-      const bodik2 = this.$store.state.bodik2
+      const patientsNotCruise = this.$store.state.patientsNotCruise
       const allCount = this.$store.state.allCount
 
-      const number = bodik2.length
-      const taiin = this.$store.state.bodik2.filter(d => d.退院済フラグ === '1')
-        .length
-      const dead = this.$store.state.bodik2.filter(d => d.死亡フラグ === '1')
-        .length
+      const number = patientsNotCruise.length
+      const taiin = this.$store.state.patientsNotCruise.filter(
+        d => d.退院済フラグ === '1'
+      ).length
+      const dead = this.$store.state.patientsNotCruise.filter(
+        d => d.死亡フラグ === '1'
+      ).length
       // console.log(taiin, 'taiin')
 
       // 検査実施 人数

@@ -5,14 +5,12 @@ import { groupBy, reducer } from './util.js'
 export const state = () => ({
   counter: 0,
   allCount: 0,
-  bodik1: [],
-  bodik2: [],
-  map1: [],
+  testedNumber: [],
+  patients: [],
   kensaDates: [],
   groups: [],
   lastUpdate: null,
   lastUpdate2: null,
-  attributes: [],
   nagasakiCityNews: []
 })
 
@@ -21,37 +19,25 @@ export const mutations = {
     // console.log(data, 'setBodicData1')
     if (!data) return
 
-    state.bodik1 = data
-
-    state.map1 = data.map(x => Number(x.件数))
+    state.testedNumber = data
     state.kensaDates = data.map(x => x.年月日)
-    // console.log(state.map1, 'state.map1')
-    // console.log(state.map2, 'state.map2')
 
     // 検査件数の全数を取得
-    state.allCount = state.map1.reduce(reducer)
+    state.allCount = data.map(x => Number(x.件数)).reduce(reducer)
     state.lastUpdate = data[data.length - 1].年月日 // "2020/4/1"
   },
 
   setBodicData2(state, data) {
     // console.log(data, 'setBodicData2')
     if (!data) return
-    state.bodik2 = data
+    const notCruise = data.map(x => x).filter(date => date.クルーズ船 !== '1')
+    state.patients = data
+    state.patientsNotCruise = notCruise
+
     state.lastUpdate2 = data[data.length - 1].公表_年月日 // "2020/4/1"
     state.groups = groupBy(data, r => r.公表_年月日)
+    state.groupsNotCruise = groupBy(notCruise, r => r.公表_年月日)
     // console.log(state.groups, 'groups')
-
-    state.attributes = data.map(item => {
-      return {
-        リリース日: item.公表_年月日,
-        居住地: item.居住地,
-        年代: item.年代,
-        性別: item.性別,
-        退院: item.退院済フラグ === '1' ? '○' : null,
-        date: item.公表_年月日,
-        クルーズ船: item.クルーズ船
-      }
-    })
   },
 
   setNagasakiCityNews(state, data) {
