@@ -18,6 +18,7 @@ export const mutations = {
   setBodicData1(state, data) {
     // console.log(data, 'setBodicData1')
     if (!data) return
+    if (data.length === 0) return
 
     state.testedNumber = data
     state.kensaDates = data.map(x => x.年月日)
@@ -30,6 +31,7 @@ export const mutations = {
   setBodicData2(state, data) {
     // console.log(data, 'setBodicData2')
     if (!data) return
+    if (data.length === 0) return
     const notCruise = data.map(x => x).filter(date => date.クルーズ船 !== '1')
     state.patients = data
     state.patientsNotCruise = notCruise
@@ -60,13 +62,14 @@ export const actions = {
     try {
       const res = await bodikApi.axiosNagasakiPrefectureTestedCases($axios)
       // console.log(res, 'res')
-      commit('setBodicData1', res.result.records)
+      if (res.result.records) commit('setBodicData1', res.result.records)
 
       const res2 = await bodikApi.axiosNagasakiPrefectureConfirmedCases($axios)
-      commit('setBodicData2', res2.result.records)
+      if (res.result.records) commit('setBodicData2', res2.result.records)
 
       const newsRes = await bodikApi.axiosNagasakiCityNews($axios)
-      commit('setNagasakiCityNews', newsRes.result.records)
+      if (res.result.records)
+        commit('setNagasakiCityNews', newsRes.result.records)
     } catch (e) {}
   },
 
