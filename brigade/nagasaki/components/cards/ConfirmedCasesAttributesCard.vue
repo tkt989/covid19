@@ -30,7 +30,7 @@ export default {
     data() {
       const releaseDate = this.$store.state.lastUpdate
       const patientsNotCruise = this.$store.state.patientsNotCruise
-      if (!patientsNotCruise) return null
+      if (!patientsNotCruise) return {}
       const attributes = patientsNotCruise.map(item => {
         return {
           リリース日: item.公表_年月日,
