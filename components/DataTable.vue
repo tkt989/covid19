@@ -9,7 +9,7 @@
       :items="chartData.datasets"
       :items-per-page="-1"
       :hide-default-footer="true"
-      :height="240"
+      :height="height"
       :fixed-header="true"
       :mobile-breakpoint="0"
       :custom-sort="customSort"
@@ -124,6 +124,10 @@ export default Vue.extend({
   components: { DataView, DataViewBasicInfoPanel, OpenDataLink },
   props: {
     title: {
+      type: String,
+      default: ''
+    },
+    height: {
       type: String,
       default: ''
     },

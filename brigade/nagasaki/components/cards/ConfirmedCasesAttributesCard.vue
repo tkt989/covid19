@@ -8,6 +8,7 @@
         :chart-option="{}"
         :date="data.releaseDate"
         :info="data.sumInfoOfPatients"
+        :height="390"
         :url="
           'https://data.bodik.jp/dataset/420000_covidpatients/resource/de7ce61e-1849-47a1-b758-bca3f809cdf8'
         "
