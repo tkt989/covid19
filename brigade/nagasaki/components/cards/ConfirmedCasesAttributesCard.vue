@@ -29,7 +29,9 @@ export default {
   computed: {
     data() {
       const releaseDate = this.$store.state.lastUpdate
-      const attributes = this.$store.state.patientsNotCruise.map(item => {
+      const patientsNotCruise = this.$store.state.patientsNotCruise
+      if (!patientsNotCruise) return null
+      const attributes = patientsNotCruise.map(item => {
         return {
           リリース日: item.公表_年月日,
           居住地: item.居住地,
