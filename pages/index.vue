@@ -58,6 +58,7 @@ import TestedNumberCard from '@/brigade/nagasaki/components/cards/TestedNumberCa
 import HealthCenterCard from '@/brigade/nagasaki/components/cards/HealthCenterCard.vue'
 
 import { convertDatetimeToISO8601Format } from '@/utils/formatDate'
+const sleep = (msec: any) => new Promise(resolve => setTimeout(resolve, msec))
 
 export default Vue.extend({
   components: {
@@ -74,6 +75,7 @@ export default Vue.extend({
   },
   async fetch({ store, app: { $axios } }) {
     // ビルド時のデータを取得してJSに埋め込む
+    // if (process.server) await store.dispatch('GET_BODIK_AXIOS', $axios)
     await store.dispatch('GET_BODIK_AXIOS', $axios)
   },
   data() {
@@ -97,6 +99,7 @@ export default Vue.extend({
   },
   async mounted() {
     // 動的に最新情報を取得する
+    await sleep(1000)
     await this.$store.dispatch('GET_BODIK_JSONP')
   },
   head(): MetaInfo {

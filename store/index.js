@@ -5,43 +5,45 @@ import { groupBy, reducer } from './util.js'
 export const state = () => ({
   counter: 0,
   allCount: 0,
-  bodik1: [],
-  bodik2: [],
-  map1: [],
+  testedNumber: [],
+  patients: [],
   kensaDates: [],
   groups: [],
   lastUpdate: null,
   lastUpdate2: null,
-  attributes: [],
-  nagasakiCityNews: []
+  nagasakiCityNews: [],
+  attributes: []
 })
 
 export const mutations = {
   setBodicData1(state, data) {
     // console.log(data, 'setBodicData1')
     if (!data) return
+    if (data.length === 0) return
 
-    state.bodik1 = data
-
-    state.map1 = data.map(x => Number(x.件数))
+    state.testedNumber = data
     state.kensaDates = data.map(x => x.年月日)
-    // console.log(state.map1, 'state.map1')
-    // console.log(state.map2, 'state.map2')
 
     // 検査件数の全数を取得
-    state.allCount = state.map1.reduce(reducer)
+    state.allCount = data.map(x => Number(x.件数)).reduce(reducer)
     state.lastUpdate = data[data.length - 1].年月日 // "2020/4/1"
   },
 
   setBodicData2(state, data) {
     // console.log(data, 'setBodicData2')
     if (!data) return
-    state.bodik2 = data
+    if (data.length === 0) return
+    const notCruise = data.map(x => x).filter(date => date.クルーズ船 !== '1')
+    console.log(notCruise, 'notCruise')
+    state.patients = data
+    state.patientsNotCruise = notCruise
+
     state.lastUpdate2 = data[data.length - 1].公表_年月日 // "2020/4/1"
     state.groups = groupBy(data, r => r.公表_年月日)
+    state.groupsNotCruise = groupBy(notCruise, r => r.公表_年月日)
     // console.log(state.groups, 'groups')
 
-    state.attributes = data.map(item => {
+    state.attributes = notCruise.map(item => {
       return {
         リリース日: item.公表_年月日,
         居住地: item.居住地,
@@ -73,13 +75,15 @@ export const actions = {
     try {
       const res = await bodikApi.axiosNagasakiPrefectureTestedCases($axios)
       // console.log(res, 'res')
-      commit('setBodicData1', res.result.records)
+      if (res.result.records) commit('setBodicData1', res.result.records)
 
       const res2 = await bodikApi.axiosNagasakiPrefectureConfirmedCases($axios)
-      commit('setBodicData2', res2.result.records)
+      console.log(res2, 'res')
+      if (res2.result.records) commit('setBodicData2', res2.result.records)
 
       const newsRes = await bodikApi.axiosNagasakiCityNews($axios)
-      commit('setNagasakiCityNews', newsRes.result.records)
+      if (res.result.records)
+        commit('setNagasakiCityNews', newsRes.result.records)
     } catch (e) {}
   },
 

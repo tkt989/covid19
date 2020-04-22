@@ -8,6 +8,7 @@
         :chart-option="{}"
         :date="data.releaseDate"
         :info="data.sumInfoOfPatients"
+        :height="390"
         :url="
           'https://data.bodik.jp/dataset/420000_covidpatients/resource/de7ce61e-1849-47a1-b758-bca3f809cdf8'
         "
@@ -18,6 +19,7 @@
   </v-col>
 </template>
 <script>
+import Data from '@/brigade/nagasaki/data/data.json'
 import formatTable from '@/utils/formatTable'
 import DataTable from '@/components/DataTable.vue'
 
@@ -28,7 +30,17 @@ export default {
   computed: {
     data() {
       const releaseDate = this.$store.state.lastUpdate
-      const attributes = this.$store.state.attributes.map(x => x)
+      const attributes = this.$store.state.attributes
+
+      // 初期値を作成
+      if (!attributes)
+        return {
+          attributes: {},
+          patientsTable: formatTable(Data.patients.data),
+          sumInfoOfPatients: {},
+          releaseDate: ''
+        }
+
       // console.log(attributes, 'attributes')
 
       // 感染者数
