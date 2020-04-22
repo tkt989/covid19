@@ -43,7 +43,7 @@ export default {
 
     inspectionsGraph() {
       const dummy = [[0], [0]]
-      const bodik = this.$store.state.bodik1
+      const bodik = this.$store.state.testedNumber
       if (!bodik || bodik.length === 0) return dummy
 
       const items1 = bodik.map(item => {
@@ -56,7 +56,7 @@ export default {
     },
 
     inspectionsLabels() {
-      const bodik = this.$store.state.bodik1
+      const bodik = this.$store.state.testedNumber
       const ret = bodik.map(item => dayjs(item.年月日).format('M-DD'))
       return ret
     }
