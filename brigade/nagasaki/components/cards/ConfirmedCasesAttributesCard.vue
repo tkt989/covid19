@@ -19,6 +19,7 @@
   </v-col>
 </template>
 <script>
+import Data from '@/brigade/nagasaki/data/data.json'
 import formatTable from '@/utils/formatTable'
 import DataTable from '@/components/DataTable.vue'
 
@@ -30,7 +31,16 @@ export default {
     data() {
       const releaseDate = this.$store.state.lastUpdate
       const patientsNotCruise = this.$store.state.patientsNotCruise
-      if (!patientsNotCruise) return {}
+
+      // 初期値を作成
+      if (!patientsNotCruise)
+        return {
+          attributes: {},
+          patientsTable: formatTable(Data.patients.data),
+          sumInfoOfPatients: {},
+          releaseDate: ''
+        }
+
       const attributes = patientsNotCruise.map(item => {
         return {
           リリース日: item.公表_年月日,

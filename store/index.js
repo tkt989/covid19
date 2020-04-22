@@ -33,6 +33,7 @@ export const mutations = {
     if (!data) return
     if (data.length === 0) return
     const notCruise = data.map(x => x).filter(date => date.クルーズ船 !== '1')
+    console.log(notCruise, 'notCruise')
     state.patients = data
     state.patientsNotCruise = notCruise
 
@@ -65,7 +66,8 @@ export const actions = {
       if (res.result.records) commit('setBodicData1', res.result.records)
 
       const res2 = await bodikApi.axiosNagasakiPrefectureConfirmedCases($axios)
-      if (res.result.records) commit('setBodicData2', res2.result.records)
+      console.log(res2, 'res')
+      if (res2.result.records) commit('setBodicData2', res2.result.records)
 
       const newsRes = await bodikApi.axiosNagasakiCityNews($axios)
       if (res.result.records)

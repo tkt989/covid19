@@ -4,7 +4,7 @@
       :title="$t('陽性患者数')"
       :title-id="'number-of-confirmed-cases'"
       :chart-id="'time-bar-chart-patients'"
-      :chart-data="data.patientsGraph"
+      :chart-data="patientsGraph"
       :date="lastUpdate"
       :unit="$t('人')"
       :url="
@@ -39,18 +39,23 @@ export default {
     lastUpdate() {
       return this.$store.state.lastUpdate
     },
-    data() {
-      const lastUpdate = this.$store.state.lastUpdate2
+    patientsGraph() {
       const groups = this.$store.state.groupsNotCruise
-      if (!groups) return {}
-
+      const kensaDates = this.$store.state.kensaDates.map(x => x)
       // console.log(groups, 'groups')
-      // console.log(lastUpdate, 'lastUpdate')
+      // console.log(kensaDates, 'kensaDates')
+
+      if (!groups)
+        return {
+          lastUpdate: '',
+          patientsGraph: [
+            { label: '2020/04/20', transition: 1, cumulative: '' }
+          ]
+        }
 
       // 陽性患者の属性が更新されていて、検査実施数が更新されていない場合の対処
-      const kensaDates = this.$store.state.kensaDates.map(x => x)
-      const found = kensaDates.find(element => element === lastUpdate)
-      if (found == null) kensaDates.push(lastUpdate)
+      // const found = kensaDates.find(element => element === lastUpdate)
+      // if (found == null) kensaDates.push(lastUpdate)
       // console.log(kensaDates, 'kensaDates2')
 
       // 検査数データを作成
@@ -62,14 +67,7 @@ export default {
       })
 
       // 感染者数グラフ
-      const patientsGraph = formatGraph(patients)
-      // console.log(patientsGraph, 'patientsGraph')
-
-      const data = {
-        lastUpdate,
-        patientsGraph
-      }
-      return data
+      return formatGraph(patients)
     }
   }
 }
