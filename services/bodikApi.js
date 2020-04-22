@@ -6,7 +6,7 @@ const baseUrl = API_ROOT + actionDatastoreSearch
 
 const nagasakiPrefectureTestedCasesId = '660c1ea1-3ed6-44de-9a2e-407508cb23c2'
 const nagasakiPrefectureConfirmedCasesId =
-  '71acae71-931f-4f0c-8641-908cdbba18cf&limit=1000'
+  '71acae71-931f-4f0c-8641-908cdbba18cf'
 const nagasakiCityNewsId = 'eb0ba50a-7a97-4029-9b75-9c6bab0568f6'
 
 export const fetchNagasakiPrefectureTestedCases = () =>

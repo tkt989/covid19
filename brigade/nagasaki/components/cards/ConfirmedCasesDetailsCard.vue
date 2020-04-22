@@ -65,6 +65,8 @@ export default {
     confirmedCases() {
       // 検査陽性者の状況
       const patientsNotCruise = this.$store.state.patientsNotCruise
+      if (!patientsNotCruise) return null
+
       const allCount = this.$store.state.allCount
 
       const number = patientsNotCruise.length
