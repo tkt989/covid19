@@ -4,7 +4,7 @@ const API_ROOT = 'https://data.bodik.jp/api/action/'
 const actionDatastoreSearch = 'datastore_search?resource_id='
 const baseUrl = API_ROOT + actionDatastoreSearch
 
-const nagasakiPrefectureTestedCasesId = '71e83845-2648-4cb3-a69d-9f5f5412feb2'
+const nagasakiPrefectureTestedCasesId = '660c1ea1-3ed6-44de-9a2e-407508cb23c2'
 const nagasakiPrefectureConfirmedCasesId =
   'de7ce61e-1849-47a1-b758-bca3f809cdf8'
 const nagasakiCityNewsId = 'eb0ba50a-7a97-4029-9b75-9c6bab0568f6'
