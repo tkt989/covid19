@@ -73,10 +73,8 @@ export default Vue.extend({
     HealthCenterCard
   },
   async fetch({ store, app: { $axios } }) {
-    if (process.server) {
-      // ビルド時のデータを取得してJSに埋め込む
-      await store.dispatch('GET_BODIK_AXIOS', $axios)
-    }
+    // ビルド時のデータを取得してJSに埋め込む
+    await store.dispatch('GET_BODIK_AXIOS', $axios)
   },
   data() {
     const data = {
