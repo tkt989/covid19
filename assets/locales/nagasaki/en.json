@@ -5,6 +5,8 @@
   "新型コロナコールセンター相談件数": "Number of calls to the Nagasaki Novel Coronavirus Call Center",
   "都庁来庁者数の推移": "Number of visitors to the Nagasaki Prefecture Government buildings",
   "都内発生（※1）": "Found in Nagasaki (*1)",
+  "県内発生（※1）": "Found in Nagasaki (*1)",
+  "※2: クルーズ船": "*2: Cruise ship",
   "都内": "Nagasaki",
   "各保健所の電話番号について": "See the web page: Consultation Desks for COVID-19  (Nagasaki Prefecture Government Bureau of Social Welfare and Public Health)",
   "「新型コロナウイルス感染症にかかる相談窓口について」": "See the web page: Consultation Desks for COVID-19  (Nagasaki Prefecture Government Bureau of Social Welfare and Public Health)",
@@ -58,5 +60,6 @@
   "東京都緊急事態措置について": "About Nagasaki Emergency Measures",
   "アイキャッチイラスト": "Thits site's Eyechatch",
   "目に見えないコロナを相手に" : "For the invisible corona, put the message 'Get accurate information (telescope), always keep a calm protective posture (mask, cloth), ",
-  "そして戦って日常" : "and disinfect (gourd)' in the illustration item. It was And expressed with one young man with the hope of fighting to win everyday life. We hope that it will be a symbol like a cool hero with a historical motif that seems to be Nagasaki, with the hope that it will reach many generations."
+  "そして戦って日常" : "and disinfect (gourd)' in the illustration item. It was And expressed with one young man with the hope of fighting to win everyday life. We hope that it will be a symbol like a cool hero with a historical motif that seems to be Nagasaki, with the hope that it will reach many generations.",
+  "（注）チャーター機帰国者、クルーズ船乗客等は含まれていない": "(Note) Excluding the returnees on the cruise ship"
 }

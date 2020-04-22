@@ -8,6 +8,7 @@
         :chart-option="{}"
         :date="data.releaseDate"
         :info="data.sumInfoOfPatients"
+        :height="390"
         :url="
           'https://data.bodik.jp/dataset/420000_covidpatients/resource/de7ce61e-1849-47a1-b758-bca3f809cdf8'
         "
@@ -28,7 +29,19 @@ export default {
   computed: {
     data() {
       const releaseDate = this.$store.state.lastUpdate
-      const attributes = this.$store.state.attributes.map(x => x)
+      const patientsNotCruise = this.$store.state.patientsNotCruise
+      if (!patientsNotCruise) return {}
+      const attributes = patientsNotCruise.map(item => {
+        return {
+          リリース日: item.公表_年月日,
+          居住地: item.居住地,
+          年代: item.年代,
+          性別: item.性別,
+          退院: item.退院済フラグ === '1' ? '○' : null,
+          date: item.公表_年月日
+        }
+      })
+
       // console.log(attributes, 'attributes')
 
       // 感染者数
