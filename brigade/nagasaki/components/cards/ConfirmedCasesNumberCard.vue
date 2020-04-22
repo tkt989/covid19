@@ -42,6 +42,8 @@ export default {
     data() {
       const lastUpdate = this.$store.state.lastUpdate2
       const groups = this.$store.state.groupsNotCruise
+      if (!groups) return null
+
       // console.log(groups, 'groups')
       // console.log(lastUpdate, 'lastUpdate')
 
