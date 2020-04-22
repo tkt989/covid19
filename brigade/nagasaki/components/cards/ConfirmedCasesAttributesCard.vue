@@ -30,27 +30,16 @@ export default {
   computed: {
     data() {
       const releaseDate = this.$store.state.lastUpdate
-      const patientsNotCruise = this.$store.state.patientsNotCruise
+      const attributes = this.$store.state.attributes
 
       // 初期値を作成
-      if (!patientsNotCruise)
+      if (!attributes)
         return {
           attributes: {},
           patientsTable: formatTable(Data.patients.data),
           sumInfoOfPatients: {},
           releaseDate: ''
         }
-
-      const attributes = patientsNotCruise.map(item => {
-        return {
-          リリース日: item.公表_年月日,
-          居住地: item.居住地,
-          年代: item.年代,
-          性別: item.性別,
-          退院: item.退院済フラグ === '1' ? '○' : null,
-          date: item.公表_年月日
-        }
-      })
 
       // console.log(attributes, 'attributes')
 

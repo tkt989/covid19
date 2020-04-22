@@ -11,7 +11,8 @@ export const state = () => ({
   groups: [],
   lastUpdate: null,
   lastUpdate2: null,
-  nagasakiCityNews: []
+  nagasakiCityNews: [],
+  attributes: []
 })
 
 export const mutations = {
@@ -41,6 +42,17 @@ export const mutations = {
     state.groups = groupBy(data, r => r.公表_年月日)
     state.groupsNotCruise = groupBy(notCruise, r => r.公表_年月日)
     // console.log(state.groups, 'groups')
+
+    state.attributes = notCruise.map(item => {
+      return {
+        リリース日: item.公表_年月日,
+        居住地: item.居住地,
+        年代: item.年代,
+        性別: item.性別,
+        退院: item.退院済フラグ === '1' ? '○' : null,
+        date: item.公表_年月日
+      }
+    })
   },
 
   setNagasakiCityNews(state, data) {
