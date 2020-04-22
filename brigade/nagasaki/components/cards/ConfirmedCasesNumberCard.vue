@@ -40,10 +40,10 @@ export default {
       return this.$store.state.lastUpdate
     },
     patientsGraph() {
-      const groups = this.$store.state.groupsNotCruise
       const kensaDates = this.$store.state.kensaDates.map(x => x)
-      // console.log(groups, 'groups')
+      const groups = this.$store.state.groupsNotCruise
       // console.log(kensaDates, 'kensaDates')
+      // console.log(groups, 'groups')
 
       if (!groups)
         return {
