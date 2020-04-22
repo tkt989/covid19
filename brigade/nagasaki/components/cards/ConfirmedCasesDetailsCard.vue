@@ -63,9 +63,11 @@ export default {
     },
 
     confirmedCases() {
+      const summary = Data.main_summary
+
       // 検査陽性者の状況
       const patientsNotCruise = this.$store.state.patientsNotCruise
-      if (!patientsNotCruise) return null
+      if (!patientsNotCruise) return formatConfirmedCases(summary)
 
       const allCount = this.$store.state.allCount
 
@@ -79,7 +81,6 @@ export default {
       // console.log(taiin, 'taiin')
 
       // 検査実施 人数
-      const summary = Data.main_summary
       summary.value = allCount
 
       // 陽性者数 (累積)
