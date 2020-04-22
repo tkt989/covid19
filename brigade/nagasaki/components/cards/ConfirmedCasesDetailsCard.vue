@@ -63,13 +63,13 @@ export default {
     },
 
     confirmedCases() {
-      const summary = Data.main_summary
-      console.log(summary, 'summary')
-
       // 検査陽性者の状況
       const patientsNotCruise = this.$store.state.patientsNotCruise
-      console.log(patientsNotCruise, 'patientsNotCruise')
-      if (!patientsNotCruise) return formatConfirmedCases(summary)
+      // console.log(patientsNotCruise, 'patientsNotCruise')
+      // if (!patientsNotCruise) return formatConfirmedCases(summary)
+
+      const summary = Data.main_summary
+      // console.log(summary, 'summary')
 
       const allCount = this.$store.state.allCount
 
