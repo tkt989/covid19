@@ -339,7 +339,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     displayOption() {
       const unit = this.unit
       const sumArray = this.eachArraySum(this.chartData)
-      console.log(sumArray, 'sumArray')
 
       const data = this.chartData
       const cumulativeData = this.chartData.map(item => {
@@ -608,7 +607,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       for (let i = 0; i < chartDataArray[0].length; i++) {
         sumArray.push(chartDataArray[0][i] + chartDataArray[1][i])
       }
-      console.log(sumArray, 'return sumArray')
       return sumArray
     }
   },
