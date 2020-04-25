@@ -108,9 +108,11 @@
               <dt>平日（日中）：</dt>
               <dd>
                 <a
-                  href="https://www.fukushihoken.metro.tokyo.lg.jp/iryo/kansen/coronasodan.html"
+                  href="https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/kansensho/corona_nagasaki/corona_nagasaki_shousai/#sinpai"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  {{ $t('各保健所の電話番号は福祉保健局HP') }}
+                  {{ $t('各保健所の電話番号は福祉保健課HP') }}
                   <v-icon
                     :class="$style.iconExternal"
                     :aria-label="this.$t('別タブで開く')"
