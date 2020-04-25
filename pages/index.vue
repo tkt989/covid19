@@ -99,7 +99,7 @@ export default Vue.extend({
   // },
   async mounted() {
     // 動的に最新情報を取得する
-    await sleep(100)
+    await sleep(3000)
     await this.$store.dispatch('GET_BODIK_JSONP')
   },
   head(): MetaInfo {

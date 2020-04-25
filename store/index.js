@@ -1,16 +1,15 @@
-// import axios from 'axios'
 import { bodikApi } from '../services'
 import { groupBy, reducer } from './util.js'
 import { convertDateToSimpleFormat } from '@/utils/formatDate'
 
 export const state = () => ({
-  allCount: 0,
   testedNumber: [],
   patients: [],
   nagasakiCityNews: [],
   attributes: [],
-  patientsNotCruise: [],
-  patientsGraphNotCruise: []
+  patientsNotCruise: null,
+  patientsGraphNotCruise: [],
+  otherData: []
 })
 
 export const getters = {
@@ -31,11 +30,7 @@ export const mutations = {
   // 長崎県新型コロナウイルス感染症検査実施数のロード完了後の処理
   setPrefectureTestedCases(state, data) {
     if (!data || data.length === 0) return
-
     state.testedNumber = data
-
-    // 検査件数の全数を取得
-    state.allCount = data.map(x => Number(x.件数)).reduce(reducer)
   },
 
   // 感染症陽性患者発表情報のロード完了後の処理
@@ -62,7 +57,10 @@ export const mutations = {
   allDataUpdated(state, data) {
     const data1 = data.data1
     const data2 = data.data2
+    const data3 = data.data3
     if (!data1 || !data2) return
+
+    state.otherData = data3
 
     // state.groups = groupBy(data, r => r.公表_年月日)
     const notCruise = data2.map(x => x).filter(date => date.クルーズ船 !== '1')
@@ -89,10 +87,25 @@ export const mutations = {
         小計: groupsNotCruise[item] ? groupsNotCruise[item].length : 0
       }
     })
-    // console.log(state.patientsGraphNotCruise, 'state.patientsGraphNotCruise')
 
-    // 検査陽性者の状況
-    state.patientsNotCruise = notCruise
+    // 検査陽性者の状況のデータ作成
+    const 退院者数 = data3.filter(d => d.KEY === '県内_退院者数')
+    // console.log(退院者数, '退院者数')
+    const taiin = 退院者数 ? Number(退院者数[0].VALUE) : 0
+    // console.log(taiin, 'taiin')
+    // グラフ表示用のデータ作成
+    const formattedData = {
+      検査実施人数: data1.map(x => Number(x.件数)).reduce(reducer),
+      陽性者数: notCruise.length,
+      入院中: data2.length - taiin,
+      軽症中等症: 0,
+      重症: 0,
+      死亡: notCruise.filter(d => d.死亡フラグ === '1').length,
+      退院: taiin
+    }
+    // console.log(formattedData, 'formattedData')
+
+    state.patientsNotCruise = formattedData
   }
 }
 
@@ -127,10 +140,13 @@ export const actions = {
       const news = await bodikApi.fetchNagasakiCityNews()
       commit('setNagasakiCityNews', news.records)
 
+      const result3 = await bodikApi.fetchonyMouseId()
+
       /// / 非同期データのロード後処理
       commit('allDataUpdated', {
         data1: result1.records,
-        data2: result2.records
+        data2: result2.records,
+        data3: result3.records
       })
     } catch (e) {}
   }
