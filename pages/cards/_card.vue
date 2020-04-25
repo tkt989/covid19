@@ -143,10 +143,10 @@ export default {
   },
   computed: {
     lastUpdate() {
-      return this.$store.state.lastUpdate
+      return this.$store.getters.lastUpdate
     },
     updatedAt() {
-      return this.$store.state.lastUpdate
+      return this.$store.getters.lastUpdate
     }
   },
   async mounted() {

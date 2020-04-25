@@ -38,7 +38,9 @@ export default {
   },
   computed: {
     lastUpdate() {
-      return this.$store.state.lastUpdate
+      return this.$store.getters.lastUpdate
+        ? this.$store.getters.lastUpdate
+        : '2020-03-14'
     },
 
     inspectionsGraph() {
@@ -57,7 +59,7 @@ export default {
 
     inspectionsLabels() {
       const bodik = this.$store.state.testedNumber
-      const ret = bodik.map(item => dayjs(item.年月日).format('M-DD'))
+      const ret = bodik.map(item => dayjs(item.年月日).format('M/DD'))
       return ret
     }
   }

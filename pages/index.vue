@@ -73,11 +73,6 @@ export default Vue.extend({
     TestedNumberCard,
     HealthCenterCard
   },
-  async fetch({ store, app: { $axios } }) {
-    // ビルド時のデータを取得してJSに埋め込む
-    // if (process.server) await store.dispatch('GET_BODIK_AXIOS', $axios)
-    await store.dispatch('GET_BODIK_AXIOS', $axios)
-  },
   data() {
     const data = {
       Data,
@@ -91,15 +86,20 @@ export default Vue.extend({
   },
   computed: {
     lastUpdate() {
-      return this.$store.state.lastUpdate
+      return this.$store.getters.lastUpdate
     },
     updatedAt() {
       return convertDatetimeToISO8601Format(this.$data.Data.lastUpdate)
     }
   },
+  // async fetch({ store, app: { $axios } }) {
+  //   // ビルド時のデータを取得してJSに埋め込む
+  //   // if (process.server) await store.dispatch('GET_BODIK_AXIOS', $axios)
+  //   // await store.dispatch('GET_BODIK_AXIOS', $axios)
+  // },
   async mounted() {
     // 動的に最新情報を取得する
-    await sleep(1000)
+    await sleep(100)
     await this.$store.dispatch('GET_BODIK_JSONP')
   },
   head(): MetaInfo {
