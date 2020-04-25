@@ -126,20 +126,12 @@
             </div>
             <div>
               <dt :class="$style.telWrapperHeading">
-                {{ $t('平日（夜間）：') }}
+                {{ $t('平日（夜間）/土日祝 終日：') }}
               </dt>
               <dd :class="$style.telWrapper">
                 <span :class="$style.telBeforeText">{{
-                  $t('午後5時から翌朝午前9時/土日祝 終日')
+                  $t('緊急の場合は上記の電話番号におかけください')
                 }}</span>
-                <a :class="$style.tel" href="tel:03-5320-4592">
-                  <img
-                    src="/flow/responsive/phone_white.svg"
-                    alt=""
-                    aria-hidden="true"
-                  />
-                  03-5320-4592</a
-                >
               </dd>
             </div>
           </dl>
