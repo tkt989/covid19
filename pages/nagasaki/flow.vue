@@ -261,11 +261,11 @@
     </div>
     <div :class="$style.detail">
       <a
-        href="https://www.fukushihoken.metro.tokyo.lg.jp/iryo/kansen/coronasodan.html"
+        href="https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/kansensho/corona_nagasaki/#madoguchi"
         target="_blank"
         :class="$style.button"
         rel="noopener noreferrer"
-        >{{ $t('詳細を見る（東京都福祉保健局）') }}
+        >{{ $t('詳細を見る（長崎県福祉保健課）') }}
         <v-icon :class="$style.icon" size="20">
           mdi-open-in-new
         </v-icon>
