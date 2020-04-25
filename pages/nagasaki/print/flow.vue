@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Flow from '@/pages/flow.vue'
+import Flow from '@/pages/nagasaki/flow.vue'
 export default {
   components: {
     Flow
