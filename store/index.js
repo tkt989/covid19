@@ -66,7 +66,7 @@ export const mutations = {
 
     // state.groups = groupBy(data, r => r.公表_年月日)
     const notCruise = data2.map(x => x).filter(date => date.クルーズ船 !== '1')
-    console.log(notCruise, 'notCruise')
+    // console.log(notCruise, 'notCruise')
 
     //
     state.attributes = notCruise.map(item => {
@@ -89,7 +89,7 @@ export const mutations = {
         小計: groupsNotCruise[item] ? groupsNotCruise[item].length : 0
       }
     })
-    console.log(state.patientsGraphNotCruise, 'state.patientsGraphNotCruise')
+    // console.log(state.patientsGraphNotCruise, 'state.patientsGraphNotCruise')
 
     // 検査陽性者の状況
     state.patientsNotCruise = notCruise
@@ -105,7 +105,7 @@ export const actions = {
       if (res.result.records) commit('setBodicData1', res.result.records)
 
       const res2 = await bodikApi.axiosNagasakiPrefectureConfirmedCases($axios)
-      console.log(res2, 'res')
+      // console.log(res2, 'res')
       if (res2.result.records) commit('setBodicData2', res2.result.records)
 
       const newsRes = await bodikApi.axiosNagasakiCityNews($axios)
