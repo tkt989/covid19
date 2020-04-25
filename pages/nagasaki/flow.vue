@@ -154,13 +154,13 @@
           <dl :class="$style.contact">
             <dt>{{ $t('午前9時から午後9時（土日祝含む）') }}</dt>
             <dd>
-              <a :class="$style.tel" href="tel:0570-550571">
+              <a :class="$style.tel" href="tel:0120-565653">
                 <img
                   src="/flow/responsive/phone_white.svg"
                   alt=""
                   aria-hidden="true"
                 />
-                0570-550571</a
+                0120-565653</a
               >
             </dd>
           </dl>
@@ -185,13 +185,13 @@
           <dl :class="$style.contact">
             <dt>{{ $t('午前9時から午後9時（土日祝含む）') }}</dt>
             <dd>
-              <a :class="$style.tel" href="tel:0570-550571">
+              <a :class="$style.tel" href="tel:0120-565653">
                 <img
                   src="/flow/responsive/phone_white.svg"
                   alt=""
                   aria-hidden="true"
                 />
-                0570-550571</a
+                0120-565653</a
               >
             </dd>
           </dl>
