@@ -1,60 +1,50 @@
 // import axios from 'axios'
 import { bodikApi } from '../services'
 import { groupBy, reducer } from './util.js'
+import { convertDateToSimpleFormat } from '@/utils/formatDate'
 
 export const state = () => ({
-  counter: 0,
   allCount: 0,
   testedNumber: [],
   patients: [],
-  kensaDates: [],
-  groups: [],
-  lastUpdate: null,
-  lastUpdate2: null,
   nagasakiCityNews: [],
-  attributes: []
+  attributes: [],
+  patientsNotCruise: [],
+  patientsGraphNotCruise: []
 })
 
+export const getters = {
+  lastUpdate: state => {
+    return state.testedNumber.length > 0
+      ? state.testedNumber[state.testedNumber.length - 1].年月日
+      : '2020-03-14'
+  },
+
+  lastUpdate2: state => {
+    return state.patients.length > 0
+      ? state.patients[state.patients.length - 1].公表_年月日
+      : '2020-03-14'
+  }
+}
+
 export const mutations = {
-  setBodicData1(state, data) {
-    // console.log(data, 'setBodicData1')
-    if (!data) return
-    if (data.length === 0) return
+  // 長崎県新型コロナウイルス感染症検査実施数のロード完了後の処理
+  setPrefectureTestedCases(state, data) {
+    if (!data || data.length === 0) return
 
     state.testedNumber = data
-    state.kensaDates = data.map(x => x.年月日)
 
     // 検査件数の全数を取得
     state.allCount = data.map(x => Number(x.件数)).reduce(reducer)
-    state.lastUpdate = data[data.length - 1].年月日 // "2020/4/1"
   },
 
-  setBodicData2(state, data) {
-    // console.log(data, 'setBodicData2')
-    if (!data) return
-    if (data.length === 0) return
-    const notCruise = data.map(x => x).filter(date => date.クルーズ船 !== '1')
-    console.log(notCruise, 'notCruise')
+  // 感染症陽性患者発表情報のロード完了後の処理
+  PrefectureConfirmedCases(state, data) {
+    if (!data || data.length === 0) return
     state.patients = data
-    state.patientsNotCruise = notCruise
-
-    state.lastUpdate2 = data[data.length - 1].公表_年月日 // "2020/4/1"
-    state.groups = groupBy(data, r => r.公表_年月日)
-    state.groupsNotCruise = groupBy(notCruise, r => r.公表_年月日)
-    // console.log(state.groups, 'groups')
-
-    state.attributes = notCruise.map(item => {
-      return {
-        リリース日: item.公表_年月日,
-        居住地: item.居住地,
-        年代: item.年代,
-        性別: item.性別,
-        退院: item.退院済フラグ === '1' ? '○' : null,
-        date: item.公表_年月日
-      }
-    })
   },
 
+  // 長崎市のニュースのロード完了後の処理
   setNagasakiCityNews(state, data) {
     if (!data) return
 
@@ -66,6 +56,43 @@ export const mutations = {
         text: item.件名
       }
     })
+  },
+
+  // 非同期データのロード後に呼ばれます。
+  allDataUpdated(state, data) {
+    const data1 = data.data1
+    const data2 = data.data2
+    if (!data1 || !data2) return
+
+    // state.groups = groupBy(data, r => r.公表_年月日)
+    const notCruise = data2.map(x => x).filter(date => date.クルーズ船 !== '1')
+    console.log(notCruise, 'notCruise')
+
+    //
+    state.attributes = notCruise.map(item => {
+      return {
+        リリース日: item.公表_年月日,
+        居住地: item.居住地,
+        年代: item.年代,
+        性別: item.性別,
+        退院: item.退院済フラグ === '1' ? '○' : null,
+        date: item.公表_年月日
+      }
+    })
+
+    const kensaDates = data1.map(x => x.年月日)
+    const groupsNotCruise = groupBy(notCruise, r => r.公表_年月日)
+
+    state.patientsGraphNotCruise = kensaDates.map(item => {
+      return {
+        日付: convertDateToSimpleFormat(item),
+        小計: groupsNotCruise[item] ? groupsNotCruise[item].length : 0
+      }
+    })
+    console.log(state.patientsGraphNotCruise, 'state.patientsGraphNotCruise')
+
+    // 検査陽性者の状況
+    state.patientsNotCruise = notCruise
   }
 }
 
@@ -92,13 +119,19 @@ export const actions = {
     try {
       const result1 = await bodikApi.fetchNagasakiPrefectureTestedCases()
       // console.log(result1, 'fetchNagasakiPrefectureTestedCases')
-      commit('setBodicData1', result1.records)
+      commit('setPrefectureTestedCases', result1.records)
 
       const result2 = await bodikApi.fetchNagasakiPrefectureConfirmedCases()
-      commit('setBodicData2', result2.records)
+      commit('PrefectureConfirmedCases', result2.records)
 
       const news = await bodikApi.fetchNagasakiCityNews()
       commit('setNagasakiCityNews', news.records)
+
+      /// / 非同期データのロード後処理
+      commit('allDataUpdated', {
+        data1: result1.records,
+        data2: result2.records
+      })
     } catch (e) {}
   }
 }

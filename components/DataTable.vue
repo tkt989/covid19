@@ -128,8 +128,8 @@ export default Vue.extend({
       default: ''
     },
     height: {
-      type: String,
-      default: ''
+      type: Number,
+      default: 0
     },
     titleId: {
       type: String,

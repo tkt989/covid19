@@ -59,7 +59,7 @@ export default {
   // },
   computed: {
     updatedAt() {
-      return this.$store.state.lastUpdate
+      return this.$store.getters.lastUpdate
     },
 
     confirmedCases() {
