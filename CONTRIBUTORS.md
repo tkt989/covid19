@@ -10,6 +10,7 @@ Nagasaki Covid-19 response site contributors
 | kitadakyou | | | Coding |
 | tkt989 | | | Coding |
 | Kensuke Kanzaki | | [@curasutas](https://twitter.com/curasutas)  | Coding |
+| MATSUMOTO RYOTA| | [@pinografico](https://twitter.com/pinografico)  | Illustration |
 | Atsushi Susgasaki (Code for Nagasaki) |  | | Coding |
 
 ご協力に感謝です！！！
