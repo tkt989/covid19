@@ -44,7 +44,7 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import PageHeader from '@/components/PageHeader.vue'
-import WhatsNew from '@/components/WhatsNew.vue'
+import WhatsNew from '@/brigade/nagasaki/components/WhatsNew.vue'
 import NagasakiCityNews from '@/brigade/nagasaki/components/NagasakiCityNews.vue'
 import StaticInfo from '@/components/StaticInfo.vue'
 import CardRow from '@/components/cards/CardRow.vue'
