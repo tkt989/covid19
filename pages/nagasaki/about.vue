@@ -58,9 +58,12 @@
         tag="span"
       >
         <template #infoPrintPage>
-          <a target="_blank" rel="noopener" :href="localePath('/print/info')">{{
-            $t('こちら')
-          }}</a>
+          <a
+            target="_blank"
+            rel="noopener"
+            :href="localePath('/nagasaki/print/info')"
+            >{{ $t('こちら') }}</a
+          >
         </template>
       </i18n>
       <br />

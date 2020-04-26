@@ -71,6 +71,9 @@
   "こちら": "print view page",
   "複製・配布は自由です。ご自由にコピーまたはプリントアウトしてご利用ください。": "There are no restrictions on copying or redistribution, so feel free to print it out and spread the word.",
   "開発は{codeForNagasaki}と長崎在住エンジニア、長崎出身エンジニア、イラストレーターなど有志で行っています。": "Development is carried out by volunteers such as Code For Nagasaki, engineers living in Nagasaki, engineers from Nagasaki, illustrator.",
-  "長崎県による公式情報と客観的な数値をわかりやすく伝えることで、長崎県にお住まいの方や長崎県に拠点を持つ企業の方、長崎県を訪れる方が現状を把握して適切な対策を取れるようにすることを目的としています。": "Its goal is to provide easy-to-understand, unbiased information on the spread of infection in Nagasaki, in order to keep residents, companies, and visitors informed about the current situation regarding the virus."
-
+  "長崎県による公式情報と客観的な数値をわかりやすく伝えることで、長崎県にお住まいの方や長崎県に拠点を持つ企業の方、長崎県を訪れる方が現状を把握して適切な対策を取れるようにすることを目的としています。": "Its goal is to provide easy-to-understand, unbiased information on the spread of infection in Nagasaki, in order to keep residents, companies, and visitors informed about the current situation regarding the virus.",
+  "長崎県 新型コロナウイルス感染症 対策サイト" : "Nagasaki COVID-19 Information",
+  "長崎県アイキャッチ画像": "Hokkaido eye-catch image",
+  "長崎県・長崎市" : "Nagasaki Prefecture. Nagasaki City.",
+  "長崎県内の新型コロナウイルス感染症（COVID-19）に関する最新情報を提供するサイトです。": "This site provides regularly updated information about COVID-19 in Nagasaki."
 }
