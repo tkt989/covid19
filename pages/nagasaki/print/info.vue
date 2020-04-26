@@ -23,10 +23,12 @@
           '開発は{codeForNagasaki}と長崎在住エンジニア、長崎出身エンジニア、イラストレーターなど有志で行っています。'
         )
       }}<br />
-      <v-icon class="icon" size="18">mdi-twitter</v-icon> :
+      <v-icon class="icon" size="18">mdi-home</v-icon> :
       https://c4nagasaki.org/<br />
       <v-icon class="icon" size="18">mdi-facebook</v-icon> :
       https://www.facebook.com/groups/1709440532692336/<br />
+      <v-icon class="icon" size="18">mdi-twitter</v-icon> :
+      https://twitter.com/code4nagasaki<br />
     </span>
     <br />
     <ul class="SponsorLinkContainer supplementHeaders">

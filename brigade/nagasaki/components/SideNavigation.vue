@@ -83,17 +83,6 @@
               <img src="/facebook.png" alt="Facebook" />
             </picture>
           </a>
-          <a
-            href="https://github.com/CodeForNagasaki/covid19"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="SideNavigation-SocialLink"
-          >
-            <picture>
-              <source srcset="/github.webp" type="image/webp" />
-              <img src="/github.png" alt="GitHub" />
-            </picture>
-          </a>
         </div>
         <small class="SideNavigation-Copyright">
           {{ $t('このサイトの内容物は') }}
@@ -109,8 +98,8 @@
           <br />
         </small>
 
-        <small class="SideNavigation-Copyright"
-          >2020
+        <div class="SideNavigation-Copyright">
+          2020
           <a
             href="https://c4nagasaki.org/covid-19"
             target="_blank"
@@ -126,7 +115,43 @@
             class=""
             >開発者・協力者募集中！</a
           >
-        </small>
+        </div>
+
+        <div class="SideNavigation-Social">
+          <a
+            href="https://twitter.com/code4nagasaki"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="SideNavigation-SocialLink"
+          >
+            <picture>
+              <source srcset="/twitter.webp" type="image/webp" />
+              <img src="/twitter.png" alt="Twitter" />
+            </picture>
+          </a>
+          <a
+            href="https://www.facebook.com/groups/1709440532692336/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="SideNavigation-SocialLink"
+          >
+            <picture>
+              <source srcset="/facebook.webp" type="image/webp" />
+              <img src="/facebook.png" alt="Facebook" />
+            </picture>
+          </a>
+          <a
+            href="https://github.com/CodeForNagasaki/covid19"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="SideNavigation-SocialLink"
+          >
+            <picture>
+              <source srcset="/github.webp" type="image/webp" />
+              <img src="/github.png" alt="GitHub" />
+            </picture>
+          </a>
+        </div>
       </footer>
     </div>
   </div>
