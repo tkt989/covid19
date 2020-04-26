@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import { bodikApi } from '../services'
 import { groupBy, reducer } from './util.js'
 import { convertDateToSimpleFormat } from '@/utils/formatDate'
@@ -15,13 +16,17 @@ export const state = () => ({
 export const getters = {
   lastUpdate: state => {
     return state.testedNumber.length > 0
-      ? state.testedNumber[state.testedNumber.length - 1].年月日
+      ? dayjs(state.testedNumber[state.testedNumber.length - 1].年月日)
+          .add(1, 'day')
+          .format('YYYY/MM/DD')
       : '2020-03-14'
   },
 
   lastUpdate2: state => {
     return state.patients.length > 0
-      ? state.patients[state.patients.length - 1].公表_年月日
+      ? dayjs(state.patients[state.patients.length - 1].公表_年月日)
+          .add(1, 'day')
+          .format('YYYY/MM/DD')
       : '2020-03-14'
   }
 }
