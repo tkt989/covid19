@@ -280,6 +280,32 @@
         </span>
       </div>
     </StaticCard>
+
+    <StaticCard>
+      <h3>{{ $t('本サイトにご協力いただいた皆様') }}</h3>
+      <ul>
+        <li>Masato Yokoyama</li>
+        <li>Seiichi Higuchi</li>
+        <li>
+          <a
+            href="https://github.com/CodeForNagasaki/covid19/commits?author=sentakuhakase"
+            >Kensuke Kanzaki</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://github.com/CodeForNagasaki/covid19/commits?author=kitadakyou"
+            >kitadakyou</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://github.com/CodeForNagasaki/covid19/commits?author=tkt989"
+            >tkt989</a
+          >
+        </li>
+      </ul>
+    </StaticCard>
   </div>
 </template>
 
