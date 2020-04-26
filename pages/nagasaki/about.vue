@@ -346,20 +346,27 @@
         <li>
           <a
             href="https://github.com/CodeForNagasaki/covid19/commits?author=sentakuhakase"
+            target="”_blank”"
             >Kensuke Kanzaki</a
           >
         </li>
         <li>
           <a
             href="https://github.com/CodeForNagasaki/covid19/commits?author=kitadakyou"
+            target="”_blank”"
             >kitadakyou</a
           >
         </li>
         <li>
           <a
             href="https://github.com/CodeForNagasaki/covid19/commits?author=tkt989"
+            target="”_blank”"
             >tkt989</a
           >
+        </li>
+
+        <li>
+          <a href="https://pinografi.com" target="”_blank”">MATSUMOTO RYOTA</a>
         </li>
       </ul>
     </StaticCard>
