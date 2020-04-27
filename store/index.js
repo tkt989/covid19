@@ -60,30 +60,31 @@ export const mutations = {
 
   // 非同期データのロード後に呼ばれます。
   allDataUpdated(state, data) {
-    const data1 = data.data1
-    const data2 = data.data2
-    const data3 = data.data3
-    if (!data1 || !data2) return
+    const testedCases = data.testedCases
+    const confirmedCases = data.confirmedCases
+    const otherData = data.otherData
+    if (!testedCases || !confirmedCases) return
 
-    state.otherData = data3
+    state.otherData = otherData
 
     // state.groups = groupBy(data, r => r.公表_年月日)
-    const notCruise = data2.map(x => x).filter(date => date.クルーズ船 !== '1')
+    const notCruise = confirmedCases
+      .map(x => x)
+      .filter(date => date.クルーズ船 !== '1')
     // console.log(notCruise, 'notCruise')
 
-    //
+    // 属性データの作成
     state.attributes = notCruise.map(item => {
       return {
         リリース日: item.公表_年月日,
         居住地: item.居住地,
         年代: item.年代,
         性別: item.性別,
-        退院: item.退院済フラグ === '1' ? '○' : null,
         date: item.公表_年月日
       }
     })
 
-    const kensaDates = data1.map(x => x.年月日)
+    const kensaDates = testedCases.map(x => x.年月日)
     const groupsNotCruise = groupBy(notCruise, r => r.公表_年月日)
 
     state.patientsGraphNotCruise = kensaDates.map(item => {
@@ -94,18 +95,22 @@ export const mutations = {
     })
 
     // 検査陽性者の状況のデータ作成
-    const 退院者数 = data3.filter(d => d.KEY === '県内_退院者数')
-    // console.log(退院者数, '退院者数')
+    const 退院者数 = otherData.filter(d => d.KEY === '県内_退院者数')
+    const 死亡者数 = otherData.filter(d => d.KEY === '県内_死亡者数')
+
+    // console.log(otherData, 'otherData')
+    // console.log(死亡者数, '死亡者数')
     const taiin = 退院者数 ? Number(退院者数[0].VALUE) : 0
+    const dead = 死亡者数 ? Number(死亡者数[0].VALUE) : 0
     // console.log(taiin, 'taiin')
     // グラフ表示用のデータ作成
     const formattedData = {
-      検査実施人数: data1.map(x => Number(x.件数)).reduce(reducer),
+      検査実施人数: testedCases.map(x => Number(x.件数)).reduce(reducer),
       陽性者数: notCruise.length,
-      入院中: data2.length - taiin,
+      入院中: confirmedCases.length - taiin,
       軽症中等症: 0,
       重症: 0,
-      死亡: notCruise.filter(d => d.死亡フラグ === '1').length,
+      死亡: dead,
       退院: taiin
     }
     // console.log(formattedData, 'formattedData')
@@ -149,9 +154,9 @@ export const actions = {
 
       /// / 非同期データのロード後処理
       commit('allDataUpdated', {
-        data1: result1.records,
-        data2: result2.records,
-        data3: result3.records
+        testedCases: result1.records,
+        confirmedCases: result2.records,
+        otherData: result3.records
       })
     } catch (e) {}
   }
