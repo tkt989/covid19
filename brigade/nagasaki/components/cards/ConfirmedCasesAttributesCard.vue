@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     data() {
-      const releaseDate = this.$store.state.lastUpdate
+      const releaseDate = this.$store.getters.lastUpdate
       const attributes = this.$store.state.attributes
 
       // 初期値を作成

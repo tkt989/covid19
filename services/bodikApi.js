@@ -9,12 +9,16 @@ const nagasakiPrefectureConfirmedCasesId =
   'de7ce61e-1849-47a1-b758-bca3f809cdf8'
 const nagasakiCityNewsId = 'eb0ba50a-7a97-4029-9b75-9c6bab0568f6'
 
+const aonyMouseId = '438f03f1-0ee8-466d-a5d9-e874f5367507'
+
 export const fetchNagasakiPrefectureTestedCases = () =>
   callFetchJsonp(baseUrl, nagasakiPrefectureTestedCasesId)
 export const fetchNagasakiPrefectureConfirmedCases = () =>
   callFetchJsonp(baseUrl, nagasakiPrefectureConfirmedCasesId)
 export const fetchNagasakiCityNews = () =>
   callFetchJsonp(baseUrl, nagasakiCityNewsId)
+
+export const fetchonyMouseId = () => callFetchJsonp(baseUrl, aonyMouseId)
 
 export const axiosNagasakiPrefectureTestedCases = axios =>
   axios.$get(baseUrl + nagasakiPrefectureTestedCasesId)

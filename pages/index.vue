@@ -44,7 +44,7 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import PageHeader from '@/components/PageHeader.vue'
-import WhatsNew from '@/components/WhatsNew.vue'
+import WhatsNew from '@/brigade/nagasaki/components/WhatsNew.vue'
 import NagasakiCityNews from '@/brigade/nagasaki/components/NagasakiCityNews.vue'
 import StaticInfo from '@/components/StaticInfo.vue'
 import CardRow from '@/components/cards/CardRow.vue'
@@ -91,7 +91,7 @@ export default Vue.extend({
   },
   computed: {
     lastUpdate() {
-      return this.$store.state.lastUpdate
+      return this.$store.getters.lastUpdate
     },
     updatedAt() {
       return convertDatetimeToISO8601Format(this.$data.Data.lastUpdate)
@@ -99,7 +99,7 @@ export default Vue.extend({
   },
   async mounted() {
     // 動的に最新情報を取得する
-    await sleep(1000)
+    await sleep(50)
     await this.$store.dispatch('GET_BODIK_JSONP')
   },
   head(): MetaInfo {
