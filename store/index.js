@@ -19,7 +19,7 @@ export const getters = {
       ? dayjs(state.testedNumber[state.testedNumber.length - 1].年月日)
           .add(1, 'day')
           .format('YYYY/MM/DD')
-      : '2020-03-14'
+      : '2020-04-27'
   },
 
   lastUpdate2: state => {
@@ -27,7 +27,7 @@ export const getters = {
       ? dayjs(state.patients[state.patients.length - 1].公表_年月日)
           .add(1, 'day')
           .format('YYYY/MM/DD')
-      : '2020-03-14'
+      : '2020-04-27'
   }
 }
 

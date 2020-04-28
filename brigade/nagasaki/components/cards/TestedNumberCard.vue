@@ -39,8 +39,6 @@ export default {
   computed: {
     lastUpdate() {
       return this.$store.getters.lastUpdate
-        ? this.$store.getters.lastUpdate
-        : '2020-03-14'
     },
 
     inspectionsGraph() {
