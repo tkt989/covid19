@@ -151,7 +151,7 @@ export const actions = {
       if (newsRes.records) commit('setNagasakiCityNews', newsRes.records)
 
       // 長崎県新型コロナウイルス感染症発生件数等のロード
-      const result3 = await bodikApi.fetchNagasakiCityNews()
+      const result3 = await bodikApi.fetchNagasakiOtherInfo()
 
       // 非同期データのロード後処理
       commit('allDataUpdated', {
