@@ -1,6 +1,7 @@
 import dayjs from 'dayjs'
 import { bodikApi } from '../services'
-import { groupBy, reducer } from './util.js'
+import { groupBy } from './util.js'
+import { mapToPatientsNotCruise } from './mapToPatientsNotCruise.js'
 import { convertDateToSimpleFormat } from '@/utils/formatDate'
 
 export const state = () => ({
@@ -60,9 +61,11 @@ export const mutations = {
 
   // 非同期データのロード後に呼ばれます。
   allDataUpdated(state, data) {
+    // console.log(data, 'allDataUpdated data')
     const testedCases = data.testedCases
     const confirmedCases = data.confirmedCases
     const otherData = data.otherData
+
     if (!testedCases || !confirmedCases) return
 
     state.otherData = otherData
@@ -94,28 +97,8 @@ export const mutations = {
       }
     })
 
-    // 検査陽性者の状況のデータ作成
-    const 退院者数 = otherData.filter(d => d.KEY === '県内_退院者数')
-    const 死亡者数 = otherData.filter(d => d.KEY === '県内_死亡者数')
-
-    // console.log(otherData, 'otherData')
-    // console.log(死亡者数, '死亡者数')
-    const taiin = 退院者数 ? Number(退院者数[0].VALUE) : 0
-    const dead = 死亡者数 ? Number(死亡者数[0].VALUE) : 0
-    // console.log(taiin, 'taiin')
-    // グラフ表示用のデータ作成
-    const formattedData = {
-      検査実施人数: testedCases.map(x => Number(x.件数)).reduce(reducer),
-      陽性者数: notCruise.length,
-      入院中: confirmedCases.length - taiin,
-      軽症中等症: 0,
-      重症: 0,
-      死亡: dead,
-      退院: taiin
-    }
-    // console.log(formattedData, 'formattedData')
-
-    state.patientsNotCruise = formattedData
+    // 検査陽性者の状況のデータ
+    state.patientsNotCruise = mapToPatientsNotCruise(otherData)
   }
 }
 
@@ -123,36 +106,54 @@ export const actions = {
   // NuxtのFetchでビルド時にデータ取得するときはこっちを使う
   async GET_BODIK_AXIOS({ commit }, $axios) {
     try {
-      const res = await bodikApi.axiosNagasakiPrefectureTestedCases($axios)
-      // console.log(res, 'res')
-      if (res.result.records) commit('setBodicData1', res.result.records)
+      const result1 = await bodikApi.axiosNagasakiPrefectureTestedCases($axios)
+      // console.log(result1, 'result1')
+      if (result1.result.records)
+        commit('setPrefectureTestedCases', result1.result.records)
 
-      const res2 = await bodikApi.axiosNagasakiPrefectureConfirmedCases($axios)
-      // console.log(res2, 'res')
-      if (res2.result.records) commit('setBodicData2', res2.result.records)
+      const result2 = await bodikApi.axiosNagasakiPrefectureConfirmedCases(
+        $axios
+      )
+      // console.log(result2, 'result2')
+      if (result2.result.records)
+        commit('PrefectureConfirmedCases', result2.result.records)
 
       const newsRes = await bodikApi.axiosNagasakiCityNews($axios)
-      if (res.result.records)
+      if (newsRes.result.records)
         commit('setNagasakiCityNews', newsRes.result.records)
+
+      // 長崎県新型コロナウイルス感染症発生件数等のロード
+      const result3 = await bodikApi.axiosNagasakiOtherInfo($axios)
+      // console.log(result3, 'result3')
+
+      // 非同期データのロード後処理
+      commit('allDataUpdated', {
+        testedCases: result1.result.records,
+        confirmedCases: result2.result.records,
+        otherData: result3.result.records
+      })
     } catch (e) {}
   },
 
   // ブラウザから非同期でBODIKからデータ取得するさいにはこちらを使う
   async GET_BODIK_JSONP({ commit }) {
     try {
+      // 長崎県新型コロナウイルス感染症検査実施数のロード
       const result1 = await bodikApi.fetchNagasakiPrefectureTestedCases()
       // console.log(result1, 'fetchNagasakiPrefectureTestedCases')
-      commit('setPrefectureTestedCases', result1.records)
+      if (result1.records) commit('setPrefectureTestedCases', result1.records)
 
+      // 長崎県新型コロナウイルス感染症陽性患者発表情報のロード
       const result2 = await bodikApi.fetchNagasakiPrefectureConfirmedCases()
-      commit('PrefectureConfirmedCases', result2.records)
+      if (result2.records) commit('PrefectureConfirmedCases', result2.records)
 
-      const news = await bodikApi.fetchNagasakiCityNews()
-      commit('setNagasakiCityNews', news.records)
+      const newsRes = await bodikApi.fetchNagasakiCityNews()
+      if (newsRes.records) commit('setNagasakiCityNews', newsRes.records)
 
-      const result3 = await bodikApi.fetchonyMouseId()
+      // 長崎県新型コロナウイルス感染症発生件数等のロード
+      const result3 = await bodikApi.fetchNagasakiOtherInfo()
 
-      /// / 非同期データのロード後処理
+      // 非同期データのロード後処理
       commit('allDataUpdated', {
         testedCases: result1.records,
         confirmedCases: result2.records,

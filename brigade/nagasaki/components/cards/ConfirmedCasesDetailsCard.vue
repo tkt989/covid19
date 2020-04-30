@@ -66,7 +66,7 @@ export default {
       const summary = this.$store.state.patientsNotCruise
         ? this.$store.state.patientsNotCruise
         : formatConfirmedCases(Data.main_summary)
-      console.log(summary, 'summary')
+      // console.log(summary, 'summary')
       return summary
     }
   },
