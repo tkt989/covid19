@@ -43,6 +43,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
+import { sleep } from '../store/util.js'
 import PageHeader from '@/components/PageHeader.vue'
 import WhatsNew from '@/brigade/nagasaki/components/WhatsNew.vue'
 import NagasakiCityNews from '@/brigade/nagasaki/components/NagasakiCityNews.vue'
@@ -58,7 +59,6 @@ import TestedNumberCard from '@/brigade/nagasaki/components/cards/TestedNumberCa
 import HealthCenterCard from '@/brigade/nagasaki/components/cards/HealthCenterCard.vue'
 
 import { convertDatetimeToISO8601Format } from '@/utils/formatDate'
-const sleep = (msec: any) => new Promise(resolve => setTimeout(resolve, msec))
 
 export default Vue.extend({
   components: {

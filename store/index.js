@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import { bodikApi } from '../services'
-import { groupBy } from './util.js'
+import { groupBy, sleep } from './util.js'
 import { mapToPatientsNotCruise } from './mapToPatientsNotCruise.js'
 import { convertDateToSimpleFormat } from '@/utils/formatDate'
 
@@ -144,13 +144,16 @@ export const actions = {
       if (result1.records) commit('setPrefectureTestedCases', result1.records)
 
       // 長崎県新型コロナウイルス感染症陽性患者発表情報のロード
+      await sleep(500)
       const result2 = await bodikApi.fetchNagasakiPrefectureConfirmedCases()
       if (result2.records) commit('PrefectureConfirmedCases', result2.records)
 
+      await sleep(500)
       const newsRes = await bodikApi.fetchNagasakiCityNews()
       if (newsRes.records) commit('setNagasakiCityNews', newsRes.records)
 
       // 長崎県新型コロナウイルス感染症発生件数等のロード
+      await sleep(500)
       const result3 = await bodikApi.fetchNagasakiOtherInfo()
 
       // 非同期データのロード後処理
