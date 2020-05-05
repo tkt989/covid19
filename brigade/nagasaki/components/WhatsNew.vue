@@ -23,7 +23,7 @@
           target="_blank"
           rel="noopener"
           class="alert"
-          href="https://twitter.com/ngs_ken_iryou>"
+          href="https://twitter.com/ngs_ken_iryou"
         >
           <span class="alert">{{
             $t('※長崎県医療政策課のTwitter情報を表示しています')
